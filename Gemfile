@@ -7,3 +7,6 @@ gem 'http', '~> 5.0'
 
 # Testing
 gem 'minitest', '~> 5.0'
+
+# Development
+gem 'rubocop'
