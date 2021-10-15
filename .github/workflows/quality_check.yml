@@ -33,6 +33,3 @@ jobs:
     
     - name: Check Style and Performance
       run: bundle exec rubocop
-    
-    - name: Run Tests
-      run: ruby spec/*.rb
