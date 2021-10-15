@@ -11,7 +11,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, api_library ]
 
 jobs:
   Quality-Check:
@@ -33,6 +33,3 @@ jobs:
     
     - name: Check Style and Performance
       run: bundle exec rubocop
-    
-    - name: Run Tests
-      run: ruby spec/*.rb
