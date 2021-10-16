@@ -1,27 +1,26 @@
 # frozen_string_literal: true
 
-# To-Be-Done
 module Floofloo
-  # To-Be-Done
+  # Model for News
   class News
     def initialize(news_data)
-      # To-Be-Done
+      @news = news_data
     end
 
     def status
-      # To-Be-Done
+      @news['status']
     end
 
-    def totalResults
-      # To-Be-Done
+    def total_results
+      @news['totalResults']
     end
 
     def author
-      # To-Be-Done
+      @news['articles'][0]['author']
     end
 
     def title
-      # To-Be-Done
+      @news['articles'][0]['title']
     end
   end
 end

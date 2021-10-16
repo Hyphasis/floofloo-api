@@ -4,35 +4,41 @@ require 'http'
 require_relative 'news'
 
 module Floofloo
-  # To-Be-Done
+  # Library for Github Web API
   class NewsApi
-    # To-Be-Done
     module Errors
-      # To-Be-Done: Only Unauthorized Error is needed right now.
+      class NotFound < StandardError; end
+      class Unauthorized < StandardError; end # rubocop:disable Layout/EmptyLineBetweenDefs
     end
 
-    # To-Be-Done: HTTP_ERROR
+    HTTP_ERROR = {
+      401 => Errors::Unauthorized,
+      404 => Errors::NotFound
+    }.freeze
 
     def initialize(news_key)
-      # To-Be-Done: Assign news_key to instance variable @news_key
+      @news_key = news_key
     end
 
     def news(language, keywords, from, to, sort_by)
-      # To-Be-Done: url, news_data, news
+      news_url = news_api_path("everything?language=#{language}&q=#{keywords}&from=#{from}&to=#{to}&sortBy=#{sort_by}")
+      news_data = call_news_url(news_url).parse
+      News.new(news_data)
     end
 
     private
 
-    def news_api_path(path, config)
-      # To-Be-Done
+    def news_api_path(path)
+      "https://newsapi.org/v2/#{path}&apiKey=#{@news_key}"
     end
 
     def call_news_url(url)
-      # To-Be-Done
+      result = HTTP.get(url)
+      successful?(result) ? result : raise(HTTP_ERROR[result.code])
     end
 
     def successful?(result)
-      # To-Be-Done
+      !HTTP_ERROR.keys.include?(result.code)
     end
   end
 end
