@@ -12,5 +12,5 @@ gem 'vcr', '~> 6.0'
 gem 'webmock', '~> 3.0'
 
 # Development
-gem 'rubocop'
 gem 'flog'
+gem 'rubocop'
