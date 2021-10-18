@@ -5,10 +5,12 @@ require 'yaml'
 
 config = YAML.safe_load(File.read('config/secrets.yml'))
 
+# This method smells of :reek:UtilityFunction
 def news_api_path(path, config)
   "https://newsapi.org/v2/#{path}&apiKey=#{config['NEWS_KEY']}"
 end
 
+# This method smells of :reek:UtilityFunction
 def call_news_url(url)
   HTTP.get(url)
 end
