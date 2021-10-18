@@ -13,4 +13,5 @@ gem 'webmock', '~> 3.0'
 
 # Development
 gem 'flog'
+gem 'reek'
 gem 'rubocop'

@@ -34,7 +34,7 @@ describe 'Test News API Library' do
     it 'BAD: sould raise exception when unauthorized' do
       _(proc do
         Floofloo::NewsApi.new('BAD_KEY').news(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
-      end).must_raise Floofloo::NewsApi::Errors::Unauthorized
+      end).must_raise Floofloo::NewsApi::Response::Unauthorized
     end
   end
 end
