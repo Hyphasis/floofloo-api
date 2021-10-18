@@ -56,4 +56,3 @@ build-iPhoneSimulator/
 # .rubocop-https?--*
 
 config/secrets.yml
-spec/fixtures/
