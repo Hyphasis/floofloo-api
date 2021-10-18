@@ -247,4 +247,54 @@ http_interactions:
         invalid or incorrect. Check your key, or go to https://newsapi.org to create
         a free API key."}'
   recorded_at: Mon, 18 Oct 2021 07:07:49 GMT
+- request:
+    method: get
+    uri: https://newsapi.org/v2/everything?apiKey=&from=2021-10-10&language=en&q=influenza&sortBy=popularity&to=2021-10-12
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - newsapi.org
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Mon, 18 Oct 2021 10:08:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '162'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=wWpmWnisvR668eVrncE3vKeL5eiZlPED66jUef9No9Rw4iPN11%2BYdxJD%2FBeDvE3WochZ%2FuxAeFH7pfiaBHEH%2Faq4t8XupBmGGkrMrQyx4PizU4ef%2Bo52l%2BPa7BWZ"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 6a00f6c1bbea6b69-TPE
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","code":"apiKeyInvalid","message":"Your API key is
+        invalid or incorrect. Check your key, or go to https://newsapi.org to create
+        a free API key."}'
+  recorded_at: Mon, 18 Oct 2021 10:08:11 GMT
 recorded_with: VCR 6.0.0
