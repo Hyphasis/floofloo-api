@@ -1,8 +1,7 @@
 *.gem
 *.rbc
 /.config
-coverage/*
-!coverage/.resultset.json
+/coverage
 /InstalledFiles
 /pkg/
 /spec/reports/
