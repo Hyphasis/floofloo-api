@@ -1,21 +1,26 @@
 # frozen_string_literal: true
 
-require 'minitest/autorun'
-require 'minitest/rg'
-require 'yaml'
-require_relative '../lib/news_api'
-
-CONFIG = YAML.safe_load(File.read('config/secrets.yml'))
-NEWS_KEY = CONFIG['NEWS_KEY']
-CORRECT = YAML.safe_load(File.read('spec/fixtures/news_results.yml'))
-
-LANGUAGE = 'en'
-KEYWORDS = 'influenza'
-FROM = '2021-10-10'
-TO = '2021-10-12'
-SORT_BY = 'popularity'
+require_relative 'spec_helper'
 
 describe 'Test News API Library' do
+  VCR.configure do |c|
+    c.cassette_library_dir = CASSETTES_FOLDER
+    c.hook_into :webmock
+
+    c.filter_sensitive_data('<NEWS_KEY>') { NEWS_KEY }
+    c.filter_sensitive_data('<NEWS_KEY_ESC>') { CGI.escape(NEWS_KEY) }
+  end
+
+  before do
+    VCR.insert_cassette CASSETTE_FILE,
+                        record: :new_episodes,
+                        match_requests_on: %i[method uri headers]
+  end
+
+  after do
+    VCR.eject_cassette
+  end
+
   describe 'News Information' do
     it 'HAPPY: should provide correct news information' do
       news = Floofloo::NewsApi.new(NEWS_KEY)
@@ -29,7 +34,7 @@ describe 'Test News API Library' do
     it 'BAD: sould raise exception when unauthorized' do
       _(proc do
         Floofloo::NewsApi.new('BAD_KEY').news(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
-      end).must_raise Floofloo::NewsApi::Errors::Unauthorized
+      end).must_raise Floofloo::NewsApi::Response::Unauthorized
     end
   end
 end

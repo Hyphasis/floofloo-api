@@ -11,7 +11,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main, api_library ]
+    branches: [ main, dev ]
 
 jobs:
   Quality-Check:
@@ -32,4 +32,10 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     
     - name: Check Style and Performance
-      run: bundle exec rubocop
+      run: bundle exec rake quality:rubocop
+    
+    - name: Check Code Smell
+      run: bundle exec rake quality:reek
+    
+    # - name: Run Tests
+    #   run: bundle exec rake spec

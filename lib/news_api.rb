@@ -6,39 +6,64 @@ require_relative 'news'
 module Floofloo
   # Library for Github Web API
   class NewsApi
-    module Errors
-      class NotFound < StandardError; end
-      class Unauthorized < StandardError; end # rubocop:disable Layout/EmptyLineBetweenDefs
-    end
-
-    HTTP_ERROR = {
-      401 => Errors::Unauthorized,
-      404 => Errors::NotFound
-    }.freeze
+    NEWS_PATH = 'https://newsapi.org/v2/'
 
     def initialize(news_key)
       @news_key = news_key
     end
 
+    # This method smells of :reek:LongParameterList
     def news(language, keywords, from, to, sort_by)
-      news_url = news_api_path("everything?language=#{language}&q=#{keywords}&from=#{from}&to=#{to}&sortBy=#{sort_by}")
-      news_data = call_news_url(news_url).parse
-      News.new(news_data)
+      news_response = Request.new(NEWS_PATH, @news_key)
+                             .news(language, keywords, from, to, sort_by).parse
+      News.new(news_response)
     end
 
-    private
+    # Send out HTTP request to News API
+    class Request
+      def initialize(resource_root, key)
+        @resource_root = resource_root
+        @key = key
+      end
 
-    def news_api_path(path)
-      "https://newsapi.org/v2/#{path}&apiKey=#{@news_key}"
+      # This method smells of :reek:LongParameterList
+      def news(language, keywords, from, to, sort_by)
+        news_url = "#{@resource_root}everything?"\
+                   "language=#{language}&q=#{keywords}&from=#{from}&to=#{to}&sortBy=#{sort_by}"\
+                   "&apiKey=#{@key}"
+        get(news_url)
+      end
+
+      # This method smells of :reek:FeatureEnvy
+      def get(url)
+        http_response = HTTP.get(url)
+
+        Response.new(http_response).tap do |response|
+          raise(response.error) unless response.successful?
+        end
+      end
     end
 
-    def call_news_url(url)
-      result = HTTP.get(url)
-      successful?(result) ? result : raise(HTTP_ERROR[result.code])
-    end
+    # Decorate HTTP responses from News API with success/error reporting
+    class Response < SimpleDelegator
+      # NotFound Error
+      NotFound = Class.new(StandardError)
 
-    def successful?(result)
-      !HTTP_ERROR.keys.include?(result.code)
+      # Unauthorized Error
+      Unauthorized = Class.new(StandardError)
+
+      HTTP_ERROR = {
+        401 => Unauthorized,
+        404 => NotFound
+      }.freeze
+
+      def successful?
+        !HTTP_ERROR.keys.include?(code)
+      end
+
+      def error
+        HTTP_ERROR[code]
+      end
     end
   end
 end
