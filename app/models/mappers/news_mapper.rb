@@ -16,6 +16,7 @@ module Floofloo
         build_entity(data)
       end
 
+      # This method smells of :reek:UtilityFunction
       def build_entity(data)
         DataMapper.new(data).build_entity
       end
