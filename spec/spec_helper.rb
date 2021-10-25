@@ -9,7 +9,7 @@ require 'minitest/rg'
 require 'vcr'
 require 'webmock'
 
-require_relative '../lib/news_api'
+require_relative '../init'
 
 CONFIG = YAML.safe_load(File.read('config/secrets.yml'))
 NEWS_KEY = CONFIG['NEWS_KEY']

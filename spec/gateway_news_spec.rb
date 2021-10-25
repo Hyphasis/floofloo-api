@@ -23,8 +23,8 @@ describe 'Test News API Library' do
 
   describe 'News Information' do
     it 'HAPPY: should provide correct news information' do
-      news = Floofloo::NewsApi.new(NEWS_KEY)
-                              .news(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
+      news = Floofloo::News::NewsMapper.new(NEWS_KEY)
+                                       .find(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
       _(news.status).must_equal CORRECT['status']
       _(news.total_results).must_equal CORRECT['totalResults']
       _(news.author).must_equal CORRECT['author']
@@ -33,8 +33,8 @@ describe 'Test News API Library' do
 
     it 'BAD: sould raise exception when unauthorized' do
       _(proc do
-        Floofloo::NewsApi.new('BAD_KEY').news(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
-      end).must_raise Floofloo::NewsApi::Response::Unauthorized
+        Floofloo::News::NewsMapper.new('BAD_KEY').find(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
+      end).must_raise Floofloo::News::Api::Response::Unauthorized
     end
   end
 end
