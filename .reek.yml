@@ -4,4 +4,4 @@
       enabled: false
   exclude_paths:
     - _snippets
-    - lib/news_info.rb # one-time test fixture creator
+    - app/models/news_info.rb # one-time test fixture creator
