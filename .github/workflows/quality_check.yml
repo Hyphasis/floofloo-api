@@ -37,5 +37,6 @@ jobs:
     - name: Check Code Smell
       run: bundle exec rake quality:reek
     
-    # - name: Run Tests
-    #   run: bundle exec rake spec
+    - name: Run Tests
+      run: cp config/secrets_sample.yml config/secrets.yml
+           bundle exec rake spec
