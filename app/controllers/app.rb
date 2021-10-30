@@ -22,12 +22,11 @@ module Floofloo
         routing.is do
           # POST /news/
           routing.post do
-            data = JSON.parse(routing.body.read)
-            language = data['language']
-            keywords = data['keywords']
-            from = data['from']
-            to = data['to']
-            sort_by = data['sort_by']
+            language = routing.params['language']
+            keywords = routing.params['keywords']
+            from = routing.params['from']
+            to = routing.params['to']
+            sort_by = routing.params['sort_by']
 
             routing.halt 400 if keywords.nil?
 

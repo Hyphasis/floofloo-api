@@ -2,8 +2,6 @@
 
 require 'rake/testtask'
 
-CODE = 'lib/'
-
 task :default do
   puts `rake -T`
 end
@@ -11,6 +9,20 @@ end
 desc 'Run tests'
 task :spec do
   sh 'ruby spec/gateway_news_spec.rb'
+end
+
+desc 'Run tests'
+task :spec do
+  sh 'ruby spec/gateway_news_spec.rb'
+end
+
+desc 'Keep rerunning tests upon changes'
+task :respec do
+  sh "rerun -c 'rake spec' --ignore 'coverage/*'"
+end
+
+task :rerack do
+  sh "rerun -c rackup --ignore 'coverage/*'"
 end
 
 namespace :vcr do
@@ -23,6 +35,8 @@ namespace :vcr do
 end
 
 namespace :quality do
+  only_app = 'config/ app/'
+
   desc 'Run all static-analysis quality checks'
   task all: %i[rubocop reek flog]
 
@@ -38,6 +52,6 @@ namespace :quality do
 
   desc 'Complexity analysis'
   task :flog do
-    sh "flog #{CODE}"
+    sh "flog -m #{only_app}"
   end
 end

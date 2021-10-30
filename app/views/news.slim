@@ -1,0 +1,20 @@
+.container
+  .row
+    h2
+      span.news.title
+        = news.title
+      span.news.author style="padding-left:20px"
+        = news.author
+  .container
+    .row.top-buffer
+      .col-lg-1.col-md-2.col-sm-2
+        span.news.attribute Total Results:
+      .col-lg-11.col-md-10.col-sm-6
+        span.news.detail
+          = news.total_results
+    .row
+      .col-lg-1.col-md-2.col-sm-2
+        span.news.attribute Status:
+      .col-lg-11.col-md-10.col-sm-6
+        span.news.detail
+         = news.status

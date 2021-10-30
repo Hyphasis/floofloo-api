@@ -1,0 +1,18 @@
+.container
+  form role="form" action="/news" method='POST' id='show-news'
+    .row.vertical-align.query-bar
+      .col-md-2.col-sem-3
+        .text-right News:
+      .col-md-8.col-sm-6
+        input {
+          type='text' name='keywords'
+          id='keywords' class="form-control"
+          placeholder="e.g. flu"
+        }
+      .col-md-2.col-sm-3
+        button {
+          type='submit' id='repo-form-submit' class='submit'
+          value='submit' class="btn btn-success"
+        } Search
+    .row
+      .col-md-12.blank-row
