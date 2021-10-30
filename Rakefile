@@ -8,7 +8,7 @@ end
 
 desc 'Run tests'
 task :spec do
-  sh 'Ruby spec/gateway_news_spec.rb'
+  sh 'ruby spec/gateway_news_spec.rb'
 end
 
 desc 'Run tests'
