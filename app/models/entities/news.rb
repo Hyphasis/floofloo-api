@@ -12,6 +12,8 @@ module Floofloo
       attribute :total_results, Strict::Integer
       attribute :author,        Strict::String
       attribute :title,         Strict::String
+      attribute :url,           Strict::String
+      attribute :urlToImage,    Strict::String
     end
   end
 end
