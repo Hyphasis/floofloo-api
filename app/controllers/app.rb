@@ -46,8 +46,8 @@ module Floofloo
             sort_by = routing.params['sort_by']
 
             news = News::NewsMapper
-                   .new(NEWS_KEY)
-                   .find(language, keywords, from, to, sort_by)
+              .new(NEWS_KEY)
+              .find(language, keywords, from, to, sort_by)
 
             view 'news', locals: { news: news }
           end

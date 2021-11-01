@@ -8,7 +8,7 @@ module Floofloo
     class Disease < Dry::Struct
       include Dry.Types
 
-      attribute :name,        Strict::String
+      attribute :name, Strict::String
     end
   end
 end

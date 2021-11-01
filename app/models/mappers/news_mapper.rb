@@ -34,7 +34,7 @@ module Floofloo
             author: author,
             title: title,
             url: url,
-            urlToImage: urlToImage
+            url_to_image: url_to_image
           )
         end
 
@@ -60,7 +60,7 @@ module Floofloo
           @data['articles'][0]['url']
         end
 
-        def urlToImage
+        def url_to_image
           @data['articles'][0]['urlToImage']
         end
       end

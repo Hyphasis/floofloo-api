@@ -11,7 +11,7 @@ Sequel.migration do
       String      :title, null: false
       String      :author
       String      :url
-      String      :urlToImage
+      String      :url_to_image
 
       DateTime :created_at
       DateTime :updated_at

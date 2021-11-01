@@ -13,7 +13,7 @@ module Floofloo
       attribute :author,        Strict::String
       attribute :title,         Strict::String
       attribute :url,           Strict::String
-      attribute :urlToImage,    Strict::String
+      attribute :url_to_image,  Strict::String
     end
   end
 end
