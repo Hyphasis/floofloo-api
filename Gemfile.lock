@@ -1,17 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (6.1.4.1)
-      activesupport (= 6.1.4.1)
-    activerecord (6.1.4.1)
-      activemodel (= 6.1.4.1)
-      activesupport (= 6.1.4.1)
-    activesupport (6.1.4.1)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 1.6, < 2)
-      minitest (>= 5.1)
-      tzinfo (~> 2.0)
-      zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
@@ -19,12 +8,6 @@ GEM
     concurrent-ruby (1.1.9)
     crack (0.4.5)
       rexml
-    database_cleaner (2.0.1)
-      database_cleaner-active_record (~> 2.0.0)
-    database_cleaner-active_record (2.0.1)
-      activerecord (>= 5.a)
-      database_cleaner-core (~> 2.0.0)
-    database_cleaner-core (2.0.1)
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -73,8 +56,6 @@ GEM
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    i18n (1.8.10)
-      concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     kwalify (0.7.2)
     listen (3.7.0)
@@ -131,8 +112,6 @@ GEM
     temple (0.8.2)
     thor (1.1.0)
     tilt (2.0.10)
-    tzinfo (2.0.4)
-      concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8)
@@ -142,7 +121,6 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    zeitwerk (2.5.1)
 
 PLATFORMS
   arm64-darwin-20
@@ -150,7 +128,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  database_cleaner
   dry-struct (~> 1.4)
   dry-types (~> 1.5)
   figaro (~> 1.2)
