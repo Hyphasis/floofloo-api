@@ -17,6 +17,8 @@ jobs:
   Quality-Check:
 
     runs-on: ubuntu-latest
+    env:
+      BUNDLE_WITHOUT: production
     strategy:
       matrix:
         ruby-version: ['3.0.2']
@@ -40,5 +42,5 @@ jobs:
     - name: Run Tests
       run: |
            cp config/secrets_example.yml config/secrets.yml
-           RACK_ENV=test bundle exec rake db:migrate
+           bundle exec rake db:migrate RACK_ENV=test
            bundle exec rake spec
