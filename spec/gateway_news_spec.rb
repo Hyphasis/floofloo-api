@@ -24,7 +24,8 @@ describe 'Test News API Library' do
   describe 'News Information' do
     it 'HAPPY: should provide correct news information' do
       news = Floofloo::News::NewsMapper.new(NEWS_KEY)
-                                       .find(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
+        .find(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
+
       _(news.status).must_equal CORRECT['status']
       _(news.total_results).must_equal CORRECT['totalResults']
       _(news.author).must_equal CORRECT['author']

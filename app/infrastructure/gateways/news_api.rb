@@ -15,7 +15,7 @@ module Floofloo
       # This method smells of :reek:LongParameterList
       def news(language, keywords, from, to, sort_by)
         Request.new(NEWS_PATH, @news_key)
-               .news(language, keywords, from, to, sort_by).parse
+          .news(language, keywords, from, to, sort_by).parse
       end
 
       # Send out HTTP request to News API

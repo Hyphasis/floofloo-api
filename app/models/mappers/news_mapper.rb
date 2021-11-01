@@ -32,7 +32,9 @@ module Floofloo
             status: status,
             total_results: total_results,
             author: author,
-            title: title
+            title: title,
+            url: url,
+            url_to_image: url_to_image
           )
         end
 
@@ -52,6 +54,14 @@ module Floofloo
 
         def title
           @data['articles'][0]['title']
+        end
+
+        def url
+          @data['articles'][0]['url']
+        end
+
+        def url_to_image
+          @data['articles'][0]['urlToImage']
         end
       end
     end
