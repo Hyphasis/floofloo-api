@@ -40,4 +40,5 @@ jobs:
     - name: Run Tests
       run: |
            cp config/secrets_example.yml config/secrets.yml
+           bundle exec RACK_ENV=test rake:migrate
            bundle exec rake spec
