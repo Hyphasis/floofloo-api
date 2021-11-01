@@ -19,8 +19,6 @@ gem 'dry-types', '~> 1.5'
 gem 'http', '~> 5.0'
 
 # Database
-gem 'hirb', '~> 0'
-gem 'hirb-unicode', '~> 0'
 gem 'sequel', '~> 5.49'
 
 group :development, :test do
