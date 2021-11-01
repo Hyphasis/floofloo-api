@@ -11,11 +11,6 @@ task :spec do
   sh 'ruby spec/gateway_news_spec.rb'
 end
 
-desc 'Run tests'
-task :spec do
-  sh 'ruby spec/gateway_news_spec.rb'
-end
-
 desc 'Keep rerunning tests upon changes'
 task :respec do
   sh "rerun -c 'rake spec' --ignore 'coverage/*'"
