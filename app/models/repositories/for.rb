@@ -8,8 +8,8 @@ module Floofloo
     # Finds the right repository for an entity object or class
     module For
       ENTITY_REPOSITORY = {
-        Entity::News => News,
-        Entity::Disease => Diseases
+        Entity::News => Floofloo::Repository::News,
+        Entity::Disease => Floofloo::Repository::Diseases
       }.freeze
 
       def self.klass(entity_klass)
