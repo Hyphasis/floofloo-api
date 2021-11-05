@@ -18,10 +18,11 @@ module Floofloo
         news = Repository::For.klass(Entity::News).all
         view 'home', locals: { news: news }
       end
-      routing.on 'disease' do # ruboco:disable Metrics/BlockLength
-        routing.on do |disease_name| # ruboco:disable Metrics/BlockLength
-          routing.on 'news' do # ruboco:disable Metrics/BlockLength
-            routing.is do # ruboco:disable Metrics/BlockLength
+
+      routing.on 'disease' do # rubocop:disable Metrics/BlockLength
+        routing.on String do |disease_name| # rubocop:disable Metrics/BlockLength
+          routing.on 'news' do # rubocop:disable Metrics/BlockLength
+            routing.is do # rubocop:disable Metrics/BlockLength
               # POST /disease/{disease_name}/news
               routing.post do
                 language = routing.params['language']
@@ -31,35 +32,33 @@ module Floofloo
                 sort_by = routing.params['sort_by']
 
                 routing.halt 400 if keywords.nil?
-            
+
+                disease = Floofloo::Entity::Disease.new(
+                  id: nil,
+                  name: disease_name
+                )
+                disease_result = Repository::For.entity(disease).create(disease)
 
                 # Get news from News
                 news = News::NewsMapper
                   .new(App.config.NEWS_KEY)
                   .find(language, keywords, from, to, sort_by)
-                disease = Floofloo::Entity::Disease.new(
-                  name: disease_name
-                )
+                news_result = Repository::For.entity(news).create(disease_result, news)
 
-                # Add news to database
-                Repository::For.entity(disease).create(disease)
-                Repository::For.entity(news).create(news)
-              
-                # Redirect viewer to news page but we did not have that redirect before
-                routing.redirect "/disease/#{disease_name}/news/#{news.title}"
+                routing.redirect "/disease/#{disease_name}/news/#{news_result.id}"
               end
 
               routing.get do
-                # GET /disease/{disease_name}/news/{news_title}
-                routing.get do |news_title|
+                # GET /disease/{disease_name}/news/{news_id}
+                routing.on String do |news_id|
                   news = Repository::For.klass(Entity::News)
-                    .find_title(news_title)
+                    .find_id(news_id)
 
-                  # Show viewer the news
                   view 'news', locals: { news: news }
                 end
 
-                # GET /disease/{disease_id}/news?language={language}&keywords={keywords}&from={from}&to={to}&sort_by={sort_by}
+                # GET /disease/{disease_name}/news?language={language}&keywords={keywords}&from={from}&to={to}
+                # &sort_by={sort_by}
                 routing.is do
                   language = routing.params['language']
                   keywords = routing.params['keywords']
@@ -68,10 +67,9 @@ module Floofloo
                   sort_by = routing.params['sort_by']
 
                   news = News::NewsMapper
-                    .new(NEWS_KEY)
+                    .new(App.config.NEWS_KEY)
                     .find(language, keywords, from, to, sort_by)
 
-                  # Show viewer the news
                   view 'news', locals: { news: news }
                 end
               end
