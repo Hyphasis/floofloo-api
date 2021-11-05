@@ -29,6 +29,7 @@ module Floofloo
 
         def build_entity
           Floofloo::Entity::News.new(
+            id: nil,
             status: status,
             total_results: total_results,
             author: author,
