@@ -2,7 +2,7 @@
 
 require_relative 'diseases'
 
-module News
+module Floofloo
   module Repository
     # Repository for News Entities
     class News
@@ -24,13 +24,18 @@ module News
         rebuild_entity(db_news)
       end
 
+      def self.create(disease, entity)
+        disease.add_news(rebuild_entity(entity))
+      end
+
       def self.rebuild_entity(db_news)
         return nil unless db_news
 
-        Entity::Disease.new(
-          db_news.to_hash.merge(
-            news: News.rebuild_many(db_news.news)
-          )
+        Database::NewsOrm.new(
+          title: db_news.title,
+          author: db_news.author,
+          url: db_news.url,
+          url_to_image: db_news.url_to_image
         )
       end
     end
