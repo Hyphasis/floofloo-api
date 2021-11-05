@@ -5,6 +5,7 @@ require 'dry-struct'
 
 module Floofloo
   module Entity
+    # Disease entity
     class Disease < Dry::Struct
       include Dry.Types
 

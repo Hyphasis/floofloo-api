@@ -5,6 +5,7 @@ require 'dry-struct'
 
 module Floofloo
   module Entity
+    # News entity
     class News < Dry::Struct
       include Dry.Types
 
