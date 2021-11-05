@@ -1,5 +1,5 @@
 .container
-  form role="form" action="/news" method='POST' id='show-news'
+  form role="form" action="/disease/0/news" method='GET' id='show-news'
     .row.vertical-align.query-bar
       .col-md-2.col-sem-3
         .text-right News:
@@ -16,3 +16,26 @@
         } Search
     .row
       .col-md-12.blank-row
+    - if news.any?
+      table class="table table-hover" id="projects_table"
+        thead
+          tr
+            th Title
+            th Author
+            th News Url
+            th News Image Url
+        tbody
+          - news.each.with_index do |news_post|
+            tr class="table-row"
+              td id='title'
+                span class="news_title" id="news.title"
+                  = news_post.title
+              td id='author'
+                span class="news_author" id="news.author"
+                  = news_post.author
+              td id='news url'
+                span class="news_url" id="news.url"
+                  = news_post.url
+              td id='news url image'
+                span class="news_url_image" id="news.url_image"
+                  = news_post.url_to_image

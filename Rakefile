@@ -6,9 +6,10 @@ task :default do
   puts `rake -T`
 end
 
-desc 'Run tests'
-task :spec do
-  sh 'ruby spec/gateway_news_spec.rb'
+desc 'Run tests once'
+Rake::TestTask.new(:spec) do |t|
+  t.pattern = 'spec/*_spec.rb'
+  t.warning = false
 end
 
 desc 'Keep rerunning tests upon changes'
@@ -16,6 +17,7 @@ task :respec do
   sh "rerun -c 'rake spec' --ignore 'coverage/*'"
 end
 
+desc 'Keep restarting web app upon changes'
 task :rerack do
   sh "rerun -c rackup --ignore 'coverage/*'"
 end
