@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 # Configuration and Utilities
 gem 'figaro', '~> 1.2'
 gem 'rake'
+gem 'rack'
 
 # Web Application
 gem 'puma', '~> 5.5'
