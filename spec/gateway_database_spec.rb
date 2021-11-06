@@ -18,15 +18,22 @@ describe 'Integration Tests of News API and Database' do
   describe 'Retrieve and store news' do
     before do
       DatabaseHelper.wipe_database
-    end
-  end
 
-  it 'HAPPY: should be able to save project from News API to database' do
-    news = Floofloo::News::NewsMapper.new(NEWS_KEY).find(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
-    rebuilt = Floofloo::Repository::For.entity(news).rebuild_entity(news)
-    _(rebuilt.id).must_equal(news.id)
-    _(rebuilt.author).must_equal(news.author)
-    _(rebuilt.url).must_equal(news.url)
-    _(rebuilt.url_to_image).must_equal(news.url_to_image)
+      disease = Floofloo::Entity::Disease.new(
+        id: nil,
+        name: KEYWORDS
+      )
+      @disease = Floofloo::Repository::For.entity(disease).create(disease)
+    end
+
+    it 'HAPPY: should be able to save news from News API to database' do
+      news = Floofloo::News::NewsMapper.new(NEWS_KEY).find(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
+      rebuilt = Floofloo::Repository::For.entity(news).create(@disease, news)
+
+      _(rebuilt.disease_id).must_equal(@disease.id)
+      _(rebuilt.author).must_equal(news.author)
+      _(rebuilt.url).must_equal(news.url)
+      _(rebuilt.url_to_image).must_equal(news.url_to_image)
+    end
   end
 end
