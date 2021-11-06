@@ -145,6 +145,7 @@ DEPENDENCIES
   minitest-rg (~> 5.0)
   pry
   puma (~> 5.5)
+  rack
   rake
   reek
   rerun (~> 0)

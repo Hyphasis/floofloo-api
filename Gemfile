@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 # Configuration and Utilities
 gem 'figaro', '~> 1.2'
+gem 'rack'
 gem 'rake'
 
 # Web Application
