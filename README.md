@@ -14,5 +14,12 @@ Get news from News API
     * urlToImage
     * content
 
+* Diseases
+    * name
+
 ## Entities
 * News
+* Diseases
+
+## Database Diagram
+![](https://i.imgur.com/m5dyibx.png)
