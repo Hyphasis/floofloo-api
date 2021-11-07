@@ -6,9 +6,18 @@ AllCops:
   Exclude:
     - '_snippets/*'
     - vendor/bundle/**/*
+  Include:
+  - 'Gemfile'
+  - 'Rakefile'
+  - '**/*.rb'
 
 # ignore block length in test code only
 Metrics/BlockLength:
   Enabled: true
   Exclude:
     - 'spec/**/*'
+    - Rakefile
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  EnforcedStyle: indented
