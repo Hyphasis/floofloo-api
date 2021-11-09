@@ -19,8 +19,8 @@ describe 'Test News API Library' do
 
       _(news.status).must_equal CORRECT['status']
       _(news.total_results).must_equal CORRECT['totalResults']
-      _(news.author).must_equal CORRECT['author']
-      _(news.title).must_equal CORRECT['title']
+      _(news.articles[0].author).must_equal CORRECT['author']
+      _(news.articles[0].title).must_equal CORRECT['title']
     end
 
     it 'BAD: sould raise exception when unauthorized' do

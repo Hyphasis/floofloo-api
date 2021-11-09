@@ -3,21 +3,15 @@
 module Floofloo
   module News
     # News Mapper: NewsApi News -> News entity
-    class NewsMapper
+    class ArticlesMapper
       def initialize(news_key, gateway_class = Floofloo::News::Api)
         @news_key = news_key
         @gateway_class = gateway_class
         @gateway = @gateway_class.new(@news_key)
       end
 
-      # This method smells of :reek:LongParameterList
-      def find(language, keywords, from, to, sort_by)
-        data = @gateway.news(language, keywords, from, to, sort_by)
-        build_entity(data)
-      end
-
       # This method smells of :reek:UtilityFunction
-      def build_entity(data)
+      def self.build_entity(data)
         DataMapper.new(data).build_entity
       end
 
@@ -28,31 +22,31 @@ module Floofloo
         end
 
         def build_entity
-          Floofloo::Entity::News.new(
+          Floofloo::Entity::Article.new(
             id: nil,
-            status: status,
-            total_results: total_results,
-            articles: articles
+            author: author.nil? ? '' : author,
+            title: title.nil? ? '' : title,
+            url: url.nil? ? '' : url,
+            url_to_image: url_to_image.nil? ? '' : url_to_image
           )
         end
 
         private
 
-        def status
-          @data['status']
+        def author
+          @data['author']
         end
 
-        def total_results
-          @data['totalResults']
+        def title
+          @data['title']
         end
 
-        def articles
-          article_results = []
-          @data['articles'].each do |article|
-            article_results << ArticlesMapper.build_entity(article)
-          end
+        def url
+          @data['url']
+        end
 
-          article_results
+        def url_to_image
+          @data['urlToImage']
         end
       end
     end
