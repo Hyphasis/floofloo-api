@@ -11,7 +11,7 @@ require 'minitest/rg'
 require 'vcr'
 require 'webmock'
 
-require_relative '../init'
+require_relative '../../init'
 
 LANGUAGE = 'en'
 KEYWORDS = 'influenza'

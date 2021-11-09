@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'diseases'
-
 module Floofloo
   module Repository
     # Repository for News Entities
