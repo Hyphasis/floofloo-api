@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'spec_helper'
+require_relative 'helpers/spec_helper'
 require_relative 'helpers/database_helper'
 
 describe 'Test Disease Database' do
@@ -13,7 +13,7 @@ describe 'Test Disease Database' do
       id: nil,
       name: KEYWORDS
     )
-    @disease = Floofloo::Repository::For.entity(disease).create(disease)
+    @disease = Floofloo::Repository::DisastersFor.entity(disease).create(disease)
     _(disease.name).must_equal(@disease.name)
   end
 end

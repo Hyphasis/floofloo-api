@@ -5,7 +5,7 @@ require_relative 'diseases'
 module Floofloo
   module Repository
     # Finds the right repository for an entity object or class
-    module For
+    module DisastersFor
       ENTITY_REPOSITORY = {
         Entity::Disease => Floofloo::Repository::Diseases
       }.freeze
