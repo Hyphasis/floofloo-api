@@ -1,20 +1,24 @@
 .container
   .row
-    h2
-      span.news.title
-        = news.title
-      span.news.author style="padding-left:20px"
-        = news.author
-  .container
-    .row.top-buffer
-      .col-lg-1.col-md-2.col-sm-2
-        span.news.attribute News Url
-      .col-lg-11.col-md-10.col-sm-6
-        span.news.detail
-          = news.url
-    .row
-      .col-lg-1.col-md-2.col-sm-2
-        span.news.attribute News image url
-      .col-lg-11.col-md-10.col-sm-6
-        span.news.detail
-         = news.url_to_image
+    h2 News
+
+    - news.articles.each do |article| 
+      
+      .container
+        .row
+          span.article.title Title: 
+          span.article.title
+            = article.title
+        .row  
+          span.article.author Author: 
+          span.article.author
+            = article.author
+        .row
+          span.article.url Url: 
+          span.article.url
+            = article.url
+        .row
+          span.article.url_to_image Image Url: 
+          span.article.url_to_image
+            = article.url_to_image
+        br
