@@ -19,6 +19,9 @@ gem 'dry-types', '~> 1.5'
 # Networking
 gem 'http', '~> 5.0'
 
+# Tools
+gem 'crack'
+
 # Database
 gem 'sequel', '~> 5.49'
 
