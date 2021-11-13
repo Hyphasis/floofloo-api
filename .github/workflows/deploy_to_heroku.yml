@@ -2,9 +2,7 @@ name: Deploy-To-Heroku
 
 on:
   push:
-    branches: [ heroku_ci ]
-  pull_request:
-    branches: [ heroku_ci ]
+    branches: [ develop ]
 
 jobs:
   build:
@@ -18,4 +16,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
-          branch: heroku_ci
+          branch: develop
