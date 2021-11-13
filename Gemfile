@@ -8,8 +8,6 @@ gem 'figaro', '~> 1.2'
 gem 'rack'
 gem 'rake'
 
-
-
 # Web Application
 gem 'puma', '~> 5.5'
 gem 'roda', '~> 3.49'
