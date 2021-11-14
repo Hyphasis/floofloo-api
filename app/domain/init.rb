@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-folders = %w[disasters articles]
+folders = %w[issues articles donations]
 folders.each do |folder|
   require_relative "#{folder}/init"
 end

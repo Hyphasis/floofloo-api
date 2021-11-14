@@ -137,6 +137,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  crack
   dry-struct (~> 1.4)
   dry-types (~> 1.5)
   figaro (~> 1.2)
