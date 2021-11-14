@@ -22,8 +22,8 @@ module Floofloo
         rebuild_entity(db_news)
       end
 
-      def self.create(disease, entity)
-        disease.add_news(rebuild_entity(entity))
+      def self.create(event, entity)
+        event.add_news(rebuild_entity(entity))
       end
 
       def self.rebuild_entity(db_news)
@@ -32,6 +32,7 @@ module Floofloo
         Database::NewsOrm.new(
           title: db_news.title,
           author: db_news.author,
+          description: db_news.description,
           url: db_news.url,
           url_to_image: db_news.url_to_image
         )
