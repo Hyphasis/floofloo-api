@@ -2,12 +2,14 @@
   .row
     h2 News
 
+    / Dash (-) means we do not have to display the result unless we explicitly ask for it
     - news.articles.each do |article| 
       
       .container
         .row
           span.article.title Title: 
           span.article.title
+            / Show the article's title
             = article.title
         .row  
           span.article.author Author: 

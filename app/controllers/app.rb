@@ -45,6 +45,7 @@ module Floofloo
                   .find(language, keywords, from, to, sort_by)
                 news_result = Repository::ArticlesFor.entity(news).create(disease_result, news)
 
+                # Put the news on screen (Home page)
                 routing.redirect "/disease/#{disease_name}/news/#{news_result.id}"
               end
 
