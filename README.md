@@ -20,4 +20,4 @@ FlooFloo is a tool to give people who feel concerned on recent events around the
     * Account for fake news.
 
 ## Database Diagram
-![](https://i.imgur.com/m5dyibx.png)
+![](https://i.imgur.com/KUhjO02.png)
