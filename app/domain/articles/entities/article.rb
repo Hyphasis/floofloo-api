@@ -11,6 +11,7 @@ module Floofloo
 
       attribute :author,        Strict::String.optional
       attribute :title,         Strict::String
+      attribute :description,   Strict::String
       attribute :url,           Strict::String
       attribute :url_to_image,  Strict::String
 

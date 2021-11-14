@@ -26,6 +26,7 @@ module Floofloo
             id: nil,
             author: author.nil? ? '' : author,
             title: title.nil? ? '' : title,
+            description: description.nil? ? '' : description,
             url: url.nil? ? '' : url,
             url_to_image: url_to_image.nil? ? '' : url_to_image
           )
@@ -39,6 +40,10 @@ module Floofloo
 
         def title
           @data['title']
+        end
+
+        def description
+          @data['description']
         end
 
         def url
