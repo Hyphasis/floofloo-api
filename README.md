@@ -1,6 +1,6 @@
 # FlooFloo
 
-The **FlooFloo** application to raise *awareness* and *facilitate* help for social or natural on-going/impromtu issues that require help.
+The **FlooFloo** application to raise *awareness* and *facilitate* help for social or natural on-going/impromptu issues that require help.
 
 ## Overview
 FlooFloo pulls and stores data from [NewsAPI](https://newsapi.org/) and [Global Giving](https://www.globalgiving.org/), and analyze text information and project descriptions and titles.
