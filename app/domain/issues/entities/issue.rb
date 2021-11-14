@@ -11,7 +11,6 @@ module Floofloo
 
       attribute :id,     Integer.optional
       attribute :name,   Strict::String
-      attribute :events, Array.of(Event)
 
       def to_attr_hash
         to_hash.reject { |key, _| [:id].include? key }

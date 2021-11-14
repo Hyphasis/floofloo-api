@@ -19,7 +19,7 @@ module Floofloo
       end
 
       def self.create(issue, entity)
-        issue.add_events(rebuild_entity(entity))
+        issue.add_event(rebuild_entity(entity))
       end
 
       def self.rebuild_entity(db_record)
