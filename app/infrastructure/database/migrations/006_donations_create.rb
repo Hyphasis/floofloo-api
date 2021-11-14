@@ -4,14 +4,15 @@ require 'sequel'
 
 Sequel.migration do
   change do
-    create_table(:news) do
+    create_table(:donations) do
       primary_key :id
-      foreign_key :disease_id, :diseases
+      foreign_key :event_id, :events
 
       String      :title, null: false
-      String      :author
-      String      :url
-      String      :url_to_image
+      String      :summary, null: false
+      String      :country
+      String      :city
+      String      :image_url
 
       DateTime :created_at
       DateTime :updated_at
