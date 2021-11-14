@@ -32,10 +32,7 @@ module Floofloo
             id: nil,
             status: status,
             total_results: total_results,
-            author: author,
-            title: title,
-            url: url,
-            url_to_image: url_to_image
+            articles: articles
           )
         end
 
@@ -49,20 +46,13 @@ module Floofloo
           @data['totalResults']
         end
 
-        def author
-          @data['articles'][0]['author']
-        end
+        def articles
+          article_results = []
+          @data['articles'].each do |article|
+            article_results << ArticlesMapper.build_entity(article)
+          end
 
-        def title
-          @data['articles'][0]['title']
-        end
-
-        def url
-          @data['articles'][0]['url']
-        end
-
-        def url_to_image
-          @data['articles'][0]['urlToImage']
+          article_results
         end
       end
     end

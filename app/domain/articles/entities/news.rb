@@ -12,10 +12,7 @@ module Floofloo
       attribute :id,            Integer.optional
       attribute :status,        Strict::String
       attribute :total_results, Strict::Integer
-      attribute :author,        Strict::String
-      attribute :title,         Strict::String
-      attribute :url,           Strict::String
-      attribute :url_to_image,  Strict::String
+      attribute :articles,      Array.of(Article)
 
       def to_attr_hash
         to_hash.reject { |key, _| %i[id].include? key }

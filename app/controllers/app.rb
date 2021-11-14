@@ -15,7 +15,7 @@ module Floofloo
 
       # GET /
       routing.root do
-        news = Repository::For.klass(Entity::News).all
+        news = Repository::ArticlesFor.klass(Entity::News).all
         view 'home', locals: { news: news }
       end
 
@@ -37,21 +37,22 @@ module Floofloo
                   id: nil,
                   name: disease_name
                 )
-                disease_result = Repository::For.entity(disease).create(disease)
+                disease_result = Repository::DisastersFor.entity(disease).create(disease)
 
                 # Get news from News
                 news = News::NewsMapper
                   .new(App.config.NEWS_KEY)
                   .find(language, keywords, from, to, sort_by)
-                news_result = Repository::For.entity(news).create(disease_result, news)
+                news_result = Repository::ArticlesFor.entity(news).create(disease_result, news)
 
+                # Put the news on screen (Home page)
                 routing.redirect "/disease/#{disease_name}/news/#{news_result.id}"
               end
 
               routing.get do
                 # GET /disease/{disease_name}/news/{news_id}
                 routing.on String do |news_id|
-                  news = Repository::For.klass(Entity::News)
+                  news = Repository::ArticlesFor.klass(Entity::News)
                     .find_id(news_id)
 
                   view 'news', locals: { news: news }

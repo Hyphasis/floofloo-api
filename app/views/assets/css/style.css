@@ -43,8 +43,7 @@ h1 {
 .vertical-align > [class*=" col-"] {
   display: flex;
   align-items: center;
-  justify-content: center; /* Optional, to align inner items 
-                              horizontally inside the column */
+  justify-content: center; /* Optional, to align inner items horizontally inside the column */
 }
 
 .top-buffer { margin-top:20px; }
