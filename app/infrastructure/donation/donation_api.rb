@@ -2,8 +2,7 @@
 
 require 'http'
 require 'json'
-require "crack"
-# require_relative 'news'
+require 'crack'
 
 module Floofloo
   module Donation
@@ -17,8 +16,12 @@ module Floofloo
 
       # This method smells of :reek:LongParameterList
       def project(keywords)
-        Request.new(DONATION_PATH, @donation_key)
-          .project(keywords).parse
+        project_response = Request.new(DONATION_PATH, @donation_key)
+          .project(keywords)
+
+        xml_response = Crack::XML.parse(project_response.body)
+        json_response = xml_response.to_json
+        JSON.parse(json_response)
       end
 
       # Send out HTTP request to News API
@@ -31,8 +34,8 @@ module Floofloo
         # This method smells of :reek:LongParameterList
         def project(keywords)
           donation_url = "#{@resource_root}?"\
-                         "&api_key=#{@key}"\
-                         "q=#{keywords}"
+                         "api_key=#{@key}"\
+                         "&q=#{keywords}"
 
           get(donation_url)
         end

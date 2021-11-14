@@ -76,6 +76,19 @@ module Floofloo
               end
             end
           end
+
+          routing.on 'donations' do
+            # GET /event/{event_name}/donations?keywords={keywords}
+            routing.is do
+              keywords = routing.params['keywords']
+
+              donations = Donation::DonationMapper
+                .new(App.config.GLOBAL_GIVING_KEY)
+                .find(keywords)
+
+              view 'donations', locals: { donations: donations }
+            end
+          end
         end
       end
     end
