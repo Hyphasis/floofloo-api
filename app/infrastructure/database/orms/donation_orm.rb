@@ -5,7 +5,7 @@ require 'sequel'
 module Floofloo
   module Database
     # Object Relational Mapper for Project Entities
-    class NewsOrm < Sequel::Model(:news)
+    class DonationOrm < Sequel::Model(:donations)
       many_to_one :event,
                   class: :'Floofloo::Database::EventOrm'
 

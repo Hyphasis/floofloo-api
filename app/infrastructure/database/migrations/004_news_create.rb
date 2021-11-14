@@ -10,6 +10,7 @@ Sequel.migration do
 
       String      :title, null: false
       String      :author
+      String      :description, null: false
       String      :url
       String      :url_to_image
 
