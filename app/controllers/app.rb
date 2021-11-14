@@ -19,11 +19,11 @@ module Floofloo
         view 'home', locals: { news: news }
       end
 
-      routing.on 'disease' do # rubocop:disable Metrics/BlockLength
-        routing.on String do |disease_name| # rubocop:disable Metrics/BlockLength
+      routing.on 'event' do # rubocop:disable Metrics/BlockLength
+        routing.on String do |event_name| # rubocop:disable Metrics/BlockLength
           routing.on 'news' do # rubocop:disable Metrics/BlockLength
             routing.is do # rubocop:disable Metrics/BlockLength
-              # POST /disease/{disease_name}/news
+              # POST /event/{event_name}/news
               routing.post do
                 language = routing.params['language']
                 keywords = routing.params['keywords']
@@ -33,24 +33,24 @@ module Floofloo
 
                 routing.halt 400 if keywords.nil?
 
-                disease = Floofloo::Entity::Disease.new(
+                event = Floofloo::Entity::Event.new(
                   id: nil,
-                  name: disease_name
+                  name: event_name
                 )
-                disease_result = Repository::DisastersFor.entity(disease).create(disease)
+                event_result = Repository::IssuesFor.entity(event).create(event)
 
                 # Get news from News
                 news = News::NewsMapper
                   .new(App.config.NEWS_KEY)
                   .find(language, keywords, from, to, sort_by)
-                news_result = Repository::ArticlesFor.entity(news).create(disease_result, news)
+                news_result = Repository::ArticlesFor.entity(news).create(event_result, news)
 
                 # Put the news on screen (Home page)
-                routing.redirect "/disease/#{disease_name}/news/#{news_result.id}"
+                routing.redirect "/event/#{event_name}/news/#{news_result.id}"
               end
 
               routing.get do
-                # GET /disease/{disease_name}/news/{news_id}
+                # GET /event/{event_name}/news/{news_id}
                 routing.on String do |news_id|
                   news = Repository::ArticlesFor.klass(Entity::News)
                     .find_id(news_id)
@@ -58,7 +58,7 @@ module Floofloo
                   view 'news', locals: { news: news }
                 end
 
-                # GET /disease/{disease_name}/news?language={language}&keywords={keywords}&from={from}&to={to}
+                # GET /event/{event_name}/news?language={language}&keywords={keywords}&from={from}&to={to}
                 # &sort_by={sort_by}
                 routing.is do
                   language = routing.params['language']

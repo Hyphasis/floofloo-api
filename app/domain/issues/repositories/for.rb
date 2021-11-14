@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
-require_relative 'diseases'
+require_relative 'events'
+require_relative 'issues'
 
 module Floofloo
   module Repository
     # Finds the right repository for an entity object or class
-    module DisastersFor
+    module IssuesFor
       ENTITY_REPOSITORY = {
-        Entity::Disease => Floofloo::Repository::Diseases
+        Entity::Issue => Floofloo::Repository::Issues,
+        Entity::Event => Floofloo::Repository::Events
       }.freeze
 
       def self.klass(entity_klass)

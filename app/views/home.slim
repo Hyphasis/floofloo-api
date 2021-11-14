@@ -1,5 +1,5 @@
 .container
-  form role="form" action="/disease/0/news" method='GET' id='show-news'
+  form role="form" action="/event/0/news" method='GET' id='show-news'
     .row.vertical-align.query-bar
       .col-md-2.col-sem-3
         .text-right News:
@@ -37,6 +37,10 @@
                 span class="news_author" id="news.author"
                   / Get the author data from the news_post entity and put it right here
                   = news_post.author
+              td id='description'
+                span class="news_description" id="news.description"
+                  / Get the description data from the news_post entity and put it right here
+                  = news_post.description
               td id='news url'
                 span class="news_url" id="news.url"
                   = news_post.url
