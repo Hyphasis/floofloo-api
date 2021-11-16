@@ -148,8 +148,8 @@ DEPENDENCIES
   pg
   pry
   puma (~> 5.5)
-  rack
-  rake
+  rack (~> 2)
+  rake (~> 13.0)
   reek
   rerun (~> 0)
   roda (~> 3.49)
