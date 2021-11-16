@@ -9,14 +9,18 @@ module Floofloo
     plugin :render, engine: 'slim', views: 'app/views'
     plugin :assets, css: 'style.css', path: 'app/views/assets'
     plugin :halt
+    plugin :all_verbs
+    plugin :flash
 
     route do |routing| # rubocop:disable Metrics/BlockLength
       routing.assets # load CSS
 
       # GET /
       routing.root do
-        news = Repository::ArticlesFor.klass(Entity::News).all
-        view 'home', locals: { news: news }
+        session[:keywords] ||= []
+        events_session = session[:keywords]
+
+        view 'home', locals: { events_session: events_session }
       end
 
       routing.on 'event' do # rubocop:disable Metrics/BlockLength
@@ -67,6 +71,8 @@ module Floofloo
                   to = routing.params['to']
                   sort_by = routing.params['sort_by']
 
+                  session[:keywords].insert(0, keywords).uniq!
+
                   news = News::NewsMapper
                     .new(App.config.NEWS_KEY)
                     .find(language, keywords, from, to, sort_by)
@@ -87,6 +93,16 @@ module Floofloo
                 .find(keywords)
 
               view 'donations', locals: { donations: donations }
+            end
+          end
+
+          routing.on 'delete' do
+            # GET /event/{event_name}
+            routing.get do
+              session[:keywords].delete(event_name)
+
+              events_session = session[:keywords]
+              view 'home', locals: { events_session: events_session }
             end
           end
         end

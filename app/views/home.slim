@@ -1,3 +1,5 @@
+link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous"
+
 .container
   form role="form" action="/event/0/news" method='GET' id='show-news'
     .row.vertical-align.query-bar
@@ -18,32 +20,11 @@
         } Search
     .row
       .col-md-12.blank-row
-    - if news.any?
-      table class="table table-hover" id="projects_table"
-        thead
-          tr
-            th Title
-            th Author
-            th News Url
-            th News Image Url
-        tbody
-          - news.each.with_index do |news_post|
-            tr class="table-row"
-              td id='title'
-                span class="news_title" id="news.title"
-                  / The equal (=) sign means ruby code here
-                  = news_post.title
-              td id='author'
-                span class="news_author" id="news.author"
-                  / Get the author data from the news_post entity and put it right here
-                  = news_post.author
-              td id='description'
-                span class="news_description" id="news.description"
-                  / Get the description data from the news_post entity and put it right here
-                  = news_post.description
-              td id='news url'
-                span class="news_url" id="news.url"
-                  = news_post.url
-              td id='news url image'
-                span class="news_url_image" id="news.url_image"
-                  = news_post.url_to_image 
+        - if events_session.any?
+          - events_session.each do |event_session|
+            a href="/event/0/news?keywords=#{event_session}" class="badge rounded-pill bg-primary" #{event_session} 
+      
+
+          
+          
+            
