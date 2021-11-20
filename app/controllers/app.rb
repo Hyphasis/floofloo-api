@@ -6,7 +6,7 @@ require 'slim/include'
 
 module Floofloo
   # Web App
-  class App < Roda
+  class App < Roda # rubocop:disable Metrics/ClassLength
     plugin :halt
     plugin :flash
     plugin :all_verbs # recognizes HTTP verbs beyond GET/POST (e.g., DELETE)
@@ -95,7 +95,9 @@ module Floofloo
                     .new(App.config.NEWS_KEY)
                     .find(language, keywords, from, to, sort_by)
 
-                  view 'news', locals: { news: news }
+                  news_view_object = Views::News.new(news)
+
+                  view 'news', locals: { news: news_view_object }
                 rescue StandardError => e
                   flash[:error] = 'Failed to get news!'
                   puts e.message
