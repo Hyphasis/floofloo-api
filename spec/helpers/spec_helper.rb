@@ -24,7 +24,6 @@ CASSETTE_FILE = 'news_api'
 NEWS_KEY = Floofloo::App.config.NEWS_KEY
 CORRECT = YAML.safe_load(File.read('spec/fixtures/news_results.yml'))
 
- # Helper method for acceptance tests
- def homepage
-   Floofloo::App.config.APP_HOST
- end
+def homepage
+  Floofloo::App.config.APP_HOST
+end
