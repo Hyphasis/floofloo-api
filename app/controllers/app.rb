@@ -6,7 +6,7 @@ require 'slim/include'
 
 module Floofloo
   # Web App
-  class App < Roda
+  class App < Roda # rubocop:disable Metrics/ClassLength
     plugin :halt
     plugin :flash
     plugin :all_verbs # recognizes HTTP verbs beyond GET/POST (e.g., DELETE)
