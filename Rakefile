@@ -12,6 +12,12 @@ Rake::TestTask.new(:spec) do |t|
   t.warning = false
 end
 
+desc 'Run acceptance tests'
+task :spec_accept do
+  puts 'NOTE: run app in test environment in another process'
+  sh 'ruby spec/tests/acceptance/acceptance_spec.rb'
+end
+
 desc 'Keep rerunning unit and integration tests upon changes'
 task :respec do
   sh "rerun -c 'rake spec' --ignore 'coverage/*'"
