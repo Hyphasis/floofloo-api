@@ -6,13 +6,19 @@ task :default do
   puts `rake -T`
 end
 
-desc 'Run tests once'
+desc 'Run unit and integration tests'
 Rake::TestTask.new(:spec) do |t|
-  t.pattern = 'spec/*_spec.rb'
+  t.pattern = 'spec/tests/{integration,unit}/**/*_spec.rb'
   t.warning = false
 end
 
-desc 'Keep rerunning tests upon changes'
+desc 'Run acceptance tests'
+task :spec_accept do
+  puts 'NOTE: run app in test environment in another process'
+  sh 'ruby spec/tests/acceptance/acceptance_spec.rb'
+end
+
+desc 'Keep rerunning unit and integration tests upon changes'
 task :respec do
   sh "rerun -c 'rake spec' --ignore 'coverage/*'"
 end

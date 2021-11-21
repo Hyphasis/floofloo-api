@@ -6,14 +6,14 @@ require 'dry-struct'
 module Floofloo
   module Entity
     # News entity
-    class Article < Dry::Struct
+    class Donation < Dry::Struct
       include Dry.Types
 
-      attribute :author,        Strict::String.optional
       attribute :title,         Strict::String
-      attribute :description,   Strict::String
-      attribute :url,           Strict::String
-      attribute :url_to_image,  Strict::String
+      attribute :summary,       Strict::String
+      attribute :country,       Strict::String
+      attribute :city,          Strict::String
+      attribute :image_url,     Strict::String
 
       def to_attr_hash
         to_hash.reject { |key, _| %i[id].include? key }

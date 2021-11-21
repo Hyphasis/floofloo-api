@@ -1,0 +1,99 @@
+link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous"
+
+.container
+  form role="form" action="/event/0/news" method='GET' id='show-news'
+    .row.vertical-align.query-bar
+      .col-md-2.col-sem-3
+        .text-right News:
+      .col-md-8.col-sm-6
+        / Text Input
+        input {
+          type='text' name='keywords'
+          id='keywords' class="form-control"
+          placeholder="e.g. flu"
+        }
+      .col-md-2.col-sm-3
+        / Search Button
+        button {
+          type='submit' id='repo-form-submit' class='submit'
+          value='submit' class="btn btn-success"
+        } Search
+    .row
+      .col-md-12.blank-row
+        - if events_session.any?
+          - events_session.each do |event_session|
+            a href="/event/0/news?keywords=#{event_session}" class="badge rounded-pill bg-primary" #{event_session} 
+
+.container 
+  .div class="btn-group"
+    button {
+      class="btn btn-secondary dropdown-toggle" 
+      type="button" id="dropdownMenuButton" 
+      data-bs-toggle="dropdown" aria-expanded="false"
+      } Disease
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+      <li><a class="dropdown-item active" href="#">Flu</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Corona Virus</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Polio</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Chikungunya</a></li>
+    </ul>
+
+    .div class="btn-group"
+    button {
+      class="btn btn-secondary dropdown-toggle" 
+      type="button" id="dropdownMenuButton" 
+      data-bs-toggle="dropdown" aria-expanded="false"
+      } Disaster
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+      <li><a class="dropdown-item active" href="#">Hurricane/Typhoon</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Earthquakes</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Volcano Eruption</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Tsunami</a></li>
+    </ul>
+
+    .div class="btn-group"
+    button {
+      class="btn btn-secondary dropdown-toggle" 
+      type="button" id="dropdownMenuButton" 
+      data-bs-toggle="dropdown" aria-expanded="false"
+      } Human Rights
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+      <li><a class="dropdown-item active" href="#">Poverty</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Domestic Violence</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Victims</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Refugees</a></li>
+    </ul>
+    
+        .div class="btn-group"
+    button {
+      class="btn btn-secondary dropdown-toggle" 
+      type="button" id="dropdownMenuButton" 
+      data-bs-toggle="dropdown" aria-expanded="false"
+      } Climate
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+      <li><a class="dropdown-item active" href="#">Air Pollution</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Oil Spill</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Water Needs</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Etc.</a></li>
+    </ul>
+
+  
+
+
+ 
+
+          
+
+          
