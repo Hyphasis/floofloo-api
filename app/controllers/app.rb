@@ -13,7 +13,7 @@ module Floofloo
     plugin :render, engine: 'slim', views: 'app/presentation/views_html'
     plugin :public, root: 'app/presentation/public'
     plugin :assets, path: 'app/presentation/assets',
-                    css: 'style.css', js: 'table_row.js'
+                    css: 'style.css'
 
     route do |routing| # rubocop:disable Metrics/BlockLength
       routing.assets # load CSS
