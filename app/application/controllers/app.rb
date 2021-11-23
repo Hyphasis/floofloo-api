@@ -117,11 +117,16 @@ module Floofloo
             routing.is do
               keywords = routing.params['keywords']
 
-              donations = Donation::DonationMapper
-                .new(App.config.GLOBAL_GIVING_KEY)
-                .find(keywords)
+              result = Forms::GetDonation.new.call(keywords: keywords)
 
-              view 'donations', locals: { donations: donations }
+              find_donation = Services::GetDonation.new.call(result)
+
+              if find_donation.failure?
+                flash[:error] = find_donation.failure
+                routing.redirect '/'
+              end
+
+              view 'donations', locals: { donations: find_donation.value![:donations] }
             rescue StandardError => e
               flash[:error] = 'Failed to get donations!'
               puts e.message
