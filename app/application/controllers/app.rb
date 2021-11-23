@@ -13,7 +13,7 @@ module Floofloo
     plugin :render, engine: 'slim', views: 'app/presentation/views_html'
     plugin :public, root: 'app/presentation/public'
     plugin :assets, path: 'app/presentation/assets',
-                    css: 'style.css', js: 'table_row.js'
+                    css: 'style.css'
 
     route do |routing| # rubocop:disable Metrics/BlockLength
       routing.assets # load CSS
@@ -84,23 +84,27 @@ module Floofloo
                   to = routing.params['to']
                   sort_by = routing.params['sort_by']
 
-                  if keywords.nil? || keywords.empty?
-                    flash[:error] = 'Please enter keywords'
+                  result = Forms::GetNews.new.call(language: language,
+                                                   keywords: keywords,
+                                                   from: from,
+                                                   to: to,
+                                                   sort_by: sort_by)
+
+                  find_news = Services::GetNews.new.call(result)
+
+                  if find_news.failure?
+                    flash[:error] = find_news.failure
                     routing.redirect '/'
                   end
 
                   session[:keywords].insert(0, keywords).uniq!
 
-                  news = News::NewsMapper
-                    .new(App.config.NEWS_KEY)
-                    .find(language, keywords, from, to, sort_by)
-
-                  news_view_object = Views::News.new(news)
+                  news_view_object = Views::News.new(find_news.value![:news])
 
                   view 'news', locals: { news: news_view_object }
                 rescue StandardError => e
                   flash[:error] = 'Failed to get news!'
-                  puts e.message
+                  puts e.full_message
 
                   routing.redirect '/'
                 end
@@ -113,11 +117,16 @@ module Floofloo
             routing.is do
               keywords = routing.params['keywords']
 
-              donations = Donation::DonationMapper
-                .new(App.config.GLOBAL_GIVING_KEY)
-                .find(keywords)
+              result = Forms::GetDonation.new.call(keywords: keywords)
 
-              view 'donations', locals: { donations: donations }
+              find_donation = Services::GetDonation.new.call(result)
+
+              if find_donation.failure?
+                flash[:error] = find_donation.failure
+                routing.redirect '/'
+              end
+
+              view 'donations', locals: { donations: find_donation.value![:donations] }
             rescue StandardError => e
               flash[:error] = 'Failed to get donations!'
               puts e.message
