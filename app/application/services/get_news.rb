@@ -4,7 +4,7 @@ require 'dry/transaction'
 
 module Floofloo
   module Services
-    # Transaction to store project from Github API to database
+    # Transaction to get news from News API
     class GetNews
       include Dry::Transaction
 
