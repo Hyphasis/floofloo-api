@@ -27,10 +27,10 @@ module Floofloo
       end
 
       configure :app_test do
-         require_relative '../spec/helpers/vcr_helper.rb'
-         VcrHelper.setup_vcr
-         VcrHelper.configure_vct_for_news(recording: :none)
-       end
+        require_relative '../spec/helpers/vcr_helper'
+        VcrHelper.setup_vcr
+        VcrHelper.configure_vct_for_news(recording: :none)
+      end
 
       # Database Setup
       DB = Sequel.connect(ENV['DATABASE_URL']) # rubocop:disable Lint/ConstantDefinitionInBlock
