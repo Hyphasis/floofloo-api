@@ -13,9 +13,15 @@ Rake::TestTask.new(:spec) do |t|
 end
 
 desc 'Run acceptance tests'
-task :spec_accept do
-  puts 'NOTE: run app in test environment in another process'
-  sh 'ruby spec/tests/acceptance/acceptance_spec.rb'
+Rake::TestTask.new(:spec_accept) do |t|
+  t.pattern = 'spec/tests/acceptance/*_spec.rb'
+  t.warning = false
+end
+
+desc 'Run all tests'
+Rake::TestTask.new(:spec_all) do |t|
+  t.pattern = 'spec/tests/**/*_spec.rb'
+  t.warning = false
 end
 
 desc 'Keep rerunning unit and integration tests upon changes'
