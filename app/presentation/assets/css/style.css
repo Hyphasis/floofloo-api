@@ -2,6 +2,12 @@ h1 {
   font-weight: bold;
 }
 
+h3 {
+  font-style: italic;
+}
+
+.top-buffer { margin-top:20px; }
+
 .text-underline-hover {
   text-decoration: none;
 }
@@ -12,20 +18,24 @@ h1 {
   font-size: 1.2em;
 }
 
-.news.attribute {
+.article.title {
   font-weight: bold;
 }
 
-.news.detail {
-  color: grey;
+.article.author {
+  font-weight: bold;
 }
 
-.news.title {
+.article.description {
   font-weight: bold
 }
 
-.news.author {
-  
+.article.url {
+  font-weight: bold
+}
+
+.article.url_to_image {
+  font-weight: bold
 }
 
 .vcenter {

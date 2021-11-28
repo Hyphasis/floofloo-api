@@ -5,26 +5,38 @@
     / Dash (-) means we do not have to display the result unless we explicitly ask for it
     - news.articles.each do |article| 
       
-      .container
+      .container-fluid
         .row
-          span.article.title Title: 
-          span.article.title
-            / Show the article's title
-            = article.title
-        .row  
-          span.article.author Author: 
-          span.article.author
-            = article.author
-        .row  
-          span.article.description Description: 
-          span.article.description
-            = article.description
+          .col-lg-8.col-md-2.col-sm-6
+            h3 
+              span.article.title Title: 
+              span.article.title
+                / Show the article's title
+              = article.title
         .row
-          span.article.url Url: 
-          span.article.url
-            = article.url
+          .h5  
+            span.article.author Author: 
+            span.article.author
+              = article.author
         .row
-          span.article.url_to_image Image Url: 
-          span.article.url_to_image
-            = article.url_to_image
+          p {class="lead"}
+            strong
+              span.article.description Description: 
+            span.article.description
+              = article.description
+        .row
+          p {class="lead"}
+            strong
+              span.article.url Url: 
+            span.article.url
+              = article.url
+        .row
+          p {class="lead"}
+            strong
+              span.article.url_to_image Image Url: 
+            span.article.url_to_image
+              = article.url_to_image
+              
+        hr class="my-4"
+
         br
