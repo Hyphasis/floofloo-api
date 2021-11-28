@@ -4,7 +4,7 @@ html
     meta charset="utf-8"
     title FlooFloo
 
-    / Bootstrap CSS and theme (United Theme)
+    / Bootstrap CSS 
     link{
       href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/cerulean/bootstrap.min.css"
       rel="stylesheet" integrity="sha384-6PpWmaLt7GOhVYBzVUBXgwhaV2S6iHthYodyuX2lCQlqAmt6RHXOh+wbLF6hunfO"
@@ -17,17 +17,17 @@ html
 
   body
     / JQuery
-    script{ 
+    script{
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
-      crossorigin="anonymous" 
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
     }
 
     / Popper
-    script{ 
+    script{
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
       integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-      crossorigin="anonymous" 
+      crossorigin="anonymous"
     }
 
     / Bootstrap
@@ -41,13 +41,13 @@ html
       section
         .row style="vertical-align: middle;"
           .col-12
-            h1
+            h1 id='main_header'
               a.text-underline-hover href="/" FlooFloo
-      
+
       / Loading code in the middle section (before the footer, etc.)
       section
         include :flash_bar
         == yield
-      
+
       footer
         = "FlooFloo is made for demonstration purposes. We cannot warrant full correctness of all content."

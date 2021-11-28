@@ -8,6 +8,7 @@ module DatabaseHelper
     Floofloo::Database::IssueOrm.map(&:destroy)
     Floofloo::Database::EventOrm.map(&:destroy)
     Floofloo::Database::NewsOrm.map(&:destroy)
+    Floofloo::Database::DonationOrm.map(&:destroy)
     Floofloo::App.DB.run('PRAGMA foreign_keys = ON')
   end
 end
