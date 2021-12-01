@@ -8,7 +8,7 @@ Sequel.migration do
       primary_key :id
       foreign_key :event_id, :events
 
-      String      :title, null: false
+      String      :title, unique: true, null: false
       String      :author
       String      :description, null: false
       String      :url

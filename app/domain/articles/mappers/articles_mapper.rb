@@ -24,11 +24,11 @@ module Floofloo
         def build_entity
           Floofloo::Entity::Article.new(
             id: nil,
-            author: author.nil? ? '' : author,
-            title: title.nil? ? '' : title,
-            description: description.nil? ? '' : description,
-            url: url.nil? ? '' : url,
-            url_to_image: url_to_image.nil? ? '' : url_to_image
+            author: author.nil? ? 'unknown' : author,
+            title: title.nil? ? 'unknown' : title,
+            description: description.nil? ? 'unknown' : description,
+            url: url.nil? ? 'unknown' : url,
+            url_to_image: url_to_image.nil? ? 'unknown' : url_to_image
           )
         end
 
@@ -44,6 +44,7 @@ module Floofloo
 
         def description
           @data['description']
+          # .encode('utf-8', invalid: :replace, undef: :replace, replace: '_')
         end
 
         def url

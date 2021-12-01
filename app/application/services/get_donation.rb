@@ -13,20 +13,21 @@ module Floofloo
       private
 
       def find_donations(input)
-        if input.success?
-          donations = donations_from_global_giving_api(input)
-          Success(donations: donations)
+        if input.nil?
+          Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not find the donations'))
         else
-          Failure(input.errors.messages.first.to_s)
+          donations = donations_from_database(input)
+          donations_result = OpenStruct.new(donations: donations)
+
+          Success(Response::ApiResult.new(status: :ok, message: donations_result))
         end
       end
 
-      def donations_from_global_giving_api(input)
-        Donation::DonationMapper
-          .new(App.config.GLOBAL_GIVING_KEY)
-          .find(input[:keywords])
-      rescue StandardError
-        raise 'Could not find donation project'
+      def donations_from_database(input)
+        event_name = input[:event_name]
+        event = Repository::IssuesFor.klass(Entity::Event).find_name(event_name)
+
+        Repository::DonationFor.klass(Entity::Donation).find_event_id(event.id)
       end
     end
   end
