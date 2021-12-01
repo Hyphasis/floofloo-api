@@ -30,7 +30,7 @@ module Floofloo
 
         news_result = News::NewsMapper
           .new(App.config.NEWS_KEY)
-          .find(input[:language], keywords, input[:from], input[:to], input[:sort_by])
+          .find(keywords, input[:from], input[:to], input[:sort_by], input[:language])
 
         store_news(keywords, news_result)
       rescue StandardError

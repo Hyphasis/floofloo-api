@@ -29,11 +29,11 @@ module Floofloo
       end
 
       def find_issue(issue_name)
-        Repository::IssuesFor.entity(Entity::Issue.new(id: nil, name: '')).find_name(issue_name)
+        Repository::IssuesFor.klass(Entity::Issue).find_name(issue_name)
       end
 
       def find_event(event_name)
-        Repository::IssuesFor.entity(Entity::Event.new(id: nil, name: '')).find_name(event_name)
+        Repository::IssuesFor.klass(Entity::Event).find_name(event_name)
       end
 
       def create_event(issue, event_name)
