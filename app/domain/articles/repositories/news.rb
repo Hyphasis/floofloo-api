@@ -17,6 +17,10 @@ module Floofloo
         rebuild_entity(db_news)
       end
 
+      def self.find_event_id(event_id)
+        Database::NewsOrm.where(event_id: event_id)
+      end
+
       def self.find_title(title)
         db_news = Database::NewsOrm.first(title: title)
         rebuild_entity(db_news)

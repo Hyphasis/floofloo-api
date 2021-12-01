@@ -11,7 +11,7 @@ module Floofloo
       end
 
       # This method smells of :reek:LongParameterList
-      def find(language, keywords, from, to, sort_by)
+      def find(language = 'en', keywords, from, to, sort_by)
         data = @gateway.news(language, keywords, from, to, sort_by)
         build_entity(data)
       end

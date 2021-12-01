@@ -5,11 +5,11 @@ require 'roar/json'
 
 module Floofloo
   module Representer
-    # Represents essential Issue information for API output
+    # Represents essential Event information for API output
     # USAGE:
-    #   news = Database::IssueOrm.find(1)
-    #   Representer::Issue.new(issue).to_json
-    class Issue < Roar::Decorator
+    #   news = Database::EventOrm.find(1)
+    #   Representer::Event.new(event).to_json
+    class Event < Roar::Decorator
       include Roar::JSON
 
       property :id
