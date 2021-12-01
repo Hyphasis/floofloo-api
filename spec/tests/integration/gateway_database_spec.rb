@@ -34,7 +34,7 @@ describe 'Integration Tests of News API and Database' do
     end
 
     it 'HAPPY: should be able to save news from News API to database' do
-      news = Floofloo::News::NewsMapper.new(NEWS_KEY).find(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
+      news = Floofloo::News::NewsMapper.new(NEWS_KEY).find(KEYWORDS, FROM, TO, SORT_BY, LANGUAGE)
 
       rebuilt = Floofloo::Repository::ArticlesFor.entity(news).create(@event, news.articles[0])
 
