@@ -8,145 +8,140 @@ module Floofloo
   # Web App
   class App < Roda # rubocop:disable Metrics/ClassLength
     plugin :halt
-    plugin :flash
     plugin :all_verbs # recognizes HTTP verbs beyond GET/POST (e.g., DELETE)
-    plugin :render, engine: 'slim', views: 'app/presentation/views_html'
-    plugin :public, root: 'app/presentation/public'
-    plugin :assets, path: 'app/presentation/assets',
-                    css: 'style.css'
+    use Rack::MethodOverride # for other HTTP verbs (with plugin all_verbs)
 
     route do |routing| # rubocop:disable Metrics/BlockLength
-      routing.assets # load CSS
 
       # GET /
       routing.root do
-        session[:keywords] ||= []
-        events_session = session[:keywords]
+        message = "Floofloo API v1 at /api/v1/ in #{App.environment} mode"
 
-        view 'home', locals: { events_session: events_session }
+        result_response = Representer::HttpResponse.new(
+          Response::ApiResult.new(status: :ok, message: message)
+        )
+
+        response.status = result_response.http_status_code
+        result_response.to_json
       end
 
-      routing.on 'event' do # rubocop:disable Metrics/BlockLength
-        routing.on String do |event_name| # rubocop:disable Metrics/BlockLength
-          routing.on 'news' do # rubocop:disable Metrics/BlockLength
-            routing.is do # rubocop:disable Metrics/BlockLength
-              # POST /event/{event_name}/news
-              routing.post do
-                language = routing.params['language']
-                keywords = routing.params['keywords']
-                from = routing.params['from']
-                to = routing.params['to']
-                sort_by = routing.params['sort_by']
+      routing.on 'api/v1' do # rubocop:disable Metrics/BlockLength
+        routing.on 'issue' do # rubocop:disable Metrics/BlockLength
+          routing.on String do |issue_name| # rubocop:disable Metrics/BlockLength
+            routing.on 'event' do # rubocop:disable Metrics/BlockLength
+              routing.on String do |event_name| # rubocop:disable Metrics/BlockLength
+                routing.on 'news' do # rubocop:disable Metrics/BlockLength
+                  # GET /issue/{issue_name}/event/{event_name}/news
+                  routing.get do
+                    find_news = Services::GetNews.new.call(event_name: event_name)
 
-                routing.halt 400 if keywords.nil?
+                    if find_news.failure?
+                      failed = Representer::HttpResponse.new(find_news.failure)
+                      routing.halt failed.http_status_code, failed.to_json
+                    end
 
-                event = Floofloo::Entity::Event.new(
-                  id: nil,
-                  name: event_name
-                )
-                event_result = Repository::IssuesFor.entity(event).create(event)
+                    http_response = Representer::HttpResponse.new(find_news.value!)
+                    response.status = http_response.http_status_code
 
-                # Get news from News
-                news = News::NewsMapper
-                  .new(App.config.NEWS_KEY)
-                  .find(language, keywords, from, to, sort_by)
-                news_result = Repository::ArticlesFor.entity(news).create(event_result, news)
+                    Representer::NewsList.new(find_news.value!.message).to_json
+                  rescue StandardError => e
+                    puts e.full_message
 
-                # Put the news on screen (Home page)
-                routing.redirect "/event/#{event_name}/news/#{news_result.id}"
-              rescue StandardError => e
-                flash[:error] = 'Failed to get news!'
-                puts e.message
+                    routing.redirect '/'
+                  end
 
-                routing.redirect '/'
-              end
+                  # POST /issue/{issue_name}/event/{event_name}/news
+                  routing.post do
+                    add_news = Services::AddNews.new.call(event_name: event_name)
 
-              routing.get do # rubocop:disable Metrics/BlockLength
-                # GET /event/{event_name}/news/{news_id}
-                routing.on String do |news_id|
-                  news = Repository::ArticlesFor.klass(Entity::News)
-                    .find_id(news_id)
+                    if add_news.failure?
+                      failed = Representer::HttpResponse.new(add_news.failure)
+                      routing.halt failed.http_status_code, failed.to_json
+                    end
 
-                  view 'news', locals: { news: news }
+                    http_response = Representer::HttpResponse.new(add_news.value!)
+                    response.status = http_response.http_status_code
+
+                    Representer::NewsList.new(add_news.value!.message).to_json
+                  rescue StandardError => e
+                    puts e.full_message
+
+                    routing.redirect '/'
+                  end
+                end
+
+                routing.on 'donations' do # rubocop:disable Metrics/BlockLength
+                  # GET /issue/{issue_name}/event/{event_name}/donations
+                  routing.get do
+                    find_donations = Services::GetDonation.new.call(event_name: event_name)
+
+                    if find_donations.failure?
+                      failed = Representer::HttpResponse.new(find_donations.failure)
+                      routing.halt failed.http_status_code, failed.to_json
+                    end
+
+                    http_response = Representer::HttpResponse.new(find_donations.value!)
+                    response.status = http_response.http_status_code
+
+                    Representer::DonationsList.new(find_donations.value!.message).to_json
+                  rescue StandardError => e
+                    puts e.message
+
+                    routing.redirect '/'
+                  end
+
+                  # POST /issue/{issue_name}/event/{event_name}/donations
+                  routing.post do
+                    add_donation = Services::AddDonation.new.call(event_name: event_name)
+
+                    if add_donation.failure?
+                      failed = Representer::HttpResponse.new(add_donation.failure)
+                      routing.halt failed.http_status_code, failed.to_json
+                    end
+
+                    http_response = Representer::HttpResponse.new(add_donation.value!)
+                    response.status = http_response.http_status_code
+
+                    Representer::DonationsList.new(add_donation.value!.message).to_json
+                  rescue StandardError => e
+                    puts e.message
+
+                    routing.redirect '/'
+                  end
+                end
+
+                # POST /issue/{issue_name}/event/{event_name}
+                routing.post do
+                  add_event = Services::AddEvent.new.call(issue_name: issue_name, event_name: event_name)
+
+                  if add_event.failure?
+                    failed = Representer::HttpResponse.new(add_event.failure)
+                    routing.halt failed.http_status_code, failed.to_json
+                  end
+
+                  http_response = Representer::HttpResponse.new(add_event.value!)
+                  response.status = http_response.http_status_code
+                  Representer::Event.new(add_event.value!.message).to_json
                 rescue StandardError => e
-                  flash[:error] = 'Failed to get news!'
                   puts e.message
 
                   routing.redirect '/'
                 end
-
-                # GET /event/{event_name}/news?language={language}&keywords={keywords}&from={from}&to={to}
-                # &sort_by={sort_by}
-                routing.is do
-                  language = routing.params['language']
-                  keywords = routing.params['keywords']
-                  from = routing.params['from']
-                  to = routing.params['to']
-                  sort_by = routing.params['sort_by']
-
-                  result = Forms::GetNews.new.call(language: language,
-                                                   keywords: keywords,
-                                                   from: from,
-                                                   to: to,
-                                                   sort_by: sort_by)
-
-                  find_news = Services::GetNews.new.call(result)
-
-                  if find_news.failure?
-                    flash[:error] = find_news.failure
-                    routing.redirect '/'
-                  end
-
-                  session[:keywords].insert(0, keywords).uniq!
-
-                  news_view_object = Views::News.new(find_news.value![:news])
-
-                  view 'news', locals: { news: news_view_object }
-                rescue StandardError => e
-                  flash[:error] = 'Failed to get news!'
-                  puts e.full_message
-
-                  routing.redirect '/'
-                end
               end
             end
-          end
 
-          routing.on 'donations' do
-            # GET /event/{event_name}/donations?keywords={keywords}
-            routing.is do
-              keywords = routing.params['keywords']
+            # POST /issue/{issue_name}
+            routing.post do
+              add_issue = Services::AddIssue.new.call(issue_name: issue_name)
 
-              result = Forms::GetDonation.new.call(keywords: keywords)
-
-              find_donation = Services::GetDonation.new.call(result)
-
-              if find_donation.failure?
-                flash[:error] = find_donation.failure
-                routing.redirect '/'
+              if add_issue.failure?
+                failed = Representer::HttpResponse.new(add_issue.failure)
+                routing.halt failed.http_status_code, failed.to_json
               end
 
-              view 'donations', locals: { donations: find_donation.value![:donations] }
-            rescue StandardError => e
-              flash[:error] = 'Failed to get donations!'
-              puts e.message
-
-              routing.redirect '/'
-            end
-          end
-
-          routing.on 'delete' do
-            # GET /event/{event_name}/delete
-            routing.get do
-              session[:keywords].delete(event_name)
-
-              events_session = session[:keywords]
-              view 'home', locals: { events_session: events_session }
-            rescue StandardError => e
-              flash[:error] = 'Failed to delete event!'
-              puts e.message
-
-              routing.redirect '/'
+              http_response = Representer::HttpResponse.new(add_issue.value!)
+              response.status = http_response.http_status_code
+              Representer::Issue.new(add_issue.value!.message).to_json
             end
           end
         end
