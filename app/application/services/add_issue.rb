@@ -31,13 +31,12 @@ module Floofloo
       end
 
       def create_issue(issue_name)
-        binding.irb
         issue = Floofloo::Entity::Issue.new(
           id: nil,
           name: issue_name
         )
 
-        Repository::IssuesFor.entity(Entity::Issue.new(id: nil, name: '')).create(issue)
+        Repository::IssuesFor.entity(issue).create(issue)
       end
     end
   end
