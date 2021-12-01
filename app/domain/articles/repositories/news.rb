@@ -18,7 +18,7 @@ module Floofloo
       end
 
       def self.find_event_id(event_id)
-        Database::NewsOrm.where(event_id: event_id)
+        Database::NewsOrm.where(event_id: event_id).all
       end
 
       def self.find_title(title)

@@ -19,7 +19,9 @@ module Floofloo
           Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not find the news'))
         else
           news = news_from_news_api(input)
-          Success(Response::ApiResult.new(status: :ok, message: news))
+          news_result = OpenStruct.new(articles: news)
+
+          Success(Response::ApiResult.new(status: :ok, message: news_result))
         end
       end
 
