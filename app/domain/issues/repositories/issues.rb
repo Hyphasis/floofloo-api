@@ -13,7 +13,7 @@ module Floofloo
       end
 
       def self.find_name(name)
-        rebuild_entity Database::IssueOrm.first(name: name)
+        Database::IssueOrm.first(name: name)
       end
 
       def self.create(entity)
