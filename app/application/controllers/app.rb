@@ -12,7 +12,6 @@ module Floofloo
     use Rack::MethodOverride # for other HTTP verbs (with plugin all_verbs)
 
     route do |routing| # rubocop:disable Metrics/BlockLength
-
       # GET /
       routing.root do
         message = "Floofloo API v1 at /api/v1/ in #{App.environment} mode"
