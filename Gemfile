@@ -5,6 +5,7 @@ ruby File.read('.ruby-version').strip
 
 # Configuration and Utilities
 gem 'figaro', '~> 1.2'
+gem 'rack-test'
 gem 'rack', '~> 2'
 gem 'rake', '~> 13.0'
 
