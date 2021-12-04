@@ -10,11 +10,11 @@ module Floofloo
     class AddNews
       include Dry::Transaction
 
-      step :find_news
+      step :add_news
 
       private
 
-      def find_news(input)
+      def add_news(input)
         if input.nil?
           Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not find the news'))
         else

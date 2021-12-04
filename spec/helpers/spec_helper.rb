@@ -25,6 +25,7 @@ EVENT_NAME = 'influenza'
 CASSETTES_FOLDER = 'spec/fixtures/cassettes'
 CASSETTE_FILE = 'news_api'
 NEWS_KEY = Floofloo::App.config.NEWS_KEY
+GLOBAL_GIVING_KEY = Floofloo::App.config.GLOBAL_GIVING_KEY
 CORRECT = YAML.safe_load(File.read('spec/fixtures/news_results.yml'))
 
 def homepage
