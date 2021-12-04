@@ -9,14 +9,13 @@ def app
   Floofloo::App
 end
 
-
 describe 'Test API routes' do
   include Rack::Test::Methods
 
   VcrHelper.setup_vcr
 
   before do
-    VcrHelper.configure_vct_for_news
+    VcrHelper.configure_vcr_for_news
     DatabaseHelper.wipe_database
   end
 

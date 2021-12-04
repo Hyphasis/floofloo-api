@@ -29,7 +29,7 @@ module Floofloo
       configure :app_test do
         require_relative '../spec/helpers/vcr_helper'
         VcrHelper.setup_vcr
-        VcrHelper.configure_vct_for_news(recording: :none)
+        VcrHelper.configure_vcr_for_news(recording: :none)
       end
 
       # Database Setup

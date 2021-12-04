@@ -5,7 +5,7 @@ require_relative '../../helpers/vcr_helper'
 
 describe 'Test News API Library' do
   before do
-    VcrHelper.configure_vct_for_news
+    VcrHelper.configure_vcr_for_news
   end
 
   after do

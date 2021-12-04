@@ -16,7 +16,7 @@ module VcrHelper
     end
   end
 
-  def self.configure_vct_for_news(recording: :new_episodes)
+  def self.configure_vcr_for_news(recording: :new_episodes)
     VCR.configure do |c|
       c.filter_sensitive_data('<NEWS_KEY>') { NEWS_KEY }
       c.filter_sensitive_data('<NEWS_KEY_ESC>') { CGI.escape(NEWS_KEY) }
@@ -24,7 +24,8 @@ module VcrHelper
 
     VCR.insert_cassette NEWS_CASSETTE,
                         record: recording,
-                        match_requests_on: %i[method uri headers]
+                        match_requests_on: %i[method uri headers],
+                        allow_playback_repeats: true
   end
 
   def self.eject_vcr

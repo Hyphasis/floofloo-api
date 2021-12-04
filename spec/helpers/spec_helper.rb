@@ -19,6 +19,9 @@ FROM = '2021-10-10'
 TO = '2021-10-12'
 SORT_BY = 'popularity'
 
+ISSUE_NAME = 'Disease'
+EVENT_NAME = 'influenza'
+
 CASSETTES_FOLDER = 'spec/fixtures/cassettes'
 CASSETTE_FILE = 'news_api'
 NEWS_KEY = Floofloo::App.config.NEWS_KEY

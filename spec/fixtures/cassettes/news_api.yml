@@ -399,4 +399,110 @@ http_interactions:
         invalid or incorrect. Check your key, or go to https://newsapi.org to create
         a free API key."}'
   recorded_at: Wed, 01 Dec 2021 14:04:53 GMT
+- request:
+    method: get
+    uri: https://newsapi.org/v2/everything?apiKey=<NEWS_KEY>&from=2021-10-10&language=en&q=flu&sortBy=popularity&to=2021-10-12
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - newsapi.org
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 426
+      message: Upgrade Required
+    headers:
+      Date:
+      - Sat, 04 Dec 2021 03:20:46 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '255'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      X-Cached-Result:
+      - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=JeAq2wfAydZHTwCDOK3p%2F9oGao%2BE6m%2FvJWlWHW%2F3h72vEU2FeOjJF6xKzCFGTC1aa7XPRZZVVNaWJFY4B9CO%2BOJ8q5eIfeldgodadDD290Kycnx%2FbyvEdaOCryGL"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 6b81e694bf270748-TPE
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","code":"parameterInvalid","message":"You are trying
+        to request results too far in the past. Your plan permits you to request articles
+        as far back as 2021-11-03, but you have requested 2021-10-10. You may need
+        to upgrade to a paid plan."}'
+  recorded_at: Sat, 04 Dec 2021 03:20:46 GMT
+- request:
+    method: get
+    uri: https://newsapi.org/v2/everything?apiKey=<NEWS_KEY>&from=2021-10-10&language=en&q=covid&sortBy=popularity&to=2021-10-12
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - newsapi.org
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 426
+      message: Upgrade Required
+    headers:
+      Date:
+      - Sat, 04 Dec 2021 03:55:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '255'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      X-Cached-Result:
+      - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=LOYFKlkbxSIG6vKAUQFDZS4sgQc8JSC4Idma%2Fon2uvdEyytW%2FLfvadoAOSc4r8nv0C4wWOnGIGH6ZhoPm8bBkSRDu86%2Bc8QdR1kcjA7W6939Gi9ZCqzwnFJDkiwS"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 6b821a2a0efb074c-TPE
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","code":"parameterInvalid","message":"You are trying
+        to request results too far in the past. Your plan permits you to request articles
+        as far back as 2021-11-03, but you have requested 2021-10-10. You may need
+        to upgrade to a paid plan."}'
+  recorded_at: Sat, 04 Dec 2021 03:55:59 GMT
 recorded_with: VCR 6.0.0
