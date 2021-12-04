@@ -24,5 +24,10 @@ describe 'AddNews Service Integration Test' do
       news_made = Floofloo::Services::AddNews.new.call(event_name: EVENT_NAME)
       _(news_made.success?).must_equal true
     end
+
+    it 'SAD: should not be able to find and save news with no keywords specified from API to database' do
+      news_made = Floofloo::Services::AddNews.new.call()
+      _(news_made.success?).must_equal false
+    end
   end
 end

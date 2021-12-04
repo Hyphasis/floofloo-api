@@ -1163,4 +1163,104 @@ http_interactions:
         -- Prevent Teen Suicide in New England!</title>\n                <type>project</type>\n
         \           </project>\n        </projects>\n    </response>\n</search>\n"
   recorded_at: Sat, 04 Dec 2021 05:17:10 GMT
+- request:
+    method: get
+    uri: https://newsapi.org/v2/everything?apiKey=<NEWS_KEY>&from=&language=&q=Floofloo&sortBy=&to=
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - newsapi.org
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 Dec 2021 13:06:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '46'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      X-Cached-Result:
+      - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=wpYdkBAjE2Cd08exD1l3Q0plSGQLGYiNZEWmLH0M8ihlYcgNrhC52vmTEhzLW4AKvR3UXzWq%2F%2B7LNvuo%2Fvfy7NyTX2nqky%2Fj0MLCYC4X7rl2SrvkSrc%2FmU5wOOpz"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 6b8541061a9d074c-TPE
+    body:
+      encoding: UTF-8
+      string: '{"status":"ok","totalResults":0,"articles":[]}'
+  recorded_at: Sat, 04 Dec 2021 13:06:48 GMT
+- request:
+    method: get
+    uri: https://newsapi.org/v2/everything?apiKey=<NEWS_KEY>&from=&language=&q=rojgoirjgoirjgor&sortBy=&to=
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - newsapi.org
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 Dec 2021 13:07:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '46'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      X-Cached-Result:
+      - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=xsucXai9VQhm5dl%2FAY1Q1vmkTZQtiRb3bzYG5K6azTDFEdrR%2F81M62q5UQusimzH30eGQqjk0hQp54Q1utvp3m5%2FdRJutxlpk7Hb7YPfkcoMVup3lB8JpQi3UVzb"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 6b85419e78ce5706-TPE
+    body:
+      encoding: UTF-8
+      string: '{"status":"ok","totalResults":0,"articles":[]}'
+  recorded_at: Sat, 04 Dec 2021 13:07:12 GMT
 recorded_with: VCR 6.0.0

@@ -24,5 +24,10 @@ describe 'AddDonation Service Integration Test' do
       donation_made = Floofloo::Services::AddDonation.new.call(event_name: EVENT_NAME)
       _(donation_made.success?).must_equal true
     end
+
+    it 'SAD: should not be able to find and save Donation with no keywords specified from API to database' do
+      donation_made = Floofloo::Services::AddDonation.new.call()
+      _(donation_made.success?).must_equal false
+    end
   end
 end
