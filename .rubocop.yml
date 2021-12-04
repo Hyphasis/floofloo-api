@@ -11,6 +11,13 @@ AllCops:
   - 'Rakefile'
   - '**/*.rb'
 
+# ignore method call with no args in test code only
+Style/MethodCallWithoutArgsParentheses:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+    - Rakefile
+
 # ignore block length in test code only
 Metrics/BlockLength:
   Enabled: true
