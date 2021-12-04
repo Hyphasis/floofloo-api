@@ -505,4 +505,662 @@ http_interactions:
         as far back as 2021-11-03, but you have requested 2021-10-10. You may need
         to upgrade to a paid plan."}'
   recorded_at: Sat, 04 Dec 2021 03:55:59 GMT
+- request:
+    method: get
+    uri: https://newsapi.org/v2/everything?apiKey=<NEWS_KEY>&from=&language=&q=influenza&sortBy=&to=
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - newsapi.org
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 Dec 2021 05:16:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '17695'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      X-Cached-Result:
+      - 'false'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=q0RTR9fEf2bsAjEYM%2FVK6GAZ2dcIQ2QiC82mB47aTJz55t4W4OLp9lef99gzm%2F5FE1Hw8WPCjuUHcragJ1pRDNBGxBQ2QdZebMmFaPW4bZ3F25kFqMpPjCFhxg0N"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 6b8290c6be033138-TPE
+    body:
+      encoding: UTF-8
+      string: '{"status":"ok","totalResults":2891,"articles":[{"source":{"id":null,"name":"New
+        York Times"},"author":"Steven Johnson","title":"Could Covid Lead to Progress?","description":"Mass
+        tragedies sometimes have unexpected consequences.","url":"https://www.nytimes.com/2021/11/22/magazine/covid-progress.html","urlToImage":"https://static01.nyt.com/images/2021/11/28/magazine/28Mag-History-promo/28Mag-History-promo-facebookJumbo.jpg","publishedAt":"2021-11-22T15:38:06Z","content":"We
+        are learning from Covid in a more obvious way as well: through the lens of
+        science. After the Great Influenza, it took 13 years thanks to a young virologist
+        named Richard Edwin Shope, who noticed … [+3270 chars]"},{"source":{"id":null,"name":"ThePeterboroughExaminer.com"},"author":"","title":"Peterborough
+        Public Health reports first influenza case of the season - ThePeterboroughExaminer.com","description":"Peterborough
+        Public Health reports first influenza case of the season  ThePeterboroughExaminer.com","url":"https://www.thepeterboroughexaminer.com/news/peterborough-region/2021/11/19/peterborough-public-health-reports-first-influenza-case-of-the-season.html","urlToImage":"https://images.thestar.com/6jrhRq565kWalu0UvZBDzWPF-9k=/1200x832/smart/filters:cb(1637348571128)/https://www.thepeterboroughexaminer.com/content/dam/thepeterboroughexaminer/news/peterborough-region/2021/11/19/peterborough-public-health-reports-first-influenza-case-of-the-season/influenza_2.jpg","publishedAt":"2021-11-19T19:04:19Z","content":"Peterborough
+        Public Health reported the first local lab-confirmed case of seasonal influenza
+        on Friday.\r\nIt’s the first lab-confirmed influenza case for the jurisdiction
+        since early 2020. The health … [+2045 chars]"},{"source":{"id":null,"name":"PembinaValleyOnline.com"},"author":"Manitoba
+        Agriculture and Resource Development","title":"Case Of Variant Influenza Virus
+        Identified In Manitoba - PembinaValleyOnline.com - PembinaValleyOnline.com","description":"<ol><li>Case
+        Of Variant Influenza Virus Identified In Manitoba - PembinaValleyOnline.com  PembinaValleyOnline.com\r\n</li><li>Manitoba
+        identifies pig variant flu case in human | CTV News  CTV News Winnipeg\r\n</li><li>Case
+        of variant influenza virus normally foun…","url":"https://www.pembinavalleyonline.com/ag-news/case-of-variant-influenza-virus-identified-in-manitoba","urlToImage":"https://www.pembinavalleyonline.com/images/stories/Ag/Livestock/Hogs/Resized/piglets2_2017.jpg","publishedAt":"2021-12-03T14:35:51Z","content":"Manitoba
+        Agriculture and Resource Development advises a new case of a variant H1N2
+        (influenza A) flu virus has been identified. The case has been reported to
+        the Public Health Agency of Canada in acc… [+4553 chars]"},{"source":{"id":null,"name":"Outbreak
+        News Today"},"author":null,"title":"Canada: Variant influenza virus, H1N2v,
+        reported in Manitoba - Outbreak News Today - Outbreak News Today","description":"NewsDesk  @infectiousdiseasenews
+        Manitoba Agriculture and Resource Development reports a new case of a variant
+        H1N2 (influenza A) flu virus. This human influenza A(H1N2)v appears to be
+        an isolated case. The current assessment is that there is no increased ris…","url":"http://outbreaknewstoday.com/canada-variant-influenza-virus-h1n2v-reported-in-manitoba-81435/","urlToImage":"http://outbreaknewstoday.com/wp-content/uploads/2016/08/pig-214349_640.jpg","publishedAt":"2021-12-03T12:26:19Z","content":"NewsDesk  @infectiousdiseasenews\r\nManitoba
+        Agriculture and Resource Development reports a new case of a variant H1N2
+        (influenza A) flu virus.\r\nImage/Mutinka\r\nThis human influenza A(H1N2)v
+        appears to … [+1789 chars]"},{"source":{"id":null,"name":"PTBO Today"},"author":"Freq
+        90.5/Oldies 96.7 News staff","title":"First influenza case of the season confirmed
+        locally - PTBO Today","description":"The first local lab-confirmed case of
+        seasonal influenza has been confirmed in the area. Acting Medical Office...","url":"https://www.ptbotoday.ca/2021/11/19/first-influenza-case-of-the-season-confirmed-locally/","urlToImage":"https://media.socastsrm.com/wordpress/wp-content/blogs.dir/2053/files/2021/01/public-health-office.jpg","publishedAt":"2021-11-19T18:45:54Z","content":"The
+        first local lab-confirmed case of seasonal influenza has been confirmed in
+        the area.\r\nActing Medical Officer of Health, Dr. Ian Gemmill, says usually
+        there are more cases of influenza in the comm… [+736 chars]"},{"source":{"id":"reuters","name":"Reuters"},"author":null,"title":"Japan
+        reports first bird flu outbreak of season, culling 143000 chickens - Reuters","description":"Japan
+        has detected its first outbreak of bird flu for the 2021 winter season, with
+        confirmation of a case of \"highly pathogenic avian influenza\" at a poultry
+        farm in the northeast of the country, the agriculture ministry said on Wednesday.","url":"https://www.reuters.com/world/asia-pacific/japan-reports-first-bird-flu-outbreak-season-culling-143000-chickens-2021-11-10/","urlToImage":"https://www.reuters.com/resizer/0vCrOWjn2SuxBtcZNaYNhHURscI=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/3FCFGI5F2FO2VMXYTSXIUVVRBE.jpg","publishedAt":"2021-11-10T03:00:00Z","content":"Officials
+        in protective suits head to a poultry farm for a suspected bird flu case in
+        Higashikagawa, western Japan, in this photo taken by Kyodo November 8, 2020.
+        Mandatory credit Kyodo/via REUTERSTO… [+1773 chars]"},{"source":{"id":null,"name":"New
+        York Times"},"author":"Nate Cohn","title":"The Disconnect Between Biden’s
+        Popular Policies and His Unpopularity","description":"Voters often punish
+        a president for pushing an unpopular agenda. But President Biden has been
+        learning that they rarely reward a president for enacting legislation.","url":"https://www.nytimes.com/2021/11/27/us/politics/biden-policies-approval-ratings.html","urlToImage":"https://static01.nyt.com/images/2021/11/26/us/politics/POLICY-VOTE-1/POLICY-VOTE-1-facebookJumbo.jpg","publishedAt":"2021-11-27T15:00:06Z","content":"In
+        a recent CNN poll, 58 percent of Americans said Joe Biden wasnt paying enough
+        attention to the nations most important problems, including 72 percent of
+        those who say the economy is the most import… [+1270 chars]"},{"source":{"id":null,"name":"WebMD"},"author":"https://www.facebook.com/WebMD","title":"Why
+        You Should Still Get a Flu Shot This Year - WebMD","description":"<ol><li>Why
+        You Should Still Get a Flu Shot This Year  WebMD\r\n</li><li>Springfield-Greene
+        County Health Department expects a normal flu season  KY3\r\n</li><li>Freeman
+        Health System urges public to get the Flu shot before the season to avoid
+        contracting both In…","url":"https://www.webmd.com/cold-and-flu/news/20211110/why-you-should-get-flu-shot","urlToImage":"https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/vaccine_covid19_other/1800x1200_vaccine_2_other.jpg","publishedAt":"2021-11-10T18:39:31Z","content":"National
+        Foundation for Infectious Diseases: US Health Officials Urge Vaccination Amid
+        Concerns About Influenza Resurgence During Ongoing Pandemic.\r\nCDC: Disease
+        Burden of Flu, Seasonal Flu Vaccines,… [+1254 chars]"},{"source":{"id":null,"name":"Ctvnews.ca"},"author":null,"title":"Manitoba
+        identifies pig variant flu case in human | CTV News - CTV News Winnipeg","description":"<ol><li>Manitoba
+        identifies pig variant flu case in human | CTV News  CTV News Winnipeg\r\n</li><li>Case
+        of variant influenza virus normally found in pigs identified in Manitoba  CBC.ca\r\n</li><li>View
+        Full coverage on Google News</li></ol>","url":"https://winnipeg.ctvnews.ca/flu-variant-linked-to-pigs-identified-in-manitoba-1.5691784","urlToImage":"https://www.ctvnews.ca/content/dam/ctvnews/en/images/2021/12/2/pigs-1-5691789-1638491738133.jpg","publishedAt":"2021-12-03T00:37:00Z","content":"WINNIPEG
+        - \r\nThe Manitoba government is advising people about a variant case of the
+        flu virus that has been identified in the province.\r\nManitoba Agriculture
+        and Resource Development said the variant… [+2116 chars]"},{"source":{"id":null,"name":"Gulf
+        News"},"author":"Reuters","title":"Bird flu outbreak: High alert as avian
+        influenza spreads in Europe and Asia - Gulf News","description":"<ol><li>Bird
+        flu outbreak: High alert as avian influenza spreads in Europe and Asia  Gulf
+        News\r\n</li><li>Europe, Asia on alert after reporting ‘severe’ avian influenza
+        outbreak  WION\r\n</li><li>Bird flu spreads in Europe and Asia, putting poultry
+        industry on a…","url":"https://gulfnews.com/world/europe/bird-flu-outbreak-high-alert-as-avian-influenza-spreads-in-europe-and-asia-1.1637139008573","urlToImage":"https://imagevars.gulfnews.com/2020/12/14/20201214_swine_flu_japan_1765f806486_medium.jpg","publishedAt":"2021-11-17T08:45:30Z","content":"Officials
+        in protective suits work at a chicken farm where an outbreak of a highly pathogenic
+        bird flu was confirmed in Mitoyo, western Japan, in this photo taken by Kyodo
+        November 5, 2020. \r\n Image … [+1707 chars]"},{"source":{"id":null,"name":"Dailyiowan.com"},"author":"","title":"Guest
+        Opinion | Doctor is In: Get the Influenza and COVID-19 vaccine - UI The Daily
+        Iowan","description":"<ol><li>Guest Opinion | Doctor is In: Get the Influenza
+        and COVID-19 vaccine  UI The Daily Iowan\r\n</li><li>Waterloo Region COVID-19:
+        Pediatrician urges child vaccinations | CTV News  CTV News Kitchener\r\n</li><li>Yes,
+        you can have side effects from both the fl…","url":"https://dailyiowan.com/2021/11/28/guest-opinion-doctor-is-in-get-the-influenza-and-covid-19-vaccine/","urlToImage":"https://dailyiowan.com/wp-content/uploads/2018/09/3A-FluSeasonPreview-900x598.jpg","publishedAt":"2021-11-29T00:46:55Z","content":"As
+        we come up on year two of the COVID-19 pandemic, it is important to receive
+        the flu and COVID-19 vaccines to keep yourself and your loved ones protected
+        from both viruses.\r\nFor nearly two years, t… [+3259 chars]"},{"source":{"id":null,"name":"CKPGToday.ca"},"author":null,"title":"Combined
+        COVID-19 and Influenza vaccine clinic being offered on Friday - CKPGToday.ca","description":"<ol><li>Combined
+        COVID-19 and Influenza vaccine clinic being offered on Friday  CKPGToday.ca\r\n</li><li>COVID-19
+        vaccine: Manitoba has administered 14,101 doses to children so far | CTV News  CTV
+        News\r\n</li><li>Hundreds of kids in northeastern Ontario have alr…","url":"https://ckpgtoday.ca/2021/12/02/combined-covid-19-and-influenza-vaccine-clinic-being-offered-on-friday/","urlToImage":"https://s3.amazonaws.com/socast-superdesk/media/20211202181240/2bf4f15a-bfe5-47c8-9a78-4a2c992ecf60.jpg","publishedAt":"2021-12-02T18:44:00Z","content":"PRINCE
+        GEORGE- A drop-in COVID-19 and Flu vaccine clinic is being offered by Carrier
+        Sekani Family Services and Northern Health tomorrow (Friday). The clinic is
+        taking place at CSFS’s main office at … [+456 chars]"},{"source":{"id":"reuters","name":"Reuters"},"author":null,"title":"Flu
+        vaccine demand takes off in India as pandemic raises awareness - Reuters","description":"A
+        pandemic-spurred demand for flu vaccines in India has surged since a devastating
+        second wave of COVID-19 brought the nation''s healthcare system to its knees
+        earlier this year.","url":"https://www.reuters.com/world/india/flu-vaccine-demand-takes-off-india-pandemic-raises-awareness-2021-11-23/","urlToImage":"https://www.reuters.com/pf/resources/images/reuters/reuters-default.png?d=60","publishedAt":"2021-11-23T16:19:00Z","content":"Nov
+        23 (Reuters) - A pandemic-spurred demand for flu vaccines in India has surged
+        since a devastating second wave of COVID-19 brought the nation''s healthcare
+        system to its knees earlier this year.\r\nV… [+2441 chars]"},{"source":{"id":null,"name":"New
+        York Times"},"author":"Jonathan Wolfe","title":"Coronavirus Briefing: What
+        Happened Today","description":"What we know about Omicron.","url":"https://www.nytimes.com/2021/11/29/us/coronavirus-briefing-what-happened-today-omicron.html","urlToImage":"https://static01.nyt.com/images/2020/07/21/us/cases_orphan_usa-1595349567192-copy/cases_orphan_usa-1595349567192-facebookJumbo-v1103.png","publishedAt":"2021-11-29T23:14:05Z","content":"The
+        W.H.O. stressed the need for countries to accelerate vaccinations as rapidly
+        as possible, particularly for vulnerable populations and for those who are
+        unvaccinated or not fully vaccinated.\r\nWhy … [+1572 chars]"},{"source":{"id":null,"name":"New
+        York Times"},"author":"Jim Tankersley","title":"Biden Catches a Cold and Blames
+        His Grandson","description":"President Biden’s voice sounded noticeably hoarse
+        during the remarks about a Labor Department jobs report, and he coughed at
+        times. He blamed it on his grandson.","url":"https://www.nytimes.com/2021/12/03/us/politics/biden-sick-cold.html","urlToImage":"https://static01.nyt.com/images/2021/12/03/us/politics/03dc-biden-cold/03dc-biden-cold-facebookJumbo.jpg","publishedAt":"2021-12-03T19:00:06Z","content":"Its
+        just a cold, Mr. Biden added.\r\nIn fact, Dr. OConnor said in the memo released
+        Friday afternoon, Mr. Biden has been tested only three times this week for
+        Covid-19. He also wrote that Mr. Biden has… [+1496 chars]"},{"source":{"id":null,"name":"Brandon
+        Sun"},"author":null,"title":"New flu variant found in province - Brandon Sun","description":"<ol><li>New
+        flu variant found in province  Brandon Sun\r\n</li><li>Manitoba identifies
+        pig variant flu case in human | CTV News  CTV News Winnipeg\r\n</li><li>Case
+        of variant influenza virus normally found in pigs identified in Manitoba  CBC.ca\r\n</li><li>View
+        Ful…","url":"https://www.brandonsun.com/local/new-flu-variant-found-in-province-575853802.html","urlToImage":"https://media.brandonsun.com/designimages/squaresun_web.jpg","publishedAt":"2021-12-03T09:00:00Z","content":"A
+        new flu variant (H1N2 — influenza A) has been detected in Manitoba, according
+        to a provincial news release.\r\nThis virus is related to ones that circulate
+        in pigs. Influenza viruses from pigs do not… [+1142 chars]"},{"source":{"id":null,"name":"The
+        Guardian"},"author":"Staff and agencies","title":"Fast spreading bird flu
+        puts Europe and Asia on alert","description":"Animals slaughtered and restrictions
+        introduced in response to outbreaks of the virus in a number of countriesSeveral
+        outbreaks of severe bird flu in Europe and Asia have been reported in recent
+        days to the World Organisation for Animal Health (OIE), in a sig…","url":"https://amp.theguardian.com/world/2021/nov/15/bird-flu-europe-asia","urlToImage":"https://i.guim.co.uk/img/media/6654ad3701cddbfc6dce3639f9f1ce94824c2acb/0_50_3500_2100/master/3500.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=98a4c2b7fce99aab830ed2eae628a127","publishedAt":"2021-11-15T19:43:44Z","content":"Several
+        outbreaks of severe bird flu in Europe and Asia have been reported in recent
+        days to the World Organisation for Animal Health (OIE), in a sign the virus
+        is spreading quickly again.\r\nThe sprea… [+1863 chars]"},{"source":{"id":null,"name":"CollingwoodToday"},"author":"CollingwoodToday
+        Staff","title":"Health unit urges local citizens to get annual flu shot -
+        CollingwoodToday.ca","description":"<ol><li>Health unit urges local citizens
+        to get annual flu shot  CollingwoodToday.ca\r\n</li><li>Paranoid Burnaby anti-vaxxers
+        now resisting influenza shots  Burnaby Now\r\n</li><li>Can my child get the
+        COVID-19 and flu vaccines at the same time?  Good Morning Am…","url":"https://www.collingwoodtoday.ca/local-news/health-unit-urges-local-citizens-to-get-annual-flu-shot-4730560","urlToImage":"https://www.vmcdn.ca/f/files/sudbury/images/LocalImages/051021_syringe-needle-pexels-frank-meriño-8488619.jpg;w=960;h=540;mode=crop","publishedAt":"2021-11-06T12:00:00Z","content":"NEWS
+        RELEASESIMCOE MUSKOKA DISTRICT HEALTH UNIT*************************With the
+        arrival of flu season, the Simcoe Muskoka District Health Unit (SMDHU) urges
+        residents to get vaccinated to protect th… [+2816 chars]"},{"source":{"id":"reuters","name":"Reuters"},"author":null,"title":"Britain
+        reports bird flu outbreak at poultry unit - Reuters UK","description":"An
+        outbreak of highly pathogenic H5 bird flu has been reported at a small poultry
+        unit in central England, the country''s farm ministry confirmed on Monday.","url":"https://www.reuters.com/world/uk/britain-reports-bird-flu-outbreak-poultry-unit-2021-11-08/","urlToImage":"https://www.reuters.com/pf/resources/images/reuters/reuters-default.png?d=56","publishedAt":"2021-11-08T13:43:00Z","content":"LONDON,
+        Nov 8 (Reuters) - An outbreak of highly pathogenic H5 bird flu has been reported
+        at a small poultry unit in central England, the country''s farm ministry confirmed
+        on Monday.\r\nAll birds on the… [+726 chars]"},{"source":{"id":"reuters","name":"Reuters"},"author":null,"title":"Austria
+        finds bird flu on small chicken farm as virus spreads - Reuters","description":"Austria
+        has found a case of bird flu on a small chicken farm near Vienna airport and
+        is ordering poultry farms with more than 350 birds to keep them indoors, public
+        health agency AGES said on Thursday.","url":"https://www.reuters.com/markets/commodities/austria-finds-bird-flu-small-chicken-farm-virus-spreads-2021-11-25/","urlToImage":"https://www.reuters.com/pf/resources/images/reuters/reuters-default.png?d=60","publishedAt":"2021-11-25T12:57:00Z","content":"VIENNA,
+        Nov 25 (Reuters) - Austria has found a case of bird flu on a small chicken
+        farm near Vienna airport and is ordering poultry farms with more than 350
+        birds to keep them indoors, public health … [+1739 chars]"}]}'
+  recorded_at: Sat, 04 Dec 2021 05:16:57 GMT
+- request:
+    method: get
+    uri: https://api.globalgiving.org/api/public/services/search/projects?api_key=18a5b8f4-69a1-4e79-8fbe-b5c948b62ad1&q=influenza
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/xml
+      Content-Type:
+      - application/xml
+      Connection:
+      - close
+      Host:
+      - api.globalgiving.org
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 Dec 2021 05:17:09 GMT
+      Content-Type:
+      - application/xml;charset=UTF-8
+      Content-Length:
+      - '35688'
+      Connection:
+      - close
+      X-Amzn-Requestid:
+      - 6985538f-7e33-424d-9992-621affc696d8
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Security-Policy:
+      - frame-ancestors 'self' https://app.optimizely.com
+      X-Amzn-Remapped-Connection:
+      - keep-alive
+      X-Amz-Apigw-Id:
+      - Jzv5XE9hoAMFyuA=
+      X-Amzn-Remapped-Server:
+      - Hidden
+      Cache-Control:
+      - max-age=43200
+      X-Amzn-Trace-Id:
+      - Root=1-61aaf9d5-0301265124c5d7875dee0554
+      X-Amzn-Remapped-Date:
+      - Sat, 04 Dec 2021 05:17:10 GMT
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<search>\n
+        \   <request>\n        <q>influenza</q>\n        <start>0</start>\n        <summary>false</summary>\n
+        \   </request>\n    <response numberFound=\"3\" start=\"0\">\n        <projects>\n
+        \           <project>\n                <active>true</active>\n                <activities>This
+        project will improve animal welfare of un-owned, free roaming animals living
+        in human dominated areas in urban as well as rural setting. We will provide
+        care and comfort to suffering animals through veterinary interventions for
+        illness, diseases, and injuries. One important aspect of this project will
+        be prevention of various zoonotic diseases like rabies, anthrax, tuberculosis,
+        influenza, etc. by vaccinating animals in Ahmedabad and in turn improving
+        public health.</activities>\n                <additionalDocumentation>https://www.globalgiving.org/pfil/24980/projdoc.doc</additionalDocumentation>\n
+        \               <approvedDate>2016-10-14T10:29:04-04:00</approvedDate>\n                <contactAddress>Amdavad
+        Panjrapole Campus, Ambawadi, Ahmedabad-380058,Gujarat, India</contactAddress>\n
+        \               <contactCity>Ahmedabad</contactCity>\n                <contactCountry>India</contactCountry>\n
+        \               <contactName>Jivdaya Charitable Trust JCT</contactName>\n
+        \               <contactPostal>380058</contactPostal>\n                <contactState>Gujarat</contactState>\n
+        \               <contactUrl>http://www.jivdayatrust.org</contactUrl>\n                <countries>\n
+        \                   <country>\n                        <iso3166CountryCode>IN</iso3166CountryCode>\n
+        \                       <name>India</name>\n                    </country>\n
+        \               </countries>\n                <country>India</country>\n                <dateOfMostRecentReport>2021-11-30T10:27:07-05:00</dateOfMostRecentReport>\n
+        \               <donationOptions>\n                    <donationOption>\n
+        \                       <amount>11</amount>\n                        <description>will
+        serve 1 day medicine cost for each mobile clinic</description>\n                    </donationOption>\n
+        \                   <donationOption>\n                        <amount>25</amount>\n
+        \                       <description>will serve treatment of 10 ailing animals
+        in single day</description>\n                    </donationOption>\n                    <donationOption>\n
+        \                       <amount>50</amount>\n                        <description>will
+        serve treatment of 20 ailing animals in single day</description>\n                    </donationOption>\n
+        \                   <donationOption>\n                        <amount>1667</amount>\n
+        \                       <description>will serve treatment of 600 ailing animals
+        in 01 month</description>\n                    </donationOption>\n                    <donationOption>\n
+        \                       <amount>5000</amount>\n                        <description>will
+        serve treatment of  1800 ailing animals in 03 months</description>\n                    </donationOption>\n
+        \                   <donationOption>\n                        <amount>10000</amount>\n
+        \                       <description>will serve treatment of 3600 ailing animals
+        for 6 months</description>\n                    </donationOption>\n                    <donationOption>\n
+        \                       <amount>20000</amount>\n                        <description>will
+        serve treatment of 7200 ailing animals for 1 full year</description>\n                    </donationOption>\n
+        \               </donationOptions>\n                <funding>40985.34</funding>\n
+        \               <goal>50000.00</goal>\n                <id>24980</id>\n                <image
+        id=\"0\">\n                    <imagelink size=\"small\">\n                        <url>https://www.globalgiving.org/pfil/24980/pict_grid1.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"thumbnail\">\n
+        \                       <url>https://www.globalgiving.org/pfil/24980/pict_thumbnail.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"medium\">\n
+        \                       <url>https://www.globalgiving.org/pfil/24980/pict_med.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"large\">\n
+        \                       <url>https://www.globalgiving.org/pfil/24980/pict_grid7.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"extraLarge\">\n
+        \                       <url>https://www.globalgiving.org/pfil/24980/pict_large.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"original\">\n
+        \                       <url>https://www.globalgiving.org/pfil/24980/pict_original.jpg</url>\n
+        \                   </imagelink>\n                    <title>Animal Care on
+        Wheels</title>\n                </image>\n                <imageGallerySize>7</imageGallerySize>\n
+        \               <imageLink>https://www.globalgiving.org/pfil/24980/pict.jpg</imageLink>\n
+        \               <iso3166CountryCode>IN</iso3166CountryCode>\n                <longTermImpact>This
+        project will help build a compassionate society where people and animals coexist.
+        We will sensitize community members through the various outreach programs.
+        This project will be a major contributor towards making our city free of rabies
+        and other zoonotic diseases, which will direct help build a healthier space
+        for people.</longTermImpact>\n                <modifiedDate>2021-12-03T23:30:09-05:00</modifiedDate>\n
+        \               <need>Animals and people have co-existed for thousands of
+        years, with animals playing a vital role in natural ecosystems and communities
+        across the globe. Despite the strong relationship people have with animals,
+        many animals suffer poor welfare. Over 104,000 injured and ill animals reported
+        in the past decade within our project location. Free roaming animals are often
+        inhumanely treated in misguided attempts to eliminate diseases such as rabies,
+        anthrax, tuberculosis, influenza, etc.</need>\n                <notice>Important
+        Notice about Projects in India: We expect that there will be significant delays
+        in getting funds to this project due to new regulatory requirements that impact
+        GlobalGiving's ability to disburse to Indian-banked  organizations. GlobalGiving
+        is working hard to address the issue, but there is a chance that we will be
+        unable to disburse funds to this project. If we cannot disburse funds, donations
+        to this project may be reallocated to another organization per our terms and
+        conditions.</notice>\n                <numberOfDonations>972</numberOfDonations>\n
+        \               <numberOfReports>83</numberOfReports>\n                <organization>\n
+        \                   <activeProjects>3</activeProjects>\n                    <addressLine1>Amdavad
+        Panjrapole Campus, Ambawadi, Ahmedabad-380015, Gujarat, India</addressLine1>\n
+        \                   <addressLine2></addressLine2>\n                    <city>Ahmedabad</city>\n
+        \                   <countries>\n                        <country>\n                            <iso3166CountryCode>IN</iso3166CountryCode>\n
+        \                           <name>India</name>\n                        </country>\n
+        \                   </countries>\n                    <country>India</country>\n
+        \                   <id>35540</id>\n                    <iso3166CountryCode>IN</iso3166CountryCode>\n
+        \                   <logoUrl>https://www.globalgiving.org/pfil/organ/35540/orglogo.jpg</logoUrl>\n
+        \                   <mission>We are committed to saving lives, conserving
+        nature, and promoting coexistence.</mission>\n                    <name>Jivdaya
+        Charitable Trust</name>\n                    <postal>380015</postal>\n                    <state>Gujarat</state>\n
+        \                   <themes>\n                        <theme>\n                            <id>animals</id>\n
+        \                           <name>Animal Welfare</name>\n                        </theme>\n
+        \                       <theme>\n                            <id>covid-19</id>\n
+        \                           <name>COVID-19</name>\n                        </theme>\n
+        \                       <theme>\n                            <id>wildlife</id>\n
+        \                           <name>Wildlife Conservation</name>\n                        </theme>\n
+        \                   </themes>\n                    <totalProjects>9</totalProjects>\n
+        \                   <url>http://www.jivdayatrust.org</url>\n                </organization>\n
+        \               <progressReportLink>https://www.globalgiving.org/projects/animalcareonwheels-jct-ahd/updates/</progressReportLink>\n
+        \               <projectLink>https://www.globalgiving.org/projects/animalcareonwheels-jct-ahd/</projectLink>\n
+        \               <region>Asia and Oceania</region>\n                <remaining>9014.66</remaining>\n
+        \               <status>active</status>\n                <summary>Ailing animals
+        respond to treatment faster when treatment is given to them without changing
+        their natural habitat. Our three Mobile Clinic Vans give on the spot treatments
+        to ailing un-owned animals in their home ground in Ahmedabad city, India.
+        These vans are also equipped to perform minor surgeries as well as vaccination
+        against rabies. This project has helped and saved over 74,700 animals till
+        date.  We believe Improving the welfare of animals in communities benefits
+        both people and animals.\n\nImportant Notice about Projects in India: We expect
+        that there will be significant delays in getting funds to this project due
+        to new regulatory requirements that impact GlobalGiving's ability to disburse
+        to Indian-banked  organizations. GlobalGiving is working hard to address the
+        issue, but there is a chance that we will be unable to disburse funds to this
+        project. If we cannot disburse funds, donations to this project may be reallocated
+        to another organization per our terms and conditions.</summary>\n                <themeName>Animal
+        Welfare</themeName>\n                <themes>\n                    <theme>\n
+        \                       <id>animals</id>\n                        <name>Animal
+        Welfare</name>\n                    </theme>\n                    <theme>\n
+        \                       <id>climate</id>\n                        <name>Climate
+        Action</name>\n                    </theme>\n                    <theme>\n
+        \                       <id>env</id>\n                        <name>Ecosystem
+        Restoration</name>\n                    </theme>\n                    <theme>\n
+        \                       <id>health</id>\n                        <name>Physical
+        Health</name>\n                    </theme>\n                    <theme>\n
+        \                       <id>mentalhealth</id>\n                        <name>Mental
+        Health</name>\n                    </theme>\n                </themes>\n                <title>Animal
+        Care on Wheels</title>\n                <type>project</type>\n                <videos>\n
+        \                   <video>\n                        <url>http://www.youtube.com/v/7w-dpUvGpq4</url>\n
+        \                   </video>\n                </videos>\n            </project>\n
+        \           <project>\n                <active>true</active>\n                <activities>This
+        project will improve animal welfare of un-owned, free roaming animals and
+        birds living in human dominated areas in urban as well as rural setting. We
+        will provide care and comfort to suffering animals and birds through veterinary
+        interventions for diseases, and injuries. One important aspect of this project
+        will be prevention of various zoonotic diseases like rabies, anthrax, tuberculosis,
+        influenza, etc. by vaccinating animals in Ahmedabad and in turn improving
+        public health.</activities>\n                <additionalDocumentation>https://www.globalgiving.org/pfil/49416/projdoc.pdf</additionalDocumentation>\n
+        \               <approvedDate>2020-09-30T17:07:30-04:00</approvedDate>\n                <contactAddress>Amdavad
+        Panjrapole Campus, Ambawadi, Ahmedabad-380015, Gujarat, India</contactAddress>\n
+        \               <contactCity>Ahmedabad</contactCity>\n                <contactCountry>India</contactCountry>\n
+        \               <contactName>Jivdaya Charitable Trust JCT</contactName>\n
+        \               <contactPostal>380015</contactPostal>\n                <contactState>Gujarat</contactState>\n
+        \               <contactUrl>http://www.jivdayatrust.org</contactUrl>\n                <countries>\n
+        \                   <country>\n                        <iso3166CountryCode>IN</iso3166CountryCode>\n
+        \                       <name>India</name>\n                    </country>\n
+        \               </countries>\n                <country>India</country>\n                <dateOfMostRecentReport>2021-11-30T10:26:34-05:00</dateOfMostRecentReport>\n
+        \               <donationOptions>\n                    <donationOption>\n
+        \                       <amount>10</amount>\n                        <description>will
+        provide medicine to 1 injured patient for one day</description>\n                    </donationOption>\n
+        \                   <donationOption>\n                        <amount>20</amount>\n
+        \                       <description>will provide rabies vaccine to 10 patient</description>\n
+        \                   </donationOption>\n                    <donationOption>\n
+        \                       <amount>25</amount>\n                        <description>will
+        provide medicine to 10 injured patient for a week</description>\n                    </donationOption>\n
+        \                   <donationOption>\n                        <amount>50</amount>\n
+        \                       <description>will serve treatment of 10 ailing dogs
+        in single d</description>\n                    </donationOption>\n                    <donationOption>\n
+        \                       <amount>60</amount>\n                        <description>will
+        serve treatment of 20 ailing patient in a single day</description>\n                    </donationOption>\n
+        \                   <donationOption>\n                        <amount>100</amount>\n
+        \                       <description>sponsor an animal for 1 month</description>\n
+        \                   </donationOption>\n                    <donationOption>\n
+        \                       <amount>200</amount>\n                        <description>will
+        perform orthopedic surgery of 1 patient</description>\n                    </donationOption>\n
+        \                   <donationOption>\n                        <amount>1000</amount>\n
+        \                       <description>will buy an intensive care unit for severely
+        ill, injured, and orphaned baby birds and animals</description>\n                    </donationOption>\n
+        \               </donationOptions>\n                <funding>3372.45</funding>\n
+        \               <goal>240000.00</goal>\n                <id>49416</id>\n                <image
+        id=\"0\">\n                    <imagelink size=\"small\">\n                        <url>https://www.globalgiving.org/pfil/49416/pict_grid1.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"thumbnail\">\n
+        \                       <url>https://www.globalgiving.org/pfil/49416/pict_thumbnail.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"medium\">\n
+        \                       <url>https://www.globalgiving.org/pfil/49416/pict_med.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"large\">\n
+        \                       <url>https://www.globalgiving.org/pfil/49416/pict_grid7.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"extraLarge\">\n
+        \                       <url>https://www.globalgiving.org/pfil/49416/pict_large.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"original\">\n
+        \                       <url>https://www.globalgiving.org/pfil/49416/pict_original.jpg</url>\n
+        \                   </imagelink>\n                    <title>Trauma Care Centre
+        for Stray Animals and Birds</title>\n                </image>\n                <imageGallerySize>18</imageGallerySize>\n
+        \               <imageLink>https://www.globalgiving.org/pfil/49416/pict.jpg</imageLink>\n
+        \               <iso3166CountryCode>IN</iso3166CountryCode>\n                <longTermImpact>This
+        project will help us serve all the stray animals and birds who suffer from
+        various seasonal or zoonotic disease or become a victim of unfortunate incidents
+        through proper medical intervention. Healthy strays will not pose any threat
+        to society and decrease the chance of conflicts in the communities. More awareness
+        will increase compassion and harmony in co-existence.</longTermImpact>\n                <modifiedDate>2021-12-03T23:31:17-05:00</modifiedDate>\n
+        \               <need>Fast urbanization is causing habitat degradation which
+        resulting severe damage to our wildlife as well as strays. Getting a proper
+        shelter, food source or even clean drinking water becoming difficult for them
+        with each passing day. Every day a huge number of strays are being victim
+        of deadly road accidents, animal cruelty, negligence, seasonal diseases, and
+        various other ailments. Without proper treatment and care either they succumb
+        to death or live a miserable life.</need>\n                <notice>Important
+        Notice about Projects in India: We expect that there will be significant delays
+        in getting funds to this project due to new regulatory requirements that impact
+        GlobalGiving's ability to disburse to Indian-banked  organizations. GlobalGiving
+        is working hard to address the issue, but there is a chance that we will be
+        unable to disburse funds to this project. If we cannot disburse funds, donations
+        to this project may be reallocated to another organization per our terms and
+        conditions.</notice>\n                <numberOfDonations>54</numberOfDonations>\n
+        \               <numberOfReports>33</numberOfReports>\n                <organization>\n
+        \                   <activeProjects>3</activeProjects>\n                    <addressLine1>Amdavad
+        Panjrapole Campus, Ambawadi, Ahmedabad-380015, Gujarat, India</addressLine1>\n
+        \                   <addressLine2></addressLine2>\n                    <city>Ahmedabad</city>\n
+        \                   <countries>\n                        <country>\n                            <iso3166CountryCode>IN</iso3166CountryCode>\n
+        \                           <name>India</name>\n                        </country>\n
+        \                   </countries>\n                    <country>India</country>\n
+        \                   <id>35540</id>\n                    <iso3166CountryCode>IN</iso3166CountryCode>\n
+        \                   <logoUrl>https://www.globalgiving.org/pfil/organ/35540/orglogo.jpg</logoUrl>\n
+        \                   <mission>We are committed to saving lives, conserving
+        nature, and promoting coexistence.</mission>\n                    <name>Jivdaya
+        Charitable Trust</name>\n                    <postal>380015</postal>\n                    <state>Gujarat</state>\n
+        \                   <themes>\n                        <theme>\n                            <id>animals</id>\n
+        \                           <name>Animal Welfare</name>\n                        </theme>\n
+        \                       <theme>\n                            <id>covid-19</id>\n
+        \                           <name>COVID-19</name>\n                        </theme>\n
+        \                       <theme>\n                            <id>wildlife</id>\n
+        \                           <name>Wildlife Conservation</name>\n                        </theme>\n
+        \                   </themes>\n                    <totalProjects>9</totalProjects>\n
+        \                   <url>http://www.jivdayatrust.org</url>\n                </organization>\n
+        \               <progressReportLink>https://www.globalgiving.org/projects/trauma-care-centre-for-stray-animals-and-birds/updates/</progressReportLink>\n
+        \               <projectLink>https://www.globalgiving.org/projects/trauma-care-centre-for-stray-animals-and-birds/</projectLink>\n
+        \               <region>Asia and Oceania</region>\n                <remaining>236627.55</remaining>\n
+        \               <status>active</status>\n                <summary>Through
+        this project, we provide treatment and rehabilitation to all diseased and
+        distressed animals &amp; birds. We have two separate, fully equipped, multi-specialty
+        treatment units for them under the same roof, and every month we treat over
+        3000-4000 animals &amp; birds with the help of our facility. Apart from the
+        treatment, we conduct various awareness programs for local communities and
+        students to improve animal welfare and conservation in our society.\n\nImportant
+        Notice about Projects in India: We expect that there will be significant delays
+        in getting funds to this project due to new regulatory requirements that impact
+        GlobalGiving's ability to disburse to Indian-banked  organizations. GlobalGiving
+        is working hard to address the issue, but there is a chance that we will be
+        unable to disburse funds to this project. If we cannot disburse funds, donations
+        to this project may be reallocated to another organization per our terms and
+        conditions.</summary>\n                <themeName>Animal Welfare</themeName>\n
+        \               <themes>\n                    <theme>\n                        <id>animals</id>\n
+        \                       <name>Animal Welfare</name>\n                    </theme>\n
+        \               </themes>\n                <title>Trauma Care Centre for Stray
+        Animals and Birds</title>\n                <type>project</type>\n                <videos>\n
+        \                   <video>\n                        <url>http://www.youtube.com/v/ig9Fuwm74Y8</url>\n
+        \                   </video>\n                </videos>\n            </project>\n
+        \           <project>\n                <active>true</active>\n                <activities>Umatter
+        is a suicide prevention program that promotes mental health, teaches self-care,
+        risk assessment, coping and help-seeking skills to school staff, mental health
+        and youth serving professionals, community members, and young people. Young
+        people and adults learn to recognize and address depression and risk factors
+        and build strengths through self-care and community action. Students receive
+        knowledge and skills to recognize signs of depression and how to help.</activities>\n
+        \               <approvedDate>2017-08-31T14:56:11-04:00</approvedDate>\n                <contactAddress>28
+        Vernon St Ste 319</contactAddress>\n                <contactCity>Brattleboro</contactCity>\n
+        \               <contactCountry>United States</contactCountry>\n                <contactName>Sara
+        Haimowitz</contactName>\n                <contactPostal>05301</contactPostal>\n
+        \               <contactState>VT</contactState>\n                <contactUrl>https://healthandlearning.org/</contactUrl>\n
+        \               <countries>\n                    <country>\n                        <iso3166CountryCode>US</iso3166CountryCode>\n
+        \                       <name>United States</name>\n                    </country>\n
+        \               </countries>\n                <country>United States</country>\n
+        \               <dateOfMostRecentReport>2021-08-24T14:20:57-04:00</dateOfMostRecentReport>\n
+        \               <donationOptions>\n                    <donationOption>\n
+        \                       <amount>10</amount>\n                        <description>Pays
+        for a gift card for one teen to participate in the Umatter Advisory Groups!</description>\n
+        \                   </donationOption>\n                    <donationOption>\n
+        \                       <amount>25</amount>\n                        <description>Provides
+        10 training booklets for student peer counselors and adult counselors on suicide
+        prevention</description>\n                    </donationOption>\n                    <donationOption>\n
+        \                       <amount>50</amount>\n                        <description>Supports
+        2 students' participation in Umatter Advisory groups where they can make sure
+        that adults know how to work effectively with youth.</description>\n                    </donationOption>\n
+        \                   <donationOption>\n                        <amount>100</amount>\n
+        \                       <description>Funds student leader's participation
+        in Umatter events to plan the Umatter implementation in their region.</description>\n
+        \                   </donationOption>\n                    <donationOption>\n
+        \                       <amount>250</amount>\n                        <description>Funds
+        6 Umatter short sessions that teach young people self care and how to help
+        their peers</description>\n                    </donationOption>\n                    <donationOption>\n
+        \                       <amount>500</amount>\n                        <description>Funds
+        the making of Umatter videos, including: \"Getting through Depression\" and
+        \"Deal Better with Hard Times\".</description>\n                    </donationOption>\n
+        \                   <donationOption>\n                        <amount>1000</amount>\n
+        \                       <description>Funds five youth produced community action
+        projects, promoting community wellness and touching the lives of 100s of youth</description>\n
+        \                   </donationOption>\n                </donationOptions>\n
+        \               <funding>15108.92</funding>\n                <goal>20000.00</goal>\n
+        \               <id>28013</id>\n                <image id=\"0\">\n                    <imagelink
+        size=\"small\">\n                        <url>https://www.globalgiving.org/pfil/28013/pict_grid1.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"thumbnail\">\n
+        \                       <url>https://www.globalgiving.org/pfil/28013/pict_thumbnail.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"medium\">\n
+        \                       <url>https://www.globalgiving.org/pfil/28013/pict_med.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"large\">\n
+        \                       <url>https://www.globalgiving.org/pfil/28013/pict_grid7.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"extraLarge\">\n
+        \                       <url>https://www.globalgiving.org/pfil/28013/pict_large.jpg</url>\n
+        \                   </imagelink>\n                    <imagelink size=\"original\">\n
+        \                       <url>https://www.globalgiving.org/pfil/28013/pict_original.jpg</url>\n
+        \                   </imagelink>\n                    <title>Umatter -- Prevent
+        Teen Suicide in New England!</title>\n                </image>\n                <imageGallerySize>6</imageGallerySize>\n
+        \               <imageLink>https://www.globalgiving.org/pfil/28013/pict.jpg</imageLink>\n
+        \               <iso3166CountryCode>US</iso3166CountryCode>\n                <longTermImpact>Funds
+        for Umatter will support work with 100 youth in 12 communities in New England.
+        Youth will benefit from positive relationships with adults in the program,
+        learn how to help other youth at risk, and gain from facilitating Action Projects.
+        100s more youth will benefit from their contact with Community Action Projects.</longTermImpact>\n
+        \               <modifiedDate>2021-12-03T23:30:18-05:00</modifiedDate>\n                <need>Suicides
+        have become the second-leading cause of death among teenagers in the United
+        States. More youth die by suicide than from cancer, heart disease, AIDS, birth
+        defects, stroke, pneumonia, influenza, and chronic lung disease. Why do people
+        die by suicide? People who survive suicide attempts say they wanted to end
+        the pain of feeling alone, like a burden, and hopeless. Anyone can be at risk
+        of suicide if they become overwhelmed by stress and don't find their way to
+        support.</need>\n                <numberOfDonations>279</numberOfDonations>\n
+        \               <numberOfReports>15</numberOfReports>\n                <organization>\n
+        \                   <activeProjects>2</activeProjects>\n                    <addressLine1>28
+        Vernon St Ste 319</addressLine1>\n                    <addressLine2></addressLine2>\n
+        \                   <city>Brattleboro</city>\n                    <countries>\n
+        \                       <country>\n                            <iso3166CountryCode>US</iso3166CountryCode>\n
+        \                           <name>United States</name>\n                        </country>\n
+        \                   </countries>\n                    <country>United States</country>\n
+        \                   <ein>03-0351024</ein>\n                    <id>40895</id>\n
+        \                   <iso3166CountryCode>US</iso3166CountryCode>\n                    <logoUrl>https://www.globalgiving.org/pfil/organ/40895/orglogo.jpg</logoUrl>\n
+        \                   <mission>Our Vision:\nTo serve as the nation's catalyst,
+        inspiring optimal health for all.\n\nOur Mission:\nTo build a foundation for
+        healthy communities, through educational resources, professional development
+        and practice improvement, research, policy development, evaluation, and consult.\n\nOur
+        Guiding Principles:\n*Equity and Access\n*Evidence and Outcomes-based Practice\n*Innovation\n*Collaboration\n*Community-oriented\n\nOur
+        Goals &amp; Activities\nIn our endeavor to achieve systemic and sustainable
+        change through education, policy and environmental strategies, we:\n\n*Offer
+        regional trainings and technical assistance through grant funding from federal,
+        state and private agencies\n*Provide site-based trainings and technical assistance
+        on request from school districts and community organizations\n*Develop online
+        programs, student learning modules and curricula\n*Assist with professional
+        licensure, CEU and graduate-level credit\n*Create strategic partnerships with
+        other non-profit organizations and school systems\n\nCHL is an outgrowth of
+        an initiative by the Center for Disease Control's Division of Adolescent and
+        School Health to build local capacity for school and community health promotion
+        through training centers that foster and deliver high-quality professional
+        development and practice improvement initiatives. We have substantial experience
+        designing and delivering projects, conferences and professional development
+        opportunities. From instruction and technical assistance to research and report
+        writing, curricula creation and evaluation resources, CHL has served over
+        20,000 professionals and community members, delivered services for more than
+        100 projects and developed and promoted numerous local and statewide comprehensive
+        and coordinated strategic health initiatives.\n\nCHL has the following current
+        programs and projects:  \n\n1. Suicide Prevention- \n* CHL supports state-wide
+        suicide prevention efforts through the Vermont Suicide Prevention Center,
+        a public/private partnership which seeks to foster a sustainable approach
+        to suicide prevention in Vermont.\n*CHL manages the VT Suicide Prevention
+        Coalition consisting of representatives from public health, education, state
+        agencies, advocacy groups, youth, mental health services, and survivors.\n*CHL
+        manages, develops and oversees state-wide suicide prevention trainings including
+        Gatekeeper Training, a Zero Suicide Practice Institute and the Collaborative
+        Assessment for the Management of Suicidality (CAMS) trainings;\n*CHL coordinates
+        the VT Gun Shop Project in collaboration with the VT Department of Mental
+        Health.\n*CHL implements the Zero Suicide approach in Vermont and coordinates
+        Zero Suicide Pilot Projects.\n*CHL and the VT Suicide Prevention Center coordinate
+        the annual Vermont Suicide Prevention Symposium, a cross-agency statewide
+        event that brings together professionals across all sectors for a day of learning
+        from national experts on critical topics and skills in suicide prevention,
+        treatment, and recovery. \n\n2. Prevention Training and Workforce Development
+        - CHL coordinates and implements Substance Abuse Disorder prevention trainings
+        and workforce development activities for the Vermont Department of Health/Division
+        of Alcohol and Drug Abuse Programs for Regional Prevention Partnership professional
+        staff.\n\n3. Annual Symposia and Conferences: In addition to the Suicide Prevention
+        Symposium, our cornerstone event, CHL assists with the coordination of annual
+        Symposia and Conferences for various partners including the following events:\no
+        4th Annual College Symposium on Substance Use \no Community Solutions to the
+        Opiate Issues Facing Vermonters for the VT Department of Health \no Substance
+        Abuse Workforce Development Conference for the VT Department of Health.\n\n4.
+        \ CHL Proprietary and Fee for Service: CHL has several proprietary programs
+        developed and implemented by the organization:  \n\n*Umatter Suicide Prevention
+        for Schools and Umatter for Staff and Family Awareness -CHL developed this
+        best practice training for school and community settings.\n*Umatter for Youth
+        and Young Adults Mental Health Wellness Promotion and Community Action--CHL
+        is moving the focus on mental health \"upstream\" from intervention and crisis
+        to promotion and prevention (self-care, coping and communication skills, etc.).
+        \n*Community / School District Trainings--CHL provides professional development,
+        technical assistance and support for the implementation of coordinated approaches
+        to school health, and conducts training on mental health, suicide prevention
+        and alcohol, tobacco, sexual health and other critical health topics. \n*Family
+        Engagement- CHL is building an initiative to promote effective practices for
+        Family Engagement - an emerging interest across sectors</mission>\n                    <name>Center
+        for Health &amp; Learning</name>\n                    <postal>05301</postal>\n
+        \                   <state>VT</state>\n                    <themes>\n                        <theme>\n
+        \                           <id>children</id>\n                            <name>Child
+        Protection</name>\n                        </theme>\n                        <theme>\n
+        \                           <id>edu</id>\n                            <name>Education</name>\n
+        \                       </theme>\n                        <theme>\n                            <id>gender</id>\n
+        \                           <name>Gender Equality</name>\n                        </theme>\n
+        \                       <theme>\n                            <id>health</id>\n
+        \                           <name>Physical Health</name>\n                        </theme>\n
+        \                       <theme>\n                            <id>lgbtq</id>\n
+        \                           <name>LGBTQIA+ Equality</name>\n                        </theme>\n
+        \                   </themes>\n                    <totalProjects>4</totalProjects>\n
+        \                   <url>https://healthandlearning.org/</url>\n                </organization>\n
+        \               <progressReportLink>https://www.globalgiving.org/projects/umatter/updates/</progressReportLink>\n
+        \               <projectLink>https://www.globalgiving.org/projects/umatter/</projectLink>\n
+        \               <region>North America</region>\n                <remaining>4891.08</remaining>\n
+        \               <status>active</status>\n                <summary>You matter
+        because you may need help.   You matter because you are in a position to help.
+        \  Umatter is a suicide prevention program for youth and adults that teaches
+        self-care and caring for others. Umatter trains teams of young people and
+        professionals about mental health, signs of suicide, and how to help. Umatter
+        supports community action projects that create a culture where people know
+        they can make a difference, and THEY MATTER.</summary>\n                <themeName>Mental
+        Health</themeName>\n                <themes>\n                    <theme>\n
+        \                       <id>mentalhealth</id>\n                        <name>Mental
+        Health</name>\n                    </theme>\n                    <theme>\n
+        \                       <id>edu</id>\n                        <name>Education</name>\n
+        \                   </theme>\n                    <theme>\n                        <id>health</id>\n
+        \                       <name>Physical Health</name>\n                    </theme>\n
+        \                   <theme>\n                        <id>covid-19</id>\n                        <name>COVID-19</name>\n
+        \                   </theme>\n                </themes>\n                <title>Umatter
+        -- Prevent Teen Suicide in New England!</title>\n                <type>project</type>\n
+        \           </project>\n        </projects>\n    </response>\n</search>\n"
+  recorded_at: Sat, 04 Dec 2021 05:17:10 GMT
 recorded_with: VCR 6.0.0
