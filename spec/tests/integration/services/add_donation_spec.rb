@@ -8,7 +8,7 @@ describe 'AddDonation Service Integration Test' do
   VcrHelper.setup_vcr
 
   before do
-    VcrHelper.configure_vcr_for_news(recording: :new_episodes)
+    VcrHelper.configure_vcr_for_donation(recording: :new_episodes)
   end
 
   after do
