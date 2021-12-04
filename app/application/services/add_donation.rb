@@ -8,11 +8,11 @@ module Floofloo
     class AddDonation
       include Dry::Transaction
 
-      step :find_donations
+      step :add_donations
 
       private
 
-      def find_donations(input)
+      def add_donations(input)
         if input.nil?
           Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not find the donations'))
         else
@@ -32,7 +32,7 @@ module Floofloo
 
         store_donations(keywords, donation_result)
       rescue StandardError
-        raise 'Could not find the news'
+        raise 'Could not find the donation'
       end
 
       def store_donations(event_name, donation_list)
