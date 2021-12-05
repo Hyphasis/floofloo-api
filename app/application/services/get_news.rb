@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'dry/transaction'
+require 'base64'
+require 'json'
 
 module Floofloo
   module Services
@@ -13,20 +15,21 @@ module Floofloo
       private
 
       def find_news(input)
-        if input.success?
-          news = news_from_news_api(input)
-          Success(news: news)
+        if input.nil?
+          Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not find the news'))
         else
-          Failure(input.errors.messages.first.to_s)
+          news = news_from_database(input)
+          news_result = OpenStruct.new(articles: news)
+
+          Success(Response::ApiResult.new(status: :ok, message: news_result))
         end
       end
 
-      def news_from_news_api(input)
-        News::NewsMapper
-          .new(App.config.NEWS_KEY)
-          .find(input[:language], input[:keywords], input[:from], input[:to], input[:sort_by])
-      rescue StandardError
-        raise 'Could not find the news'
+      def news_from_database(input)
+        event_name = input[:event_name]
+        event = Repository::IssuesFor.entity(Entity::Event.new(id: nil, name: '')).find_name(event_name)
+
+        Repository::ArticlesFor.klass(Entity::News).find_event_id(event.id)
       end
     end
   end

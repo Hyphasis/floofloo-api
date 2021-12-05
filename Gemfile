@@ -6,7 +6,12 @@ ruby File.read('.ruby-version').strip
 # Configuration and Utilities
 gem 'figaro', '~> 1.2'
 gem 'rack', '~> 2'
+gem 'rack-test'
 gem 'rake', '~> 13.0'
+
+# PRESENTATION LAYER
+gem 'multi_json', '~> 1.15'
+gem 'roar', '~> 1.1'
 
 # Application Layer
 # Web Application

@@ -8,7 +8,7 @@ describe 'Integration Tests of News API and Database' do
   VcrHelper.setup_vcr
 
   before do
-    VcrHelper.configure_vct_for_news
+    VcrHelper.configure_vcr_for_news
   end
 
   after do
@@ -18,7 +18,6 @@ describe 'Integration Tests of News API and Database' do
   describe 'Retrieve and store news' do
     before do
       DatabaseHelper.wipe_database
-
       issue = Floofloo::Entity::Issue.new(
         id: nil,
         name: KEYWORDS
@@ -33,8 +32,8 @@ describe 'Integration Tests of News API and Database' do
       @event = Floofloo::Repository::IssuesFor.entity(event).create(@issue, event)
     end
 
-    it 'HAPPY: should be able to save news from News API to database' do
-      news = Floofloo::News::NewsMapper.new(NEWS_KEY).find(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
+    it 'HAPPY: should be able to find and save news to database' do
+      news = Floofloo::News::NewsMapper.new(NEWS_KEY).find(KEYWORDS, FROM, TO, SORT_BY, LANGUAGE)
 
       rebuilt = Floofloo::Repository::ArticlesFor.entity(news).create(@event, news.articles[0])
 

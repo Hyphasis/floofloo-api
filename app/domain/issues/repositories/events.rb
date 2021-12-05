@@ -15,7 +15,7 @@ module Floofloo
       end
 
       def self.find_name(name)
-        rebuild_entity Database::EventOrm.first(name: name)
+        Database::EventOrm.first(name: name)
       end
 
       def self.create(issue, entity)

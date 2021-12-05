@@ -5,7 +5,7 @@ require_relative '../../helpers/vcr_helper'
 
 describe 'Test News API Library' do
   before do
-    VcrHelper.configure_vct_for_news
+    VcrHelper.configure_vcr_for_news
   end
 
   after do
@@ -15,7 +15,7 @@ describe 'Test News API Library' do
   describe 'News Information' do
     it 'HAPPY: should provide correct news information' do
       news = Floofloo::News::NewsMapper.new(NEWS_KEY)
-        .find(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
+        .find(KEYWORDS, FROM, TO, SORT_BY, LANGUAGE)
 
       _(news.status).must_equal CORRECT['status']
       _(news.total_results).must_equal CORRECT['totalResults']
@@ -25,7 +25,7 @@ describe 'Test News API Library' do
 
     it 'BAD: sould raise exception when unauthorized' do
       _(proc do
-        Floofloo::News::NewsMapper.new('BAD_KEY').find(LANGUAGE, KEYWORDS, FROM, TO, SORT_BY)
+        Floofloo::News::NewsMapper.new('BAD_KEY').find(KEYWORDS, FROM, TO, SORT_BY, LANGUAGE)
       end).must_raise Floofloo::News::Api::Response::Unauthorized
     end
   end
