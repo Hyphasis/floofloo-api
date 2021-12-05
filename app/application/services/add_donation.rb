@@ -13,14 +13,11 @@ module Floofloo
       private
 
       def add_donations(input)
-        if input.nil?
-          Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not find the donations'))
-        else
-          donations = donations_from_global_giving_api(input)
-          donations_result = OpenStruct.new(donations: donations)
-
-          Success(Response::ApiResult.new(status: :ok, message: donations_result))
-        end
+        donations = donations_from_global_giving_api(input)
+        donations_result = OpenStruct.new(donations: donations)
+        Success(Response::ApiResult.new(status: :ok, message: donations_result))
+      rescue StandardError
+        Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not add the donations'))
       end
 
       def donations_from_global_giving_api(input)
