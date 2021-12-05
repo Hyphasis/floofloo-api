@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'dry/transaction'
-require 'base64'
-require 'json'
 
 module Floofloo
   module Services
@@ -14,28 +12,24 @@ module Floofloo
 
       private
 
+      ISSUE_DB_ERR_MSG = 'Having trouble accessing the database'
+
       def add_issue(input)
-        if input.nil?
-          Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not find the issue'))
-        else
-          issue_name = input[:issue_name]
-          issue = find_issue(issue_name)
-          issue = create_issue(issue_name) if issue.nil?
-
-          Success(Response::ApiResult.new(status: :ok, message: issue))
-        end
+        issue = issue_in_database(input) || create_issue_in_database(input)
+        Success(Response::ApiResult.new(status: :ok, message: issue))
+      rescue StandardError
+        Failure(Response::ApiResult.new(status: :internal_error, message: ISSUE_DB_ERR_MSG))
       end
 
-      def find_issue(issue_name)
-        Repository::IssuesFor.klass(Entity::Issue).find_name(issue_name)
+      def issue_in_database(input)
+        Repository::IssuesFor.klass(Entity::Issue).find_name(input[:issue_name])
       end
 
-      def create_issue(issue_name)
+      def create_issue_in_database(input)
         issue = Floofloo::Entity::Issue.new(
           id: nil,
-          name: issue_name
+          name: input[:issue_name]
         )
-
         Repository::IssuesFor.entity(issue).create(issue)
       end
     end
