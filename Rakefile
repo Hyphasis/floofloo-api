@@ -6,27 +6,10 @@ task :default do
   puts `rake -T`
 end
 
-desc 'Run unit and integration tests'
-Rake::TestTask.new(:spec) do |t|
-  t.pattern = 'spec/tests/{integration,unit}/**/*_spec.rb'
-  t.warning = false
-end
-
-desc 'Run acceptance tests'
-Rake::TestTask.new(:spec_accept) do |t|
-  t.pattern = 'spec/tests/acceptance/*_spec.rb'
-  t.warning = false
-end
-
 desc 'Run all tests'
-Rake::TestTask.new(:spec_all) do |t|
+Rake::TestTask.new(:spec) do |t|
   t.pattern = 'spec/tests/**/*_spec.rb'
   t.warning = false
-end
-
-desc 'Keep rerunning unit and integration tests upon changes'
-task :respec do
-  sh "rerun -c 'rake spec' --ignore 'coverage/*'"
 end
 
 desc 'Keep restarting web app upon changes'

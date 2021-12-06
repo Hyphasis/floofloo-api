@@ -8,19 +8,16 @@ module Floofloo
     class AddDonation
       include Dry::Transaction
 
-      step :find_donations
+      step :add_donations
 
       private
 
-      def find_donations(input)
-        if input.nil?
-          Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not find the donations'))
-        else
-          donations = donations_from_global_giving_api(input)
-          donations_result = OpenStruct.new(donations: donations)
-
-          Success(Response::ApiResult.new(status: :ok, message: donations_result))
-        end
+      def add_donations(input)
+        donations = donations_from_global_giving_api(input)
+        donations_result = OpenStruct.new(donations: donations)
+        Success(Response::ApiResult.new(status: :ok, message: donations_result))
+      rescue StandardError
+        Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not add the donations'))
       end
 
       def donations_from_global_giving_api(input)
@@ -32,7 +29,7 @@ module Floofloo
 
         store_donations(keywords, donation_result)
       rescue StandardError
-        raise 'Could not find the news'
+        raise 'Could not find the donation'
       end
 
       def store_donations(event_name, donation_list)

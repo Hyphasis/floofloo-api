@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'dry/transaction'
-require 'base64'
-require 'json'
 
 module Floofloo
   module Services
@@ -14,26 +12,24 @@ module Floofloo
 
       private
 
+      ISSUE_ERR_MSG = 'Issue not found in database'
+
       def add_event(input)
-        if input.nil?
-          Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not add the event'))
-        else
-          issue = find_issue(input[:issue_name])
-
-          event_name = input[:event_name]
-          event = find_event(event_name)
-          event = create_event(issue, event_name) if event.nil?
-
-          Success(Response::ApiResult.new(status: :ok, message: event))
-        end
+        issue = issue_in_database(input)
+        event = event_in_database(input) || create_event(issue, input[:event_name])
+        Success(Response::ApiResult.new(status: :ok, message: event))
+      rescue StandardError
+        Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not add the event'))
       end
 
-      def find_issue(issue_name)
-        Repository::IssuesFor.klass(Entity::Issue).find_name(issue_name)
+      def issue_in_database(input)
+        Repository::IssuesFor.klass(Entity::Issue).find_name(input[:issue_name])
+      rescue StandardError
+        raise ISSUE_ERR_MSG
       end
 
-      def find_event(event_name)
-        Repository::IssuesFor.klass(Entity::Event).find_name(event_name)
+      def event_in_database(input)
+        Repository::IssuesFor.klass(Entity::Event).find_name(input[:event_name])
       end
 
       def create_event(issue, event_name)
