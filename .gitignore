@@ -60,3 +60,4 @@ config/secrets.yml
 coverage/*
 
 *.db
+_cache/

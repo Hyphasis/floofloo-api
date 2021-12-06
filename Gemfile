@@ -9,6 +9,11 @@ gem 'rack', '~> 2'
 gem 'rack-test'
 gem 'rake', '~> 13.0'
 
+# Caching
+gem 'rack-cache', '~> 1.13'
+gem 'redis', '~> 4.5'
+gem 'redis-rack-cache', '~> 2.2'
+
 # PRESENTATION LAYER
 gem 'multi_json', '~> 1.15'
 gem 'roar', '~> 1.1'
