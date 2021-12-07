@@ -6,6 +6,7 @@ AllCops:
   Exclude:
     - '_snippets/*'
     - vendor/bundle/**/*
+    - config/environment.rb
   Include:
   - 'Gemfile'
   - 'Rakefile'
@@ -23,6 +24,12 @@ Metrics/BlockLength:
   Enabled: true
   Exclude:
     - 'spec/**/*'
+    - Rakefile
+    - app/controllers/**/*.rb
+
+Style/HashSyntax:
+  Enabled: true
+  Exclude:
     - Rakefile
 
 Layout/MultilineMethodCallIndentation:
