@@ -9,6 +9,7 @@ module Floofloo
   class App < Roda # rubocop:disable Metrics/ClassLength
     plugin :halt
     plugin :all_verbs # recognizes HTTP verbs beyond GET/POST (e.g., DELETE)
+    plugin :caching
     use Rack::MethodOverride # for other HTTP verbs (with plugin all_verbs)
 
     route do |routing| # rubocop:disable Metrics/BlockLength
@@ -32,6 +33,7 @@ module Floofloo
                 routing.on 'news' do # rubocop:disable Metrics/BlockLength
                   # GET /issue/{issue_name}/event/{event_name}/news
                   routing.get do
+                    response.cache_control public: true, max_age: 300
                     find_news = Services::GetNews.new.call(event_name: event_name)
 
                     if find_news.failure?
