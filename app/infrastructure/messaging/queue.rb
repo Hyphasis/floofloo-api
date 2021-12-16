@@ -21,7 +21,7 @@ module Floofloo
 
       ## Sends message to queue
       # usage:
-      # q = Messaging::Queue.new(App.config.CLONE_QUEUE_URL)
+      # q = Messaging::Queue.new(App.config.QUEUE_URL, App.config)
       # q.send({data: "hello"}.to_json)
       def send(message)
         @queue.send_message(message_body: message)
@@ -29,8 +29,8 @@ module Floofloo
 
       ## Pols queue, yielding each message
       # Usage:
-      # q = Messaging::Queue.new(App.config.CLONE_QUEUE_URL)
-      # q.poll { |msg| print msg.body.to_s }
+      # q = Messaging::Queue.new(App.config.QUEUE_URL, App.config)
+      # q.poll { |msg| print msg.to_s }
       def poll
         poller = Aws::SQS::QueuePoller.new(@queue_url)
         poller.poll(idle_timeout: IDLE_TIMEOUT) do |msg|
