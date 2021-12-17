@@ -31,7 +31,7 @@ module Floofloo
             routing.on 'event' do # rubocop:disable Metrics/BlockLength
               routing.on String do |event_name| # rubocop:disable Metrics/BlockLength
                 routing.on 'news' do # rubocop:disable Metrics/BlockLength
-                  # GET /issue/{issue_name}/event/{event_name}/news
+                  # GET /api/v1/issue/{issue_name}/event/{event_name}/news
                   routing.get do
                     response.cache_control public: true, max_age: 300
                     find_news = Services::GetNews.new.call(event_name: event_name)
@@ -51,27 +51,7 @@ module Floofloo
                     routing.redirect '/'
                   end
 
-                  # DELETE /issue/{issue_name}/event/{event_name}/news
-                  routing.delete do
-                    response.cache_control public: true, max_age: 300
-                    find_news = Services::DeleteAllNews.new.call
-
-                    if find_news.failure?
-                      failed = Representer::HttpResponse.new(find_news.failure)
-                      routing.halt failed.http_status_code, failed.to_json
-                    end
-
-                    http_response = Representer::HttpResponse.new(find_news.value!)
-                    response.status = http_response.http_status_code
-
-                    { message: 'All news deleted' }.to_json
-                  rescue StandardError => e
-                    puts e.full_message
-
-                    routing.redirect '/'
-                  end
-
-                  # POST /issue/{issue_name}/event/{event_name}/news
+                  # POST /api/v1/issue/{issue_name}/event/{event_name}/news
                   routing.post do
                     add_news = Services::AddNews.new.call(event_name: event_name)
 
@@ -92,7 +72,7 @@ module Floofloo
                 end
 
                 routing.on 'donations' do # rubocop:disable Metrics/BlockLength
-                  # GET /issue/{issue_name}/event/{event_name}/donations
+                  # GET /api/v1/issue/{issue_name}/event/{event_name}/donations
                   routing.get do
                     find_donations = Services::GetDonation.new.call(event_name: event_name)
 
@@ -111,26 +91,7 @@ module Floofloo
                     routing.redirect '/'
                   end
 
-                  # DELETE /issue/{issue_name}/event/{event_name}/donations
-                  routing.delete do
-                    find_donations = Services::DeleteAllDonation.new.call
-
-                    if find_donations.failure?
-                      failed = Representer::HttpResponse.new(find_donations.failure)
-                      routing.halt failed.http_status_code, failed.to_json
-                    end
-
-                    http_response = Representer::HttpResponse.new(find_donations.value!)
-                    response.status = http_response.http_status_code
-
-                    { message: 'All dontaions deleted' }.to_json
-                  rescue StandardError => e
-                    puts e.message
-
-                    routing.redirect '/'
-                  end
-
-                  # POST /issue/{issue_name}/event/{event_name}/donations
+                  # POST /api/v1/issue/{issue_name}/event/{event_name}/donations
                   routing.post do
                     add_donation = Services::AddDonation.new.call(event_name: event_name)
 
@@ -150,7 +111,7 @@ module Floofloo
                   end
                 end
 
-                # POST /issue/{issue_name}/event/{event_name}
+                # POST /api/v1/issue/{issue_name}/event/{event_name}
                 routing.post do
                   add_event = Services::AddEvent.new.call(issue_name: issue_name, event_name: event_name)
 
@@ -170,7 +131,7 @@ module Floofloo
               end
             end
 
-            # POST /issue/{issue_name}
+            # POST /api/v1/issue/{issue_name}
             routing.post do
               add_issue = Services::AddIssue.new.call(issue_name: issue_name)
 
@@ -183,6 +144,49 @@ module Floofloo
               response.status = http_response.http_status_code
               Representer::Issue.new(add_issue.value!.message).to_json
             end
+          end
+        end
+
+        routing.on 'news' do
+          # DELETE /api/v1/news
+          routing.delete do
+            response.cache_control public: true, max_age: 300
+            find_news = Services::DeleteAllNews.new.call
+
+            if find_news.failure?
+              failed = Representer::HttpResponse.new(find_news.failure)
+              routing.halt failed.http_status_code, failed.to_json
+            end
+
+            http_response = Representer::HttpResponse.new(find_news.value!)
+            response.status = http_response.http_status_code
+
+            { message: 'All news deleted' }.to_json
+          rescue StandardError => e
+            puts e.full_message
+
+            routing.redirect '/'
+          end
+        end
+
+        routing.on 'donations' do
+          # DELETE /api/v1/donations
+          routing.delete do
+            find_donations = Services::DeleteAllDonation.new.call
+
+            if find_donations.failure?
+              failed = Representer::HttpResponse.new(find_donations.failure)
+              routing.halt failed.http_status_code, failed.to_json
+            end
+
+            http_response = Representer::HttpResponse.new(find_donations.value!)
+            response.status = http_response.http_status_code
+
+            { message: 'All dontaions deleted' }.to_json
+          rescue StandardError => e
+            puts e.message
+
+            routing.redirect '/'
           end
         end
       end
