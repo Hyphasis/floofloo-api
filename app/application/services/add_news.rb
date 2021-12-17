@@ -15,11 +15,19 @@ module Floofloo
       private
 
       def add_news(input)
+        unless database_empty?
+          return Failure(Response::ApiResult.new(status: :internal_error, message: 'Please delete all news first'))
+        end
+
         news = news_from_news_api(input)
         news_result = OpenStruct.new(articles: news)
         Success(Response::ApiResult.new(status: :ok, message: news_result))
       rescue StandardError
         Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not add the news'))
+      end
+
+      def database_empty?
+        Repository::ArticlesFor.klass(Entity::News).all.empty?
       end
 
       def news_from_news_api(input)

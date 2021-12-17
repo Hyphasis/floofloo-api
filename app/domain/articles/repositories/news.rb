@@ -30,6 +30,14 @@ module Floofloo
         event.add_news(rebuild_entity(entity))
       end
 
+      def self.delete_all
+        Database::NewsOrm.all.map(&:delete)
+      end
+
+      def self.delete_by_id(id)
+        Database::NewsOrm.where(id: id).all.map(&:delete)
+      end
+
       def self.rebuild_entity(db_news)
         return nil unless db_news
 
