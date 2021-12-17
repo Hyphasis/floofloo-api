@@ -111,6 +111,25 @@ module Floofloo
                     routing.redirect '/'
                   end
 
+                  # DELETE /issue/{issue_name}/event/{event_name}/donations
+                  routing.delete do
+                    find_donations = Services::DeleteAllDonation.new.call
+
+                    if find_donations.failure?
+                      failed = Representer::HttpResponse.new(find_donations.failure)
+                      routing.halt failed.http_status_code, failed.to_json
+                    end
+
+                    http_response = Representer::HttpResponse.new(find_donations.value!)
+                    response.status = http_response.http_status_code
+
+                    { message: 'All dontaions deleted' }.to_json
+                  rescue StandardError => e
+                    puts e.message
+
+                    routing.redirect '/'
+                  end
+
                   # POST /issue/{issue_name}/event/{event_name}/donations
                   routing.post do
                     add_donation = Services::AddDonation.new.call(event_name: event_name)
