@@ -51,6 +51,26 @@ module Floofloo
                     routing.redirect '/'
                   end
 
+                  # DELETE /issue/{issue_name}/event/{event_name}/news
+                  routing.delete do
+                    response.cache_control public: true, max_age: 300
+                    find_news = Services::DeleteAllNews.new.call
+
+                    if find_news.failure?
+                      failed = Representer::HttpResponse.new(find_news.failure)
+                      routing.halt failed.http_status_code, failed.to_json
+                    end
+
+                    http_response = Representer::HttpResponse.new(find_news.value!)
+                    response.status = http_response.http_status_code
+
+                    { message: 'All news deleted' }.to_json
+                  rescue StandardError => e
+                    puts e.full_message
+
+                    routing.redirect '/'
+                  end
+
                   # POST /issue/{issue_name}/event/{event_name}/news
                   routing.post do
                     add_news = Services::AddNews.new.call(event_name: event_name)
