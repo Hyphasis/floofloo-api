@@ -30,6 +30,14 @@ module Floofloo
         event.add_donation(rebuild_entity(entity))
       end
 
+      def self.delete_all
+        Database::DonationOrm.all.map(&:delete)
+      end
+
+      def self.delete_by_id(id)
+        Database::DonationOrm.where(id: id).all.map(&:delete)
+      end
+
       def self.rebuild_entity(db_donation)
         return nil unless db_donation
 

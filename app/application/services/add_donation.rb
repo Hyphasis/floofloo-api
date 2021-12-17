@@ -13,11 +13,19 @@ module Floofloo
       private
 
       def add_donations(input)
+        unless database_empty?
+          return Failure(Response::ApiResult.new(status: :internal_error, message: 'Please delete all donations first'))
+        end
+
         donations = donations_from_global_giving_api(input)
         donations_result = OpenStruct.new(donations: donations)
         Success(Response::ApiResult.new(status: :ok, message: donations_result))
       rescue StandardError
         Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not add the donations'))
+      end
+
+      def database_empty?
+        Repository::DonationFor.klass(Entity::Donation).all.empty?
       end
 
       def donations_from_global_giving_api(input)
