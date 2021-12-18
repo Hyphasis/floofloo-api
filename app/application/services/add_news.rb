@@ -10,9 +10,21 @@ module Floofloo
     class AddNews
       include Dry::Transaction
 
-      step :add_news
+      step :request_add_news_worker
+#      step :add_news
 
       private
+
+      def request_add_news_worker(input)
+        if input.empty?
+          return Failure(Response::ApiResult.new(status: :internal_error, message: 'no input'))
+        end
+        Floofloo::Messaging::Queue.new(Floofloo::App.config.QUEUE_URL, Floofloo::App.config)
+                                  .send(input.to_json)
+        Success(Response::ApiResult.new(status: :ok, message: "Success"))
+      rescue StandardError
+        Failure(Response::ApiResult.new(status: :internal_error, message: 'Background workers can not add the news'))
+      end
 
       def add_news(input)
         unless database_empty?

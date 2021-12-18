@@ -150,7 +150,6 @@ module Floofloo
         routing.on 'news' do
           # DELETE /api/v1/news
           routing.delete do
-            response.cache_control public: true, max_age: 300
             find_news = Services::DeleteAllNews.new.call
 
             if find_news.failure?
@@ -182,7 +181,7 @@ module Floofloo
             http_response = Representer::HttpResponse.new(find_donations.value!)
             response.status = http_response.http_status_code
 
-            { message: 'All dontaions deleted' }.to_json
+            { message: 'All donations deleted' }.to_json
           rescue StandardError => e
             puts e.message
 
