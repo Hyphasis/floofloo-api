@@ -7,6 +7,7 @@ AllCops:
     - '_snippets/*'
     - vendor/bundle/**/*
     - config/environment.rb
+    - workers/*
   Include:
   - 'Gemfile'
   - 'Rakefile'
