@@ -64,7 +64,7 @@ module Floofloo
         end
 
         def image_url
-          @data['imageLink']
+          @data['image']['imagelink'].last['url']
         end
       end
     end
