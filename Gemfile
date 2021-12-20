@@ -40,6 +40,12 @@ gem 'http', '~> 5.0'
 # Tools
 gem 'crack'
 
+# Asynchronicity
+
+gem 'aws-sdk-sqs', '~> 1.48'
+gem 'concurrent-ruby', '~> 1.1'
+gem 'shoryuken', '~> 5.3'
+
 # Database
 gem 'sequel', '~> 5.49'
 

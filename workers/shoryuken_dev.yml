@@ -1,0 +1,2 @@
+queues:
+  - https://sqs.us-east-1.amazonaws.com/088195335039/Floofloo_Queue
