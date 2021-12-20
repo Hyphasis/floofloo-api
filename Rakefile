@@ -112,7 +112,7 @@ namespace :cache do
   end
 end
 
-namespace :queue do
+namespace :queues do
   task :config do
     require 'aws-sdk-sqs'
     require_relative 'config/environment' # load config info
