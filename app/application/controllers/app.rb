@@ -129,6 +129,27 @@ module Floofloo
                   routing.redirect '/'
                 end
               end
+
+              # GET /api/v1/issue/{issue_name}/event
+              routing.get do
+                response.cache_control public: true, max_age: 300
+
+                find_events = Services::GetEvent.new.call(issue_name: issue_name)
+
+                if find_events.failure?
+                  failed = Representer::HttpResponse.new(find_events.failure)
+                  routing.halt failed.http_status_code, failed.to_json
+                end
+
+                http_response = Representer::HttpResponse.new(find_events.value!)
+                response.status = http_response.http_status_code
+
+                Representer::EventList.new(find_events.value!.message).to_json
+              rescue StandardError => e
+                puts e.full_message
+
+                routing.redirect '/'
+              end
             end
 
             # POST /api/v1/issue/{issue_name}

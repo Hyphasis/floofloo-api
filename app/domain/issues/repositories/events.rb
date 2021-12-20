@@ -18,6 +18,10 @@ module Floofloo
         Database::EventOrm.first(name: name)
       end
 
+      def self.find_by_issue_id(issue_id)
+        Database::EventOrm.where(issue_id: issue_id).all
+      end
+
       def self.create(issue, entity)
         issue.add_event(rebuild_entity(entity))
       end
