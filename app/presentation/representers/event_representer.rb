@@ -13,6 +13,7 @@ module Floofloo
       include Roar::JSON
 
       property :id
+      property :issue_id
       property :name
     end
   end

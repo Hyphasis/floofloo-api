@@ -2,7 +2,7 @@
 
 require 'roar/decorator'
 require 'roar/json'
-require_relative 'event_representer'
+require_relative 'event_list_representer'
 
 module Floofloo
   module Representer
@@ -10,11 +10,10 @@ module Floofloo
     # USAGE:
     #   events = Database::EventOrm.all
     #   Representer::EventList.new(events).to_json
-    class EventList < Roar::Decorator
+    class EventAllList < Roar::Decorator
       include Roar::JSON
 
-      property :issue_id
-      collection :themes, extend: Representer::Event, class: OpenStruct
+      collection :events, extend: Representer::EventList, class: OpenStruct
     end
   end
 end
