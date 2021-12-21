@@ -9,7 +9,7 @@ module Floofloo
     class Event < Dry::Struct
       include Dry.Types
 
-      attribute :id,   Integer.optional
+      attribute :id, Integer.optional
       attribute :name, Strict::String
 
       def to_attr_hash
