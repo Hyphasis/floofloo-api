@@ -46,7 +46,8 @@ module Floofloo
           summary: db_donation.summary,
           country: db_donation.country,
           city: db_donation.city,
-          image_url: db_donation.image_url
+          image_url: db_donation.image_url,
+          project_url: db_donation.project_url
         )
       end
     end

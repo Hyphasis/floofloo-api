@@ -41,7 +41,8 @@ module Floofloo
             summary: summary,
             country: country,
             city: city,
-            image_url: image_url
+            image_url: image_url,
+            project_url: project_url
           )
         end
 
@@ -65,6 +66,10 @@ module Floofloo
 
         def image_url
           @data['image']['imagelink'].last['url']
+        end
+
+        def project_url
+          @data['projectLink']
         end
       end
     end

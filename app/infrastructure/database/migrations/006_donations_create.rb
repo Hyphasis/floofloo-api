@@ -13,6 +13,7 @@ Sequel.migration do
       String      :country
       String      :city
       String      :image_url
+      String      :project_url
 
       DateTime :created_at
       DateTime :updated_at
