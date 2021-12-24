@@ -14,6 +14,7 @@ module Floofloo
       attribute :country,       Strict::String
       attribute :city,          Strict::String
       attribute :image_url,     Strict::String
+      attribute :project_url,   Strict::String
 
       def to_attr_hash
         to_hash.reject { |key, _| %i[id].include? key }
