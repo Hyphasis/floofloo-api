@@ -163,20 +163,36 @@ namespace :worker do
   namespace :run do
     desc 'Run the background worker in development mode'
     task :dev => :config do
-      # Add worker here './workers/worker.rb'
-      sh 'RACK_ENV=development bundle exec shoryuken -r ./workers/add_news_worker.rb -C ./workers/shoryuken_dev.yml'
+      sh 'RACK_ENV=development bundle exec shoryuken -r ./workers/add_news_worker.rb -C ./workers/shoryuken_news_dev.yml'
     end
 
     desc 'Run the background worker in testing mode'
     task :test => :config do
-      # Add worker here './workers/worker.rb'
-      sh 'RACK_ENV=test bundle exec shoryuken -r ./workers/add_news_worker.rb -C ./workers/shoryuken_test.yml'
+      sh 'RACK_ENV=test bundle exec shoryuken -r ./workers/add_news_worker.rb -C ./workers/shoryuken_news_test.yml'
     end
 
     desc 'Run the background worker in production mode'
     task :production => :config do
-      # Add worker here './workers/worker.rb'
-      sh 'RACK_ENV=production bundle exec shoryuken -r ./workers/add_news_worker.rb -C ./workers/shoryuken.yml'
+      sh 'RACK_ENV=production bundle exec shoryuken -r ./workers/add_news_worker.rb -C ./workers/shoryuken_news_production.yml'
+    end
+  end
+end
+
+namespace :worker_donation do
+  namespace :run do
+    desc 'Run the background worker in development mode'
+    task :dev => :config do
+      sh 'RACK_ENV=development bundle exec shoryuken -r ./workers/add_donation_worker.rb -C ./workers/shoryuken_donation_dev.yml'
+    end
+
+    desc 'Run the background worker in testing mode'
+    task :test => :config do
+      sh 'RACK_ENV=test bundle exec shoryuken -r ./workers/add_donation_worker.rb -C ./workers/shoryuken_donation_test.yml'
+    end
+
+    desc 'Run the background worker in production mode'
+    task :production => :config do
+      sh 'RACK_ENV=production bundle exec shoryuken -r ./workers/add_donation_worker.rb -C ./workers/shoryuken_donation_production.yml'
     end
   end
 end

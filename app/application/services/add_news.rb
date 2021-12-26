@@ -19,7 +19,7 @@ module Floofloo
           return Failure(Response::ApiResult.new(status: :internal_error, message: 'Database is not empty'))
         end
 
-        Floofloo::Messaging::Queue.new(Floofloo::App.config.QUEUE_URL, Floofloo::App.config).send(input.to_json)
+        Messaging::Queue.new(Floofloo::App.config.QUEUE_URL, Floofloo::App.config).send(input.to_json)
         Success(Response::ApiResult.new(status: :ok, message: 'Success'))
       rescue StandardError
         Failure(Response::ApiResult.new(status: :internal_error, message: 'Background workers can not add the news'))
