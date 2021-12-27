@@ -19,7 +19,7 @@ module Floofloo
           .find(input[:event_name])
         Success(input)
       rescue StandardError
-        Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not get the donation projects from Global Giving API.'))
+        Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not get the projects from API.'))
       end
 
       def store_donations_in_database(input)
