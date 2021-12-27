@@ -12,16 +12,16 @@ module Floofloo
 
       private
 
-      ISSUE_DB_ERR_MSG = 'Having trouble accessing the database'
+      ISSUE_DB_ERR_MSG = 'Having trouble accessing the database while adding the issue.'
 
       def add_issue(input)
-        issue = issue_in_database(input) || create_issue_in_database(input)
+        issue = issue_in_database?(input) || create_issue_in_database(input)
         Success(Response::ApiResult.new(status: :ok, message: issue))
       rescue StandardError
         Failure(Response::ApiResult.new(status: :internal_error, message: ISSUE_DB_ERR_MSG))
       end
 
-      def issue_in_database(input)
+      def issue_in_database?(input)
         Repository::IssuesFor.klass(Entity::Issue).find_name(input[:issue_name])
       end
 
