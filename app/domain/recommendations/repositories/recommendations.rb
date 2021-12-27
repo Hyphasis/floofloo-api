@@ -28,6 +28,10 @@ module Floofloo
           donation_id: db_record.donation_id
         )
       end
+
+      def self.delete_all
+        Database::RecommendationOrm.all.map(&:delete)
+      end
     end
   end
 end

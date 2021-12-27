@@ -234,6 +234,27 @@ module Floofloo
             routing.redirect '/'
           end
         end
+
+        routing.on 'recommendations' do
+          # DELETE /api/v1/recommendations
+          routing.delete do
+            find_recommendations = Services::DeleteAllRecommendations.new.call
+
+            if find_recommendations.failure?
+              failed = Representer::HttpResponse.new(find_recommendations.failure)
+              routing.halt failed.http_status_code, failed.to_json
+            end
+
+            http_response = Representer::HttpResponse.new(find_recommendations.value!)
+            response.status = http_response.http_status_code
+
+            { message: 'All recommendations deleted' }.to_json
+          rescue StandardError => e
+            puts e.message
+
+            routing.redirect '/'
+          end
+        end
       end
     end
   end
