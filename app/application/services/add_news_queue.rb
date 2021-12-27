@@ -7,7 +7,7 @@ require 'json'
 module Floofloo
   module Services
     # Transaction to get news from News API
-    class AddNews
+    class AddNewsQueue
       include Dry::Transaction
 
       step :request_add_news_worker

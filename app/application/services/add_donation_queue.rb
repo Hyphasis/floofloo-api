@@ -7,7 +7,7 @@ require 'json'
 module Floofloo
   module Services
     # Transaction to get donation project from Global Giving API
-    class AddDonation
+    class AddDonationQueue
       include Dry::Transaction
 
       step :request_add_donation_worker

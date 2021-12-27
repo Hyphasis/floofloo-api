@@ -10,36 +10,29 @@ module Floofloo
     class AddNewsWorker
       include Dry::Transaction
 
-      step :add_news_worker
+      step :get_news_from_news_api
+      step :store_news_in_database
 
       private
 
-      def add_news_worker(input)
-        news = news_from_news_api(input)
-        news_result = OpenStruct.new(articles: news)
-        Success(Response::ApiResult.new(status: :ok, message: news_result))
-      rescue StandardError
-        Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not add the news'))
-      end
-
-      def news_from_news_api(input)
-        keywords = input[:event_name]
-        news_result = News::NewsMapper
+      def get_news_from_news_api(input)
+        input[:news_list] = News::NewsMapper
           .new(App.config.NEWS_KEY)
-          .find(keywords, input[:from], input[:to], input[:sort_by], input[:language])
-
-        store_news(keywords, news_result)
+          .find(input[:event_name], input[:from], input[:to], input[:sort_by], input[:language])
+        Success(input)
       rescue StandardError
-        raise 'Could not find the news from News API'
+        Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not get the news from News API.'))
       end
 
-      def store_news(event_name, news_list)
-        event = Repository::IssuesFor.entity(Entity::Event.new(id: nil, name: '')).find_name(event_name)
+      def store_news_in_database(input)
+        event = Repository::IssuesFor.entity(Entity::Event.new(id: nil, name: '')).find_name(input[:event_name])
+        news_list = input[:news_list]
         news_list.articles.each do |news|
           Repository::ArticlesFor.entity(news_list).create(event, news)
         end
-      rescue StandardError
-        raise 'Could not store the news'
+        Success(Response::ApiResult.new(status: :ok, message: 'Succeed'))
+      rescue StandardError => e
+        Failure(Response::ApiResult.new(status: :internal_error, message: e.message))
       end
     end
   end
