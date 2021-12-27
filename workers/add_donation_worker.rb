@@ -26,14 +26,7 @@ class AddDonationWorker
 
   def perform(_sqs_msg, request)
     input = JSON.parse(request, :symbolize_names => true)
-    event = Floofloo::Repository::IssuesFor.entity(Floofloo::Entity::Event.new(id: nil, name: '')).find_name(input[:event_name])
-    donation_result = Floofloo::Donation::DonationMapper
-      .new(AddDonationWorker.config.GLOBAL_GIVING_KEY)
-      .find(input[:event_name])
-
-    donation_result.each do |donation|
-      Floofloo::Repository::DonationFor.entity(donation).create(event, donation)
-    end
+    Floofloo::Services::AddDonationWorker.new.call(event_name: input[:event_name])
   rescue StandardError => e
     puts e.message
   end

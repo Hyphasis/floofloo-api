@@ -26,8 +26,7 @@ class AddNewsWorker
 
   def perform(_sqs_msg, request)
     input = JSON.parse(request, :symbolize_names => true)
-    keyword = input[:event_name]
-    Floofloo::Services::AddNewsWorker.new.call(event_name: keyword)
+    Floofloo::Services::AddNewsWorker.new.call(event_name: input[:event_name])
   rescue StandardError => e
     puts e.message
   end
