@@ -6,11 +6,11 @@ require 'dry-struct'
 module Floofloo
   module Entity
     # Event entity (Sub catrgory of Issue)
-    class Event < Dry::Struct
+    class Recommendation < Dry::Struct
       include Dry.Types
 
-      attribute :id, Integer.optional
-      attribute :name, Strict::String
+      attribute :news_id, Integer.optional
+      attribute :donation_id, Integer.optional
 
       def to_attr_hash
         to_hash.reject { |key, _| [:id].include? key }

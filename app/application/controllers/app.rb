@@ -147,7 +147,30 @@ module Floofloo
           end
         end
 
-        routing.on 'news' do
+        routing.on 'event' do
+          # GET /api/v1/event
+          routing.get do
+            # response.cache_control public: true, max_age: 300
+
+            find_events = Services::GetEvent.new.call
+
+            if find_events.failure?
+              failed = Representer::HttpResponse.new(find_events.failure)
+              routing.halt failed.http_status_code, failed.to_json
+            end
+
+            http_response = Representer::HttpResponse.new(find_events.value!)
+            response.status = http_response.http_status_code
+
+            Representer::EventAllList.new(find_events.value!.message).to_json
+          rescue StandardError => e
+            puts e.full_message
+
+            routing.redirect '/'
+          end
+        end
+
+        routing.on 'news' do # rubocop:disable Metrics/BlockLength
           # DELETE /api/v1/news
           routing.delete do
             find_news = Services::DeleteAllNews.new.call
@@ -166,6 +189,29 @@ module Floofloo
 
             routing.redirect '/'
           end
+
+          # GET /api/v1/news/{news_id}
+          routing.on String do |news_id|
+            routing.get do
+              # response.cache_control public: true, max_age: 300
+
+              find_recommendation = Services::GetRecommendation.new.call(news_id: news_id)
+
+              if find_recommendation.failure?
+                failed = Representer::HttpResponse.new(find_recommendation.failure)
+                routing.halt failed.http_status_code, failed.to_json
+              end
+
+              http_response = Representer::HttpResponse.new(find_recommendation.value!)
+              response.status = http_response.http_status_code
+
+              Representer::RecommendationList.new(find_recommendation.value!.message).to_json
+            rescue StandardError => e
+              puts e.full_message
+
+              routing.redirect '/'
+            end
+          end
         end
 
         routing.on 'donations' do
@@ -182,6 +228,27 @@ module Floofloo
             response.status = http_response.http_status_code
 
             { message: 'All donations deleted' }.to_json
+          rescue StandardError => e
+            puts e.message
+
+            routing.redirect '/'
+          end
+        end
+
+        routing.on 'recommendations' do
+          # DELETE /api/v1/recommendations
+          routing.delete do
+            find_recommendations = Services::DeleteAllRecommendations.new.call
+
+            if find_recommendations.failure?
+              failed = Representer::HttpResponse.new(find_recommendations.failure)
+              routing.halt failed.http_status_code, failed.to_json
+            end
+
+            http_response = Representer::HttpResponse.new(find_recommendations.value!)
+            response.status = http_response.http_status_code
+
+            { message: 'All recommendations deleted' }.to_json
           rescue StandardError => e
             puts e.message
 

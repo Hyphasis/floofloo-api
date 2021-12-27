@@ -9,7 +9,7 @@ module Floofloo
       end
 
       def self.find_all
-        Database::IssueOrm.all.map { |db_issues| rebuild_entity(db_issues) }
+        Database::IssueOrm.all
       end
 
       def self.find_name(name)

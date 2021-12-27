@@ -8,6 +8,10 @@ module Floofloo
         rebuild_entity Database::EventOrm.first(id: id)
       end
 
+      def self.all
+        Database::EventOrm.all
+      end
+
       def self.find_all
         Database::EventOrm
           .left_join(:issues, id: :issue_id)
@@ -16,6 +20,10 @@ module Floofloo
 
       def self.find_name(name)
         Database::EventOrm.first(name: name)
+      end
+
+      def self.find_by_issue_id(issue_id)
+        Database::EventOrm.where(issue_id: issue_id).all
       end
 
       def self.create(issue, entity)

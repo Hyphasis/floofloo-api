@@ -8,9 +8,9 @@ AllCops:
     - vendor/bundle/**/*
     - config/environment.rb
     - workers/*
+    - 'Rakefile'
   Include:
   - 'Gemfile'
-  - 'Rakefile'
   - '**/*.rb'
 
 # ignore method call with no args in test code only
