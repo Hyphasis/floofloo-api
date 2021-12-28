@@ -26,11 +26,7 @@ class AddNewsWorker
 
   def perform(_sqs_msg, request)
     input = JSON.parse(request, :symbolize_names => true)
-    event = Floofloo::Repository::IssuesFor.entity(Floofloo::Entity::Event.new(id: nil, name: '')).find_name(input[:event_name])
-    news_result = Floofloo::News::NewsMapper.new(AddNewsWorker.config.NEWS_KEY).find(input[:event_name], input[:from], input[:to], input[:sort_by], input[:language])
-    news_result.articles.each do |news|
-      Floofloo::Repository::ArticlesFor.entity(news_result).create(event, news)
-    end
+    Floofloo::Services::AddNewsWorker.new.call(event_name: input[:event_name])
   rescue StandardError => e
     puts e.message
   end
