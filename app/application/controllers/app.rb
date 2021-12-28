@@ -63,7 +63,7 @@ module Floofloo
                     http_response = Representer::HttpResponse.new(add_news.value!)
                     response.status = http_response.http_status_code
 
-                    Representer::NewsList.new(add_news.value!.message).to_json
+                    add_news.value!.message.to_json
                   rescue StandardError => e
                     puts e.full_message
 
@@ -103,7 +103,7 @@ module Floofloo
                     http_response = Representer::HttpResponse.new(add_donation.value!)
                     response.status = http_response.http_status_code
 
-                    Representer::DonationsList.new(add_donation.value!.message).to_json
+                    add_donation.value!.message.to_json
                   rescue StandardError => e
                     puts e.message
 
