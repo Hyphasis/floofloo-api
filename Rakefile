@@ -66,6 +66,12 @@ namespace :db do
     FileUtils.rm(Floofloo::App.config.DB_FILENAME)
     puts "Deleted #{Floofloo::App.config.DB_FILENAME}"
   end
+
+  desc 'Initial database data'
+  task :init do
+    puts 'Initial database data'
+    sh ' bash app/infrastructure/database/local/data_helper.sh'
+  end
 end
 
 namespace :cache do
