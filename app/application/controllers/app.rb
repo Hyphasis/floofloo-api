@@ -255,6 +255,13 @@ module Floofloo
             routing.redirect '/'
           end
         end
+
+        routing.on 'scheduler' do
+          # PUT /api/v1/scheduler
+          routing.put do
+            { message: 'Scheduler Started' }.to_json
+          end
+        end
       end
     end
   end
