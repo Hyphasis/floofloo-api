@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Image
         run: |
-          docker build -t scheduler .
+          docker build -t scheduler scheduler/
           docker tag scheduler:latest ${{secrets.DOCKERHUB_USERNAME}}/floofloo-scheduler:latest
 
       - name: Login to dockerhub
