@@ -1,6 +1,14 @@
 #!/bin/bash
 
-host='http://127.0.0.1:9090'
+if [ "$RACK_ENV" == "production" ]
+then
+  echo "Production"
+  host='https://floofloo-api.herokuapp.com'
+else
+  echo "Development"
+  host='http://127.0.0.1:9090'
+fi
+
 issues=('disease' 'rights' 'disaster' 'hunger' 'water' 'climate') 
 
 declare -A events
