@@ -33,7 +33,7 @@ module Floofloo
                 routing.on 'news' do # rubocop:disable Metrics/BlockLength
                   # GET /api/v1/issue/{issue_name}/event/{event_name}/news
                   routing.get do
-                    response.cache_control public: true, max_age: 300
+                    # response.cache_control public: true, max_age: 300
                     find_news = Services::GetNews.new.call(event_name: event_name)
 
                     if find_news.failure?
