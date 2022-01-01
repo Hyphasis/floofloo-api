@@ -64,20 +64,36 @@ module Floofloo
       def find_news(input)
         input[:news_list] = Floofloo::Database::NewsOrm.all
         Success(input)
-      rescue StandardError => e
-        Failure(Response::ApiResult.new(status: :internal_error, message: e.message))
+      rescue StandardError
+        Failure(Response::ApiResult.new(status: :internal_error, message: 'Fail to find news in database.'))
       end
 
       def add_recommendation(input)
         input[:news_list].each do |news|
           donation_list = Repository::DonationFor.klass(Entity::Donation).find_event_id(news.event_id)
+          news_similarity_dict = {}
           donation_list.each do |donation|
-            Services::AddRecommendation.new.call(news_id: news.id, donation_id: donation.id)
+            index = donation.id
+            score = similiary_index(news.description, donation.summary)
+            news_similarity_dict[index] = score
+          end
+          unless news_similarity_dict.length.zero?
+            recommended_donation_id = news_similarity_dict.sort_by { |_key, value| value }.reverse[0][0]
+            Services::AddRecommendation.new.call(news_id: news.id, donation_id: recommended_donation_id)
           end
         end
         Success(Response::ApiResult.new(status: :ok, message: 'Succeed to add recommendations.'))
-      rescue StandardError
-        Failure(Response::ApiResult.new(status: :internal_error, message: 'Fail to add recommendations'))
+      rescue StandardError => e
+        Failure(Response::ApiResult.new(status: :internal_error, message: e.message))
+      end
+
+      def similiary_index(news, donation)
+        stopping_words = %w[a also am be is of this that these their my his her are an and will the i it they in li ol]
+        news_words = news.split(/\W+/).map(&:downcase).delete_if { |word| stopping_words.include?(word) }
+        donation_words = donation.split(/\W+/).map(&:downcase).delete_if { |word| stopping_words.include?(word) }
+        intersection = (news_words & donation_words).size
+        union = (news_words | donation_words).size
+        (intersection / union).to_f rescue 0.0
       end
     end
   end

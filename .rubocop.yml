@@ -9,6 +9,7 @@ AllCops:
     - config/environment.rb
     - workers/*
     - 'Rakefile'
+    - app/application/services/scheduled_worker.rb
   Include:
   - 'Gemfile'
   - '**/*.rb'
