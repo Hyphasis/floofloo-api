@@ -11,27 +11,27 @@ module Floofloo
       include Dry::Transaction
 
       step :delete_data_in_database
-      step :get_event_names
+      step :find_event_names
       step :add_news
       step :add_donation
-      step :get_news
+      step :find_news
       step :add_recommendation
 
       private
 
-      def delete_data_in_database(input)
+      def delete_data_in_database
         Floofloo::Services::DeleteAllRecommendations.new.call
         Floofloo::Services::DeleteAllNews.new.call
         Floofloo::Services::DeleteAllDonation.new.call
-        Success(input)
+        Success(Response::ApiResult.new(status: :ok, message: 'Succeed to delete data.'))
       rescue StandardError
         Failure(Response::ApiResult.new(status: :internal_error, message: 'Fail to delete data in the database.'))
       end
 
-      def get_event_names(input)
-        find_events = Services::GetEvent.new.call.value!.message.events
+      def find_event_names
+        input = {}
         input[:event_names] = []
-        find_events.each do |event|
+        Services::GetEvent.new.call.value!.message.events.each do |event|
           event.themes.each do |event_name|
             input[:event_names].append(event_name[:name])
           end
@@ -61,7 +61,7 @@ module Floofloo
         Failure(Response::ApiResult.new(status: :internal_error, message: 'Fail to add donation in database.'))
       end
 
-      def get_news(input)
+      def find_news(input)
         input[:news_list] = Floofloo::Database::NewsOrm.all
         Success(input)
       rescue StandardError => e
