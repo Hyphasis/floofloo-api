@@ -1,7 +1,16 @@
-FROM alpine:latest
+FROM ruby:3.0.3-alpine
 
-RUN apk --no-cache add curl
+RUN \
+apk update \
+&& apk upgrade \
+&& apk --no-cache add ruby ruby-dev ruby-bundler ruby-json ruby-irb ruby-rake ruby-bigdecimal postgresql-dev \
+&& apk --no-cache add make g++ \
+&& rm -rf /var/cache/apk/*
 
-COPY scheduler.sh /usr/local/bin/scheduler.sh
+WORKDIR /floofloo-api
 
-CMD sh /usr/local/bin/scheduler.sh
+COPY / .
+
+RUN bundle install --without=test development
+
+CMD bundle exec puma -t 5:5 -p ${PORT:-3000}
