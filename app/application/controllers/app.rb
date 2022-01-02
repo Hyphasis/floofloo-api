@@ -259,7 +259,19 @@ module Floofloo
         routing.on 'scheduler' do
           # PUT /api/v1/scheduler
           routing.put do
-            { message: 'Scheduler Started' }.to_json
+            run_scheduler = Services::ScheduledWorker.new.call
+
+            if run_scheduler.failure?
+              failed = Representer::HttpResponse.new(run_scheduler.failure)
+              routing.halt failed.http_status_code, failed.to_json
+            end
+            http_response = Representer::HttpResponse.new(run_scheduler.value!)
+            response.status = http_response.http_status_code
+
+            { message: 'Scheduler Succeeded' }.to_json
+          rescue StandardError => e
+            puts e.message
+            routing.redirect '/'
           end
         end
       end
