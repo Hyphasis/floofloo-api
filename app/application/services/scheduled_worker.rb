@@ -78,8 +78,15 @@ module Floofloo
             news_similarity_dict[index] = score
           end
           unless news_similarity_dict.length.zero?
-            recommended_donation_id = news_similarity_dict.sort_by { |_key, value| value }.reverse[0][0]
-            Services::AddRecommendation.new.call(news_id: news.id, donation_id: recommended_donation_id)
+            recommended_donation_id_0 = news_similarity_dict.sort_by { |_key, value| value }.reverse[0][0]
+            Services::AddRecommendation.new.call(news_id: news.id, donation_id: recommended_donation_id_0)
+
+            if news_similarity_dict.length>=3
+              recommended_donation_id_1 = news_similarity_dict.sort_by { |_key, value| value }.reverse[1][0]
+              recommended_donation_id_2 = news_similarity_dict.sort_by { |_key, value| value }.reverse[2][0]
+              Services::AddRecommendation.new.call(news_id: news.id, donation_id: recommended_donation_id_1)
+              Services::AddRecommendation.new.call(news_id: news.id, donation_id: recommended_donation_id_2)
+            end
           end
         end
         Success(Response::ApiResult.new(status: :ok, message: 'Succeed to add recommendations.'))
