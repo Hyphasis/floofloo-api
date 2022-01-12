@@ -18,8 +18,8 @@ module Floofloo
           .new(App.config.GLOBAL_GIVING_KEY)
           .find(input[:event_name])
         Success(input)
-      rescue StandardError
-        Failure(Response::ApiResult.new(status: :internal_error, message: 'Could not get the projects from API.'))
+      rescue StandardError => e
+        Failure(Response::ApiResult.new(status: :internal_error, message: e.message))
       end
 
       def store_donations_in_database(input)
@@ -28,7 +28,7 @@ module Floofloo
         donation_list.each do |donation|
           Repository::DonationFor.entity(donation).create(event, donation)
         end
-        Success(Response::ApiResult.new(status: :ok, message: 'Succeed.'))
+        Success(Response::ApiResult.new(status: :ok, message: input))
       rescue StandardError => e
         Failure(Response::ApiResult.new(status: :internal_error, message: e.message))
       end

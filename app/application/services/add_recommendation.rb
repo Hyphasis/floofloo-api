@@ -21,8 +21,7 @@ module Floofloo
 
         Success(OpenStruct.new(message: 'Succeeded to add recommendation'))
       rescue StandardError => e
-        Failure(OpenStruct.new(message: 'Failed to add recommendation'))
-        puts e.full_message
+        Failure(OpenStruct.new(message: e.message))
       end
 
       def recommendation_in_database(news_id, donation_id)

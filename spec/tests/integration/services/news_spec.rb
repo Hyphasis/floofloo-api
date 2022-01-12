@@ -15,7 +15,7 @@ describe 'News Service Integration Test' do
     VcrHelper.eject_vcr
   end
 
-  describe 'Retrieve and store project' do
+  describe 'Retrieve and store news' do
     before do
       DatabaseHelper.wipe_database
       Floofloo::Services::AddIssue.new.call(issue_name: ISSUE_NAME)
@@ -42,7 +42,7 @@ describe 'News Service Integration Test' do
     end
   end
 
-  describe 'Retrieve and store project' do
+  describe 'Get News from Database' do
     before do
       DatabaseHelper.wipe_database
       Floofloo::Services::AddIssue.new.call(issue_name: ISSUE_NAME)
@@ -61,6 +61,22 @@ describe 'News Service Integration Test' do
       _(found_first_news.description).must_equal(@rebuilt_first_news.description)
       _(found_first_news.url).must_equal(@rebuilt_first_news.url)
       _(found_first_news.url_to_image).must_equal(@rebuilt_first_news.url_to_image)
+    end
+  end
+  describe 'Delete News from Database' do
+    before do
+      DatabaseHelper.wipe_database
+      Floofloo::Services::AddIssue.new.call(issue_name: ISSUE_NAME)
+      Floofloo::Services::AddEvent.new.call(issue_name: ISSUE_NAME, event_name: EVENT_NAME)
+      Floofloo::Services::AddNewsWorker.new.call(event_name: EVENT_NAME)
+    end
+
+    it 'HAPPY: should be delete news in database' do
+      news_deleted = Floofloo::Services::DeleteAllNews.new.call()
+      _(news_deleted.success?).must_equal true
+
+      news_in_database = Floofloo::Database::NewsOrm.all
+      _(news_in_database).must_equal []
     end
   end
 end
