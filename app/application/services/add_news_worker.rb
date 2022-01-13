@@ -30,7 +30,7 @@ module Floofloo
         news_list.articles.each do |news|
           Repository::ArticlesFor.entity(news_list).create(event, news)
         end
-        Success(Response::ApiResult.new(status: :ok, message: 'Succeed'))
+        Success(Response::ApiResult.new(status: :ok, message: input))
       rescue StandardError => e
         Failure(Response::ApiResult.new(status: :internal_error, message: e.message))
       end
