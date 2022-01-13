@@ -22,7 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu, macos]
-        ruby-version: ['3.0.2']
+        ruby-version: ['3.0.3']
     runs-on: ${{ matrix.os }}-latest
 
     steps:
@@ -38,12 +38,8 @@ jobs:
     - name: Check Style and Performance
       run: bundle exec rake quality:rubocop
 
-    - name: Check Code Smell
-      run: bundle exec rake quality:reek
-
     - name: Run Tests
       run: |
            cp config/secrets_example.yml config/secrets.yml
-           mkdir app/infrastructure/database/local
            bundle exec rake db:migrate RACK_ENV=test
            bundle exec rake spec

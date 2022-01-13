@@ -53,7 +53,7 @@ module Floofloo
 
                   # POST /api/v1/issue/{issue_name}/event/{event_name}/news
                   routing.post do
-                    add_news = Services::AddNews.new.call(event_name: event_name)
+                    add_news = Services::AddNewsQueue.new.call(event_name: event_name)
 
                     if add_news.failure?
                       failed = Representer::HttpResponse.new(add_news.failure)
@@ -63,7 +63,7 @@ module Floofloo
                     http_response = Representer::HttpResponse.new(add_news.value!)
                     response.status = http_response.http_status_code
 
-                    Representer::NewsList.new(add_news.value!.message).to_json
+                    add_news.value!.message.to_json
                   rescue StandardError => e
                     puts e.full_message
 
@@ -93,7 +93,7 @@ module Floofloo
 
                   # POST /api/v1/issue/{issue_name}/event/{event_name}/donations
                   routing.post do
-                    add_donation = Services::AddDonation.new.call(event_name: event_name)
+                    add_donation = Services::AddDonationQueue.new.call(event_name: event_name)
 
                     if add_donation.failure?
                       failed = Representer::HttpResponse.new(add_donation.failure)
@@ -103,7 +103,7 @@ module Floofloo
                     http_response = Representer::HttpResponse.new(add_donation.value!)
                     response.status = http_response.http_status_code
 
-                    Representer::DonationsList.new(add_donation.value!.message).to_json
+                    add_donation.value!.message.to_json
                   rescue StandardError => e
                     puts e.message
 
@@ -252,6 +252,25 @@ module Floofloo
           rescue StandardError => e
             puts e.message
 
+            routing.redirect '/'
+          end
+        end
+
+        routing.on 'scheduler' do
+          # PUT /api/v1/scheduler
+          routing.put do
+            run_scheduler = Services::ScheduledWorker.new.call
+
+            if run_scheduler.failure?
+              failed = Representer::HttpResponse.new(run_scheduler.failure)
+              routing.halt failed.http_status_code, failed.to_json
+            end
+            http_response = Representer::HttpResponse.new(run_scheduler.value!)
+            response.status = http_response.http_status_code
+
+            { message: 'Scheduler Succeeded' }.to_json
+          rescue StandardError => e
+            puts e.message
             routing.redirect '/'
           end
         end
